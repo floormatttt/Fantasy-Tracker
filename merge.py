@@ -10,27 +10,29 @@ with urllib.request.urlopen(req) as r:
 
 print(f"Total teams: {len(teams)}")
 
-# Fetch player data from BallDontLie
-API_KEY = '12b6df1f-9367-4d0e-ac75-c6c06678560c'
-players = []
-page = 1
+# Fetch player data from cbbstat.com (free, no auth)
+player_urls = [
+    'https://cbbstat.com/api/players?season=2025-26&per_page=500',
+    'https://api.cbbstat.com/players?year=2026',
+]
 
-while True:
-    url = f'https://api.balldontlie.io/ncaab/v1/season_averages?season=2025&per_page=100&page={page}'
-    req2 = urllib.request.Request(url, headers={'Authorization': API_KEY})
-    with urllib.request.urlopen(req2) as r:
-        data = json.loads(r.read().decode())
-    
-    batch = data.get('data', [])
-    if not batch:
-        break
-    players.extend(batch)
-    print(f"Got {len(players)} players so far...")
-    
-    meta = data.get('meta', {})
-    if page >= meta.get('total_pages', 1):
-        break
-    page += 1
+players = []
+for url in player_urls:
+    try:
+        req2 = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req2, timeout=20) as r:
+            content = r.read().decode().strip()
+            print(f"Response from {url}: {content[:300]}")
+            data = json.loads(content)
+            if isinstance(data, list):
+                players = data
+            elif isinstance(data, dict):
+                players = data.get('data', data.get('players', data.get('results', [])))
+            if players:
+                print(f"Got {len(players)} players!")
+                break
+    except Exception as e:
+        print(f"Failed {url}: {e}")
 
 print(f"Total players: {len(players)}")
 
