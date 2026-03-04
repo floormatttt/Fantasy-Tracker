@@ -175,6 +175,7 @@ th .th-tip { font-size: 10px; font-weight: 400; color: var(--text-muted); displa
     <div class="nav-tab" onclick="switchTab('upset')">Upset Alerts</div>
     <div class="nav-tab" onclick="switchTab('confstrength')">Conf Strength</div>
     <div class="nav-tab" onclick="switchTab('cinderella')">🥿 Cinderella Watch</div>
+    <div class="nav-tab" onclick="switchTab('draftboard')">🏀 NBA Draft Board</div>
   </div>
 </nav>
 
@@ -309,9 +310,222 @@ th .th-tip { font-size: 10px; font-weight: 400; color: var(--text-muted); displa
   <p class="data-note">Cinderella Score = composite of AdjEM vs seed gap, defensive efficiency rank, barthag, tempo control, and WAB. Higher = more upset potential.</p>
 </div>
 
+<div class="section" id="draftboard">
+  <div class="page-title">
+    <div><h1>🏀 2026 NBA Draft Board</h1>
+    <p>Top prospects ranked by draft position · Includes team fit analysis · Updated March 2026</p></div>
+  </div>
+
+  <div style="background:white;border:1px solid var(--border);border-radius:6px;padding:16px 20px;margin-bottom:20px;font-size:13px;color:var(--text-secondary);line-height:1.8">
+    <strong style="color:var(--text-primary)">About this board:</strong> The 2026 NBA Draft is widely considered one of the deepest in years. The top three — <strong>AJ Dybantsa</strong>, <strong>Darryn Peterson</strong>, and <strong>Cameron Boozer</strong> — are all legitimate No. 1 pick candidates with franchise-altering upside. Team assignments are based on current lottery projections and team needs as of March 2026.
+  </div>
+
+  <div class="filters">
+    <label>Filter</label>
+    <select id="draft-pos-filter" onchange="renderDraftBoard()">
+      <option value="">All Positions</option>
+      <option value="PG">Point Guard</option>
+      <option value="SG">Shooting Guard</option>
+      <option value="SF">Small Forward</option>
+      <option value="PF">Power Forward</option>
+      <option value="C">Center</option>
+    </select>
+    <label>Round</label>
+    <select id="draft-round-filter" onchange="renderDraftBoard()">
+      <option value="">All Picks</option>
+      <option value="lottery">Lottery (1-14)</option>
+      <option value="first">Full 1st Round</option>
+    </select>
+  </div>
+
+  <div id="draftboard-container"></div>
+  <p class="data-note">Sources: ESPN, CBS Sports, Bleacher Report, Babcock Hoops · Team needs based on current standings · March 2026</p>
+</div>
+
 </main>
 
 <script>
+// ===== DRAFT BOARD DATA =====
+const draftProspects = [
+  {
+    pick: 1, name: "AJ Dybantsa", school: "BYU", pos: "SF", yr: "Fr", age: 18,
+    ht: "6'9\"", wt: "215", wingspan: "6'11\"",
+    ppg: 24.9, rpg: 7.1, apg: 4.0, fg: 53.3, tsp: 58.1,
+    team: "Washington Wizards", teamNeed: "Star wing scorer to build around",
+    nbaComp: "Paul George / Jimmy Butler",
+    analysis: "Dybantsa is the most physically imposing wing in this class. Washington desperately needs a franchise cornerstone after missing on Flagg — Dybantsa's elite scoring (25 PPG), improving 3PT shot, and defensive versatility make him the perfect fit. His downhill attack and size at the 3 give the Wizards the star they've been missing.",
+    tier: "Franchise", tierColor: "var(--accent)"
+  },
+  {
+    pick: 2, name: "Darryn Peterson", school: "Kansas", pos: "PG/SG", yr: "Fr", age: 18,
+    ht: "6'5\"", wt: "205", wingspan: "6'10.5\"",
+    ppg: 19.7, rpg: 3.5, apg: 3.0, fg: 48.2, tsp: 60.1,
+    team: "Indiana Pacers", teamNeed: "Elite shot-creating guard",
+    nbaComp: "Devin Booker / Paul George",
+    analysis: "Peterson is a three-level scorer with elite athleticism and defensive upside. Indiana needs a guard who can create his own shot alongside Tyrese Haliburton. Peterson's quick release, pull-up 3PT ability, and 6'10\" wingspan make him a perfect complement — he can play off the ball or run pick-and-roll to give the Pacers a genuine co-star.",
+    tier: "Franchise", tierColor: "var(--accent)"
+  },
+  {
+    pick: 3, name: "Cameron Boozer", school: "Duke", pos: "PF/C", yr: "Fr", age: 18,
+    ht: "6'9\"", wt: "240", wingspan: "7'0\"",
+    ppg: 22.7, rpg: 10.3, apg: 4.3, fg: 58.3, tsp: 64.2,
+    team: "Atlanta Hawks", teamNeed: "Frontcourt anchor and offensive hub",
+    nbaComp: "Bam Adebayo / Karl-Anthony Towns",
+    analysis: "The most polished prospect in the class. Atlanta needs a frontcourt centerpiece after years of rebuilding — Boozer's 58% FG, 40% 3PT, elite rebounding and playmaking at 6'9\" is exactly what contenders are built around. His passing IQ and pick-and-pop ability would elevate Trae Young's offense to another level.",
+    tier: "Franchise", tierColor: "var(--accent)"
+  },
+  {
+    pick: 4, name: "Nate Ament", school: "Tennessee", pos: "SF/PF", yr: "Fr", age: 18,
+    ht: "6'8\"", wt: "210", wingspan: "7'1\"",
+    ppg: 16.2, rpg: 7.8, apg: 3.2, fg: 51.4, tsp: 60.8,
+    team: "Charlotte Hornets", teamNeed: "Versatile two-way wing",
+    nbaComp: "Scottie Barnes / OG Anunoby",
+    analysis: "Ament is a do-everything wing with elite length and defensive versatility. Charlotte needs two-way impact players to build around LaMelo Ball — Ament's 7'1\" wingspan, switchability, and improving offensive game make him a natural fit as the defensive anchor who can play alongside LaMelo.",
+    tier: "Star", tierColor: "var(--blue)"
+  },
+  {
+    pick: 5, name: "Caleb Wilson", school: "Utah", pos: "SF/PF", yr: "Fr", age: 18,
+    ht: "6'8\"", wt: "205", wingspan: "7'0\"",
+    ppg: 18.4, rpg: 8.2, apg: 4.1, fg: 52.1, tsp: 61.2,
+    team: "New Orleans Pelicans", teamNeed: "Athletic wing scorer",
+    nbaComp: "Jaren Jackson Jr. / Jonathan Kuminga",
+    analysis: "Wilson has been one of the most explosive performers of the season, highlighted by a stunning 23-point game over Cameron Boozer and Duke. His athleticism is elite, and his improving shot-making and post-up efficiency (61%) show he's more than just a dunker. New Orleans needs youth and upside — Wilson delivers both.",
+    tier: "Star", tierColor: "var(--blue)"
+  },
+  {
+    pick: 6, name: "Kingston Flemings", school: "Florida", pos: "PG", yr: "Fr", age: 18,
+    ht: "6'4\"", wt: "190", wingspan: "6'8\"",
+    ppg: 15.8, rpg: 3.4, apg: 6.2, fg: 46.2, tsp: 58.4,
+    team: "Utah Jazz", teamNeed: "Point guard of the future",
+    nbaComp: "Tyrese Haliburton / Ja Morant",
+    analysis: "Flemings is the best pure point guard not named Peterson in this class. Utah needs a lead guard to pair with Ace Bailey — Flemings' court vision, pace control, and improving perimeter shot make him the ideal backcourt cornerstone. His 6.2 APG and transition impact jump off the stat sheet.",
+    tier: "Star", tierColor: "var(--blue)"
+  },
+  {
+    pick: 7, name: "Mikel Brown Jr.", school: "Georgia", pos: "SG/SF", yr: "Fr", age: 18,
+    ht: "6'6\"", wt: "200", wingspan: "6'10\"",
+    ppg: 17.2, rpg: 5.1, apg: 2.8, fg: 49.8, tsp: 59.2,
+    team: "Sacramento Kings", teamNeed: "Athletic wing with upside",
+    nbaComp: "Anthony Edwards / Zach LaVine",
+    analysis: "Brown is a high-ceiling scorer with elite athleticism and shot-making ability. Sacramento needs wing depth and youth — Brown's explosiveness and shot creation give the Kings a player who can develop into a primary scorer. His competitive motor and defensive potential are underrated assets.",
+    tier: "Star", tierColor: "var(--blue)"
+  },
+  {
+    pick: 8, name: "Darius Acuff", school: "Arkansas", pos: "PG/SG", yr: "Fr", age: 18,
+    ht: "6'4\"", wt: "185", wingspan: "6'7\"",
+    ppg: 19.1, rpg: 3.8, apg: 5.4, fg: 47.6, tsp: 57.8,
+    team: "San Antonio Spurs", teamNeed: "Young guard to develop alongside Wemby",
+    nbaComp: "Dejounte Murray / Immanuel Quickley",
+    analysis: "Acuff is an explosive guard with elite scoring instincts and improving playmaking. San Antonio needs guards who can grow alongside Wembanyama — Acuff's pace, finishing ability, and competitive fire fit the Spurs' developmental culture. His high usage at Arkansas shows he's comfortable being the guy.",
+    tier: "Star", tierColor: "var(--blue)"
+  },
+  {
+    pick: 9, name: "Keaton Wagler", school: "Iowa St.", pos: "SF", yr: "Fr", age: 18,
+    ht: "6'7\"", wt: "210", wingspan: "6'11\"",
+    ppg: 14.8, rpg: 6.2, apg: 2.4, fg: 50.2, tsp: 61.8,
+    team: "Oklahoma City Thunder", teamNeed: "Developmental wing with shooting",
+    nbaComp: "Jalen Williams / Josh Giddey",
+    analysis: "Wagler is a highly efficient wing with elite shot-making and defensive instincts. OKC loves high-IQ players who can shoot and defend — Wagler fits that mold perfectly. He'd be a luxury developmental pick for a Thunder team that's been stacking assets, giving them another young piece to develop into a rotation player.",
+    tier: "Starter", tierColor: "var(--green)"
+  },
+  {
+    pick: 10, name: "Yaxel Lendeborg", school: "UAB/Michigan", pos: "PF/C", yr: "Jr", age: 21,
+    ht: "6'9\"", wt: "225", wingspan: "7'3\"",
+    ppg: 16.4, rpg: 10.8, apg: 3.2, fg: 54.8, tsp: 62.1,
+    team: "Toronto Raptors", teamNeed: "Versatile big with passing ability",
+    nbaComp: "Draymond Green / Pascal Siakam",
+    analysis: "Lendeborg is a proven winner with elite versatility and passing for a big man. Toronto values skill and IQ over athleticism — Lendeborg's 7'3\" wingspan, ability to defend 1-5, and 18% assist rate make him a perfect Raptors-style player. More polished than the younger prospects, he could contribute immediately.",
+    tier: "Starter", tierColor: "var(--green)"
+  },
+  {
+    pick: 11, name: "Hannes Steinbach", school: "Tennessee", pos: "C/PF", yr: "Fr", age: 19,
+    ht: "6'11\"", wt: "235", wingspan: "7'2\"",
+    ppg: 15.2, rpg: 8.4, apg: 2.1, fg: 56.2, tsp: 63.4,
+    team: "Portland Trail Blazers", teamNeed: "Skilled center who can shoot",
+    nbaComp: "Nikola Vucevic / Brook Lopez",
+    analysis: "Steinbach has outstanding hands and instincts inside, plus enough perimeter shooting to keep defenses honest. Portland needs a frontcourt anchor — Steinbach's footwork and post game are ready-made for an NBA role. His 26-point performance against Minnesota showcased his ability to take over games.",
+    tier: "Starter", tierColor: "var(--green)"
+  },
+  {
+    pick: 12, name: "Tre Johnson", school: "Texas", pos: "SG", yr: "Fr", age: 18,
+    ht: "6'5\"", wt: "190", wingspan: "6'8\"",
+    ppg: 21.4, rpg: 3.8, apg: 2.4, fg: 46.8, tsp: 59.4,
+    team: "Memphis Grizzlies", teamNeed: "Scoring guard off the bench",
+    nbaComp: "Jordan Clarkson / Tyler Herro",
+    analysis: "Johnson is one of the most prolific scorers in this class — 21 PPG at Texas as a freshman is impressive. Memphis needs scoring punch — Johnson's shot creation, pull-up shooting, and aggressive attack of the rim give the Grizzlies an instant-offense option. High usage scorer who could grow into a starter.",
+    tier: "Starter", tierColor: "var(--green)"
+  },
+  {
+    pick: 13, name: "Khaman Maluach", school: "Duke", pos: "C", yr: "Fr", age: 19,
+    ht: "7'2\"", wt: "250", wingspan: "7'6\"",
+    ppg: 11.8, rpg: 7.2, apg: 1.2, fg: 62.4, tsp: 68.2,
+    team: "Detroit Pistons", teamNeed: "Rim-running center with upside",
+    nbaComp: "Clint Capela / Mitchell Robinson",
+    analysis: "Maluach is a monster athlete with elite shot-blocking and rim-running ability. Detroit needs a modern center who can protect the rim and finish lobs — Maluach's 7'6\" wingspan and 62% FG make him a perfect fit alongside Cade Cunningham's playmaking. His ceiling as a shot-blocker and finisher is elite.",
+    tier: "Starter", tierColor: "var(--green)"
+  },
+  {
+    pick: 14, name: "Jeremiah Fears", school: "Oklahoma", pos: "PG", yr: "Fr", age: 18,
+    ht: "6'3\"", wt: "180", wingspan: "6'7\"",
+    ppg: 17.6, rpg: 3.2, apg: 5.8, fg: 44.8, tsp: 56.2,
+    team: "Philadelphia 76ers", teamNeed: "Young guard with upside",
+    nbaComp: "Trae Young / Tyrese Maxey",
+    analysis: "Fears is a dynamic playmaker with elite vision and scoring instincts. Philly needs youth and upside — Fears' court IQ and willingness to make plays for others give the 76ers a long-term backcourt option. His 5.8 APG and ability to get to the line show a player who does more than just score.",
+    tier: "Starter", tierColor: "var(--green)"
+  },
+];
+
+function renderDraftBoard() {
+  const posFilter = document.getElementById('draft-pos-filter')?.value || '';
+  const roundFilter = document.getElementById('draft-round-filter')?.value || '';
+
+  let prospects = [...draftProspects];
+  if (posFilter) prospects = prospects.filter(p => p.pos.includes(posFilter));
+  if (roundFilter === 'lottery') prospects = prospects.filter(p => p.pick <= 14);
+  if (roundFilter === 'first') prospects = prospects.filter(p => p.pick <= 30);
+
+  const html = prospects.map(p => `
+    <div style="background:white;border:1px solid var(--border);border-radius:6px;margin-bottom:12px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:60px 1fr auto;align-items:stretch">
+
+        <!-- Pick number -->
+        <div style="background:${p.tierColor};display:flex;align-items:center;justify-content:center;flex-direction:column;padding:16px 8px;min-width:60px">
+          <div style="font-size:10px;color:rgba(255,255,255,0.8);font-weight:700;text-transform:uppercase;letter-spacing:0.4px">Pick</div>
+          <div style="font-size:28px;font-weight:900;color:white;font-family:var(--font-serif);line-height:1">${p.pick}</div>
+        </div>
+
+        <!-- Player info -->
+        <div style="padding:14px 16px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+            <span style="font-family:var(--font-serif);font-size:18px;font-weight:600">${p.name}</span>
+            <span class="pill pill-blue">${p.pos}</span>
+            <span class="pill pill-amber">${p.school}</span>
+            <span style="font-size:11px;color:var(--text-muted)">${p.ht} · ${p.wt} lbs · Age ${p.age}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:10px">
+            ${[['PPG',p.ppg.toFixed(1)],['RPG',p.rpg.toFixed(1)],['APG',p.apg.toFixed(1)],['FG%',p.fg+'%'],['TS%',p.tsp+'%'],['Wingspan',p.wingspan]].map(([l,v])=>`
+              <div style="background:var(--bg);border-radius:3px;padding:6px 8px;text-align:center">
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-muted);font-weight:700">${l}</div>
+                <div style="font-weight:700;font-size:13px;margin-top:2px">${v}</div>
+              </div>`).join('')}
+          </div>
+          <!-- NBA Fit -->
+          <div style="background:var(--blue-light);border-radius:4px;padding:10px 12px;margin-bottom:8px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--blue)">→ ${p.team}</span>
+              <span style="font-size:11px;color:var(--text-muted)">Need: ${p.teamNeed}</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">${p.analysis}</div>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted)">NBA Comp: <strong style="color:var(--text-secondary)">${p.nbaComp}</strong> · <span style="color:${p.tierColor};font-weight:700">${p.tier} Projection</span></div>
+        </div>
+
+      </div>
+    </div>`).join('');
+
+  document.getElementById('draftboard-container').innerHTML = html || '<div class="loading-bar">No prospects match your filters.</div>';
+}
+
 let allTeams = [], allPlayers = [];
 const DATA_URL = 'https://raw.githubusercontent.com/highbrowwharf37/Ishaan-s-coding/main/data.json';
 
@@ -410,7 +624,7 @@ function filteredTeams(confId) { const c = getConf(confId); return c ? allTeams.
 function renderAll() {
   renderPower(); renderEfficiency();
   renderSOS(); renderBubble(); renderMomentum();
-  renderUpset(); renderConfStrength(); renderCinderella();
+  renderUpset(); renderConfStrength(); renderCinderella(); renderDraftBoard();
 }
 
 // ===== POWER =====
@@ -907,7 +1121,7 @@ function switchTab(id) {
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  const idx = {power:0,efficiency:1,sos:2,predictor:3,bubble:4,momentum:5,h2h:6,upset:7,confstrength:8,cinderella:9};
+  const idx = {power:0,efficiency:1,sos:2,predictor:3,bubble:4,momentum:5,h2h:6,upset:7,confstrength:8,cinderella:9,draftboard:10};
   document.querySelectorAll('.nav-tab')[idx[id]].classList.add('active');
 }
 
