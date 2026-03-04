@@ -521,21 +521,39 @@ function renderSOS() {
   const teams = [...filteredTeams('sos-conf')].sort((a,b) => b.oppO - a.oppO);
   if (!teams.length) return;
   const [maxO, minO] = [Math.max(...teams.map(t=>t.oppO)), Math.min(...teams.map(t=>t.oppO))];
+
+  // Loss quality score: how bad are their losses?
+  // Formula: compare actual win% to expected (barthag). Big negative gap = bad losses.
+  // Also penalize teams with negative WAB heavily.
+  const withLossQuality = teams.map(t => {
+    const totalG = t.w + t.l;
+    const actualWP = totalG > 0 ? t.w / totalG : 0;
+    const expectedWP = t.barthag;
+    const gap = actualWP - expectedWP; // negative = underperforming = bad losses
+    // Loss quality score: 0-100, higher = WORSE losses
+    const lossScore = Math.max(0, Math.min(100, ((-gap * 200) + (Math.max(0, -t.wab) * 8) + 50)));
+    const lossLabel = lossScore > 75 ? '🔴 Bad' : lossScore > 55 ? '🟠 Avg' : lossScore > 35 ? '🟡 OK' : '🟢 Good';
+    return {...t, lossScore, lossLabel};
+  });
+
   let html = `<div class="table-wrap"><table>
     <thead><tr>
       <th class="sorted">SOS Rk</th><th>Team</th><th>Conf</th>
       <th class="num">Opp Avg OE <span class="th-tip">Higher = tougher schedule</span></th>
       <th class="num">Opp Avg DE <span class="th-tip">Lower = tougher schedule</span></th>
+      <th class="num">Loss Quality <span class="th-tip">How bad are their losses? Lower = better</span></th>
       <th class="num">Adj OE</th><th class="num">Adj DE</th>
       <th class="num">Record</th><th class="num">WAB</th>
     </tr></thead><tbody>`;
-  teams.forEach((t,i) => {
+
+  withLossQuality.forEach((t,i) => {
     html += `<tr>
       <td class="rank-cell ${i<5?'top5':''}">${i+1}</td>
       <td class="team-cell">${t.name}</td>
       <td><span class="pill pill-blue">${t.conf}</span></td>
       <td class="num">${barHTML(`<strong>${t.oppO.toFixed(1)}</strong>`, pct(t.oppO,minO,maxO), 'bar-blue')}</td>
       <td class="num">${t.oppD.toFixed(1)}</td>
+      <td class="num">${t.lossLabel} <span style="font-size:11px;color:var(--text-muted)">(${t.lossScore.toFixed(0)})</span></td>
       <td class="num">${t.adjOE.toFixed(1)}</td>
       <td class="num">${t.adjDE.toFixed(1)}</td>
       <td class="num">${t.record}</td>
