@@ -9,15 +9,6 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
   const [rowsPerPage, setRowsPerPage] = useState(50);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Auto-select the most recent available season
-  useEffect(() => {
-    if (seasons.length > 0 && !selectedSeason) {
-      // Try to select 2025-26, otherwise select the last season in the list
-      const defaultSeason = seasons.includes('2025-26') ? '2025-26' : seasons[seasons.length - 1];
-      setSelectedSeason(defaultSeason);
-    }
-  }, [seasons]);
-
   const currentData = selectedSeason ? seasonData[selectedSeason] || [] : [];
 
   const sortedData = useMemo(() => {
@@ -32,6 +23,19 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
     setSelectedSeason(value);
     setCurrentPage(1);
   };
+
+  // Auto-select 2025-26 when available, otherwise pick first season
+  useEffect(() => {
+    if (seasons && seasons.length > 0) {
+      if (seasons.includes('2025-26')) {
+        setSelectedSeason('2025-26');
+      } else if (!selectedSeason) {
+        setSelectedSeason(seasons[0]);
+      }
+    }
+    // only run when seasons list changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seasons]);
 
   const handleSortChange = (value) => {
     setSortBy(value);
@@ -60,7 +64,7 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
   }
 
   return (
-    <div className="section">
+    <div className="section active">
       <div className="page-title">
         <div>
           <h1>Season Leaders</h1>
@@ -71,7 +75,6 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
       <div className="filters">
         <label>Season</label>
         <select value={selectedSeason} onChange={(e) => handleSeasonChange(e.target.value)}>
-          <option value="">Select Season...</option>
           {seasons.map(season => (
             <option key={season} value={season}>
               {season}

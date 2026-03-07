@@ -4,6 +4,11 @@ header {
   color: white;
   padding: 0 24px;
   border-bottom: 3px solid var(--accent);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
 }
 
 .header-inner {
@@ -37,22 +42,19 @@ header {
 nav {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  position: fixed;
+  top: 60px; /* sit below header */
+  left: 0;
+  right: 0;
+  z-index: 110;
   overflow-x: auto;
-  width: 100%;
-  display: block;
 }
 
 .nav-inner {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0 24px;
-  width: 100%;
 }
 
 .nav-tab {
@@ -86,6 +88,7 @@ main {
   padding: 24px;
   width: 100%;
   flex: 1;
+  padding-top: 120px; /* space for fixed header + nav */
 }
 
 .section {
@@ -461,59 +464,6 @@ td {
   border-radius: 3px;
   text-align: center;
   font-size: 13px;
-}
-
-/* CBB Analytics Styles */
-.sol-infobox {
-  background: var(--purple-light);
-  border: 1px solid #d7bde2;
-  border-radius: 4px;
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  font-size: 12px;
-  color: var(--purple);
-  line-height: 1.7;
-}
-
-.sol-infobox strong {
-  color: var(--purple);
-}
-
-.sol-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 2px 7px;
-  border-radius: 2px;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.sol-elite {
-  background: var(--green-light);
-  color: var(--green);
-}
-
-.sol-good {
-  background: var(--blue-light);
-  color: var(--blue);
-}
-
-.sol-avg {
-  background: var(--amber-light);
-  color: var(--amber);
-}
-
-.sol-poor {
-  background: var(--accent-light);
-  color: var(--accent);
-}
-
-.conf-tag {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 400;
-  margin-left: 5px;
 }
 
 /* Responsive */
