@@ -1,0 +1,4 @@
+cd ~/Documents/rimjob-sports
+git add .
+git commit -m ""
+git push
