@@ -4,13 +4,21 @@ import Navigation from './components/Navigation';
 import AllTimeLeaders from './components/AllTimeLeaders';
 import BySeason from './components/BySeason';
 import AllTimeFootball from './components/AllTimeFootball';
-import { loadAllTimeData, loadFootballAllTimeData, loadManifest, loadSeasonData } from './utils/dataLoader';
+import WeeklyLineupDistribution from './components/WeeklyLineupDistribution';
+import {
+  loadAllTimeData,
+  loadFootballAllTimeData,
+  loadManifest,
+  loadSeasonData,
+  loadWeeklyLineupDistributionData,
+} from './utils/dataLoader';
 import './App.css';
 
 function App() {
   const [activeTab, setActiveTab] = useState('alltime');
   const [allTimeData, setAllTimeData] = useState([]);
   const [footballData, setFootballData] = useState([]);
+  const [weeklyLineupData, setWeeklyLineupData] = useState([]);
   const [seasonData, setSeasonData] = useState({});
   const [availableSeasons, setAvailableSeasons] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,19 +30,18 @@ function App() {
         setLoading(true);
         setError(null);
 
-        // Load all-time data
         const fullData = await loadAllTimeData();
         setAllTimeData(fullData);
 
-        // Load football data
         const footballAllTimeData = await loadFootballAllTimeData();
         setFootballData(footballAllTimeData);
 
-        // Load available seasons
+        const weeklyDistributionData = await loadWeeklyLineupDistributionData();
+        setWeeklyLineupData(weeklyDistributionData);
+
         const seasons = await loadManifest();
         setAvailableSeasons(seasons);
 
-        // Load seasonal data
         const seasonalData = {};
         for (const season of seasons) {
           try {
@@ -71,6 +78,14 @@ function App() {
         )}
         {activeTab === 'football' && (
           <AllTimeFootball key="football" data={footballData} loading={loading} error={error} />
+        )}
+        {activeTab === 'weeklylineups' && (
+          <WeeklyLineupDistribution
+            key="weeklylineups"
+            data={weeklyLineupData}
+            loading={loading}
+            error={error}
+          />
         )}
       </main>
     </>

@@ -1,6 +1,8 @@
+import argparse
 import requests
 import csv
 import time
+from pathlib import Path
 from collections import defaultdict
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -140,7 +142,7 @@ def process_games(data):
 
     return players
 
-def save_combined_csv(fantasy_dict, big_games_dict, season):
+def save_combined_csv(fantasy_dict, big_games_dict, season, output_dir="."):
     all_players = set(fantasy_dict.keys()) | set(big_games_dict.keys())
 
     rows = []
@@ -176,8 +178,8 @@ def save_combined_csv(fantasy_dict, big_games_dict, season):
     # Sort by Fantasy Points Per Game descending
     rows.sort(key=lambda x: x[14] if x[14] != "" else 0, reverse=True)
 
-    filename = f"nba_stats_{season}.csv"
-    with open(filename, "w", newline="", encoding="utf-8") as f:
+    output_path = Path(output_dir) / f"nba_stats_{season}.csv"
+    with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow([
             "Player", "GP", "PTS", "REB", "AST", "STL", "BLK", "FG3M", "TOV",
@@ -186,11 +188,37 @@ def save_combined_csv(fantasy_dict, big_games_dict, season):
         ])
         writer.writerows(rows)
 
-    print(f"Combined stats saved to {filename}")
+    print(f"Combined stats saved to {output_path}")
+    return output_path
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Fetch NBA fantasy stats for a season.")
+    parser.add_argument(
+        "--end-year",
+        type=int,
+        help="Season end year, for example 2026 for the 2025-26 season.",
+    )
+    parser.add_argument(
+        "--season",
+        help="Explicit season string such as 2025-26. Overrides --end-year if provided.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default=".",
+        help="Directory where the generated CSV should be written.",
+    )
+    return parser.parse_args()
+
 
 def main():
-    year = int(input("Enter season end year (e.g. 2025 for 2024-25): "))
-    season = f"{year - 1}-{str(year)[-2:]}"
+    args = parse_args()
+    if args.season:
+        season = args.season
+    elif args.end_year:
+        season = f"{args.end_year - 1}-{str(args.end_year)[-2:]}"
+    else:
+        year = int(input("Enter season end year (e.g. 2025 for 2024-25): "))
+        season = f"{year - 1}-{str(year)[-2:]}"
 
     session = create_session()
     start_time = time.time()
@@ -203,7 +231,7 @@ def main():
     gamelog_data = fetch_league_gamelog(session, season)
     big_games_dict = process_games(gamelog_data)
 
-    save_combined_csv(fantasy_dict, big_games_dict, season)
+    save_combined_csv(fantasy_dict, big_games_dict, season, output_dir=args.output_dir)
 
     print(f"\nAll done in {round(time.time() - start_time, 2)} seconds.")
 

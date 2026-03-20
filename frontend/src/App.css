@@ -396,6 +396,137 @@ td {
   font-style: italic;
 }
 
+.chart-card,
+.distribution-table-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.chart-header,
+.distribution-table-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.chart-header h2,
+.distribution-table-header h2 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.chart-header p,
+.distribution-table-header p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.chart-key {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.chart-key-band,
+.chart-key-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-key-band::before,
+.chart-key-line::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.chart-key-band::before {
+  background: rgba(36, 113, 163, 0.18);
+}
+
+.chart-key-line::before {
+  background: var(--line-color);
+}
+
+.chart-shell {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: right;
+  padding: 6px 0 22px;
+}
+
+.chart-plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart-grid-line {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.chart-band {
+  fill: rgba(36, 113, 163, 0.14);
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--line-color);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-point {
+  fill: var(--line-color);
+  stroke: white;
+  stroke-width: 2;
+}
+
+.chart-x-axis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24px, 1fr));
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.chart-x-axis span {
+  text-align: center;
+}
+
 /* Pagination Controls */
 .pagination-container {
   display: flex;
@@ -478,6 +609,19 @@ td {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .chart-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-y-axis {
+    display: none;
+  }
+
+  .chart-header,
+  .distribution-table-header {
+    flex-direction: column;
+  }
+
   .pagination-container {
     flex-direction: column;
   }

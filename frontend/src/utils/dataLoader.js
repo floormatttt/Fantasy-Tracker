@@ -26,6 +26,18 @@ export async function loadFootballAllTimeData() {
   }
 }
 
+export async function loadWeeklyLineupDistributionData() {
+  try {
+    const res = await fetch('./ff_data/weekly_lineup_distribution_summary.json');
+    if (!res.ok) throw new Error('Could not load weekly lineup distribution summary data');
+    const data = await res.json();
+    return data.map(parseWeeklyLineupDistributionRow).filter(row => row.season && row.week > 0);
+  } catch (err) {
+    console.error('Error loading weekly lineup distribution data:', err);
+    throw err;
+  }
+}
+
 export async function loadManifest() {
   try {
     const res = await fetch('./nba_data/manifest.json');
@@ -80,6 +92,30 @@ export function parseFootballPlayer(row) {
     gp: parseInt(row.GP) || 0,
     avg: parseFloat(row.AVG) || 0,
     ttl: parseFloat(row.TTL) || 0,
+  };
+}
+
+export function parseWeeklyLineupDistributionRow(row) {
+  return {
+    season: String(row.season || ''),
+    week: parseInt(row.week) || 0,
+    eligibleQb: parseInt(row.eligible_qb) || 0,
+    eligibleRb: parseInt(row.eligible_rb) || 0,
+    eligibleWr: parseInt(row.eligible_wr) || 0,
+    eligibleTe: parseInt(row.eligible_te) || 0,
+    samples: parseInt(row.samples) || 0,
+    mean: parseFloat(row.mean) || 0,
+    stdev: parseFloat(row.stdev) || 0,
+    min: parseFloat(row.min) || 0,
+    p05: parseFloat(row.p05) || 0,
+    p10: parseFloat(row.p10) || 0,
+    p25: parseFloat(row.p25) || 0,
+    p50: parseFloat(row.p50) || 0,
+    p75: parseFloat(row.p75) || 0,
+    p90: parseFloat(row.p90) || 0,
+    p95: parseFloat(row.p95) || 0,
+    max: parseFloat(row.max) || 0,
+    scoreGe100Rate: parseFloat(row.score_ge_100_rate) || 0,
   };
 }
 

@@ -97,6 +97,18 @@ python build_nba_json.py
 
 This will regenerate all JSON files from the current CSV data.
 
+### Daily 2025-26 Refresh
+To regenerate the current `2025-26` season file, replace that season in
+`nba_stats_full.csv`, and refresh the frontend JSON in one step:
+
+```bash
+python python/update_nba_daily.py
+```
+
+This command writes the latest season CSV to `Past FBB Data/nba_stats_2025-26.csv`,
+rebuilds `Past FBB Data/nba_stats_full.csv` with a correct `Season` column for every
+row, and then regenerates `frontend/public/nba_data/*.json`.
+
 ### Adding New Seasons
 1. Add `nba_stats_YYYY-YY.csv` to the `Past Fantasy Data/` folder
 2. Run `python build_nba_json.py`
