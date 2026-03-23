@@ -1,24 +1,50 @@
 import { formatNumber } from '../utils/dataLoader';
 
-export default function DataTable({ data, includeAllSeasonColumn = false, startIndex = 0 }) {
+const SORTABLE_COLUMNS = [
+  { key: 'player', label: 'Player', className: '', minWidth: '160px' },
+  { key: 'season', label: 'Season', className: 'num' },
+  { key: 'gp', label: 'GP', className: 'num' },
+  { key: 'pts', label: 'PTS', className: 'num' },
+  { key: 'reb', label: 'REB', className: 'num' },
+  { key: 'ast', label: 'AST', className: 'num' },
+  { key: 'fg3m', label: 'FG3M', className: 'num' },
+  { key: 'stl', label: 'STL', className: 'num' },
+  { key: 'blk', label: 'BLK', className: 'num' },
+  { key: 'tov', label: 'TOV', className: 'num' },
+  { key: 'tfp', label: 'FP', className: 'num' },
+  { key: 'fpg', label: 'FP/G', className: 'num' },
+];
+
+function sortIndicator(sortKey, sortDirection, columnKey) {
+  if (sortKey !== columnKey) return '';
+  return sortDirection === 'asc' ? ' ↑' : ' ↓';
+}
+
+export default function DataTable({
+  data,
+  includeAllSeasonColumn = false,
+  startIndex = 0,
+  sortKey = 'fpg',
+  sortDirection = 'desc',
+  onSortChange = null,
+}) {
   return (
     <div className="table-wrap">
       <table>
         <thead>
           <tr>
             <th className="num" style={{ width: '40px' }}>#</th>
-            <th style={{ minWidth: '160px' }}>Player</th>
-            {includeAllSeasonColumn && <th className="num">Season</th>}
-            <th className="num">GP</th>
-            <th className="num">PTS</th>
-            <th className="num">REB</th>
-            <th className="num">AST</th>
-            <th className="num">FG3M</th>
-            <th className="num">STL</th>
-            <th className="num">BLK</th>
-            <th className="num">TOV</th>
-            <th className="num">FP</th>
-            <th className="num">FP/G</th>
+            {SORTABLE_COLUMNS.filter((column) => includeAllSeasonColumn || column.key !== 'season').map((column) => (
+              <th
+                key={column.key}
+                className={`${column.className} ${sortKey === column.key ? 'sorted' : ''}`.trim()}
+                style={column.minWidth ? { minWidth: column.minWidth } : undefined}
+                onClick={() => onSortChange?.(column.key)}
+              >
+                {column.label}
+                {sortIndicator(sortKey, sortDirection, column.key)}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>

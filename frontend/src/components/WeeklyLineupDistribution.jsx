@@ -290,6 +290,7 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
               <tr>
                 <th>Week</th>
                 <th className="num">Mean</th>
+                <th className="num">Stdev</th>
                 <th className="num">Median</th>
                 <th className="num">P25</th>
                 <th className="num">P75</th>
@@ -302,6 +303,7 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
               <tr className="highlight-row">
                 <td className="player-cell">Overall Avg</td>
                 <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'mean')?.average ?? 0, 1)}</td>
+                <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'stdev')?.average ?? 0, 1)}</td>
                 <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'p50')?.average ?? 0, 1)}</td>
                 <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'p25')?.average ?? 0, 1)}</td>
                 <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'p75')?.average ?? 0, 1)}</td>
@@ -313,6 +315,7 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
                 <tr key={`${row.season}-${row.week}`}>
                   <td className="player-cell">Week {row.week}</td>
                   <td className="num">{formatNumber(row.mean, 1)}</td>
+                  <td className="num">{formatNumber(row.stdev, 1)}</td>
                   <td className="num">{formatNumber(row.p50, 1)}</td>
                   <td className="num">{formatNumber(row.p25, 1)}</td>
                   <td className="num">{formatNumber(row.p75, 1)}</td>

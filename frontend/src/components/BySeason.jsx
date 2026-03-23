@@ -3,17 +3,37 @@ import DataTable from './DataTable';
 import Pagination from './Pagination';
 import { sortData } from '../utils/dataLoader';
 
+const SORT_OPTIONS = [
+  { value: 'fpg', label: 'Fantasy Points Per Game' },
+  { value: 'tfp', label: 'Total Fantasy Points' },
+  { value: 'pts', label: 'Total Points' },
+  { value: 'reb', label: 'Rebounds' },
+  { value: 'ast', label: 'Assists' },
+  { value: 'fg3m', label: '3PT Made' },
+  { value: 'stl', label: 'Steals' },
+  { value: 'blk', label: 'Blocks' },
+  { value: 'tov', label: 'Turnovers' },
+  { value: 'gp', label: 'Games Played' },
+  { value: 'player', label: 'Player Name' },
+];
+
 export default function BySeason({ seasons, seasonData, loading, error }) {
   const [selectedSeason, setSelectedSeason] = useState('');
   const [sortBy, setSortBy] = useState('fpg');
+  const [sortDirection, setSortDirection] = useState('desc');
+  const [searchQuery, setSearchQuery] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(50);
   const [currentPage, setCurrentPage] = useState(1);
 
   const currentData = selectedSeason ? seasonData[selectedSeason] || [] : [];
 
   const sortedData = useMemo(() => {
-    return sortData(currentData, sortBy);
-  }, [currentData, sortBy]);
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+    const filteredData = currentData.filter((player) => (
+      normalizedQuery === '' || player.player.toLowerCase().includes(normalizedQuery)
+    ));
+    return sortData(filteredData, sortBy, sortDirection);
+  }, [currentData, sortBy, sortDirection, searchQuery]);
 
   const totalPages = Math.ceil(sortedData.length / rowsPerPage);
   const startIdx = (currentPage - 1) * rowsPerPage;
@@ -21,6 +41,11 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
 
   const handleSeasonChange = (value) => {
     setSelectedSeason(value);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (value) => {
+    setSearchQuery(value);
     setCurrentPage(1);
   };
 
@@ -39,6 +64,17 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
 
   const handleSortChange = (value) => {
     setSortBy(value);
+    setSortDirection(value === 'player' ? 'asc' : 'desc');
+    setCurrentPage(1);
+  };
+
+  const handleHeaderSort = (value) => {
+    if (sortBy === value) {
+      setSortDirection((current) => current === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(value);
+      setSortDirection(value === 'player' ? 'asc' : 'desc');
+    }
     setCurrentPage(1);
   };
 
@@ -82,11 +118,21 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
           ))}
         </select>
 
+        <label>Player</label>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => handleSearchChange(e.target.value)}
+          placeholder="Search player"
+        />
+
         <label>Sort By</label>
         <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
-          <option value="fpg">Fantasy Points Per Game</option>
-          <option value="tfp">Total Fantasy Points</option>
-          <option value="pts">Total Points</option>
+          {SORT_OPTIONS.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
 
         <div className="filter-spacer"></div>
@@ -97,7 +143,14 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
         <div className="loading-bar">Select a season to view data</div>
       ) : (
         <>
-          <DataTable data={displayData} includeAllSeasonColumn={false} startIndex={startIdx} />
+          <DataTable
+            data={displayData}
+            includeAllSeasonColumn={false}
+            startIndex={startIdx}
+            sortKey={sortBy}
+            sortDirection={sortDirection}
+            onSortChange={handleHeaderSort}
+          />
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

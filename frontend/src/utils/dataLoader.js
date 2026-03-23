@@ -123,13 +123,28 @@ export function formatNumber(n, decimals = 0) {
   return typeof n === 'number' ? n.toFixed(decimals) : '—';
 }
 
-export function sortData(data, sortKey) {
+export function sortData(data, sortKey, direction = 'desc') {
   const sorted = [...data];
-  if (sortKey === 'fpg') sorted.sort((a, b) => b.fpg - a.fpg);
-  else if (sortKey === 'tfp') sorted.sort((a, b) => b.tfp - a.tfp);
-  else if (sortKey === 'pts') sorted.sort((a, b) => b.pts - a.pts);
-  else if (sortKey === 'reb') sorted.sort((a, b) => b.reb - a.reb);
-  else if (sortKey === 'ast') sorted.sort((a, b) => b.ast - a.ast);
+  const multiplier = direction === 'asc' ? 1 : -1;
+
+  sorted.sort((a, b) => {
+    if (sortKey === 'player') {
+      return a.player.localeCompare(b.player) * multiplier;
+    }
+    if (sortKey === 'season') {
+      return a.season.localeCompare(b.season) * multiplier;
+    }
+
+    const aValue = a[sortKey] ?? 0;
+    const bValue = b[sortKey] ?? 0;
+
+    if (aValue === bValue) {
+      return a.player.localeCompare(b.player);
+    }
+
+    return (aValue - bValue) * multiplier;
+  });
+
   return sorted;
 }
 

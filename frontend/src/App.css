@@ -152,7 +152,23 @@ main {
   outline: none;
 }
 
+.filters input {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  background: white;
+  color: var(--text-primary);
+  outline: none;
+  min-width: 170px;
+}
+
 .filters select:focus {
+  border-color: var(--accent);
+}
+
+.filters input:focus {
   border-color: var(--accent);
 }
 
@@ -641,5 +657,10 @@ td {
 
   .filters select {
     width: 100%;
+  }
+
+  .filters input {
+    width: 100%;
+    min-width: 0;
   }
 }

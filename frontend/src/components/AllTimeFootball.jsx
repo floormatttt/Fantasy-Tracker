@@ -8,18 +8,21 @@ const POSITION_OPTIONS = ['ALL', 'QB', 'RB', 'WR', 'TE'];
 export default function AllTimeFootball({ data, loading, error }) {
   const [position, setPosition] = useState('ALL');
   const [sortBy, setSortBy] = useState('avg');
+  const [searchQuery, setSearchQuery] = useState('');
   const [minGp, setMinGp] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(50);
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredAndSorted = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
     const filtered = data.filter((player) => {
       const matchesPosition = position === 'ALL' || player.position === position;
-      return matchesPosition && player.gp >= minGp;
+      const matchesSearch = normalizedQuery === '' || player.player.toLowerCase().includes(normalizedQuery);
+      return matchesPosition && matchesSearch && player.gp >= minGp;
     });
 
     return sortFootballData(filtered, sortBy);
-  }, [data, position, sortBy, minGp]);
+  }, [data, position, sortBy, minGp, searchQuery]);
 
   const totalPages = Math.ceil(filteredAndSorted.length / rowsPerPage);
   const startIdx = (currentPage - 1) * rowsPerPage;
@@ -60,6 +63,17 @@ export default function AllTimeFootball({ data, loading, error }) {
       </div>
 
       <div className="filters">
+        <label>Player</label>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            resetPage();
+          }}
+          placeholder="Search player"
+        />
+
         <label>Position</label>
         <select
           value={position}
