@@ -47,8 +47,13 @@ function formatMetricValue(metric, value) {
   return formatNumber(value, 1);
 }
 
+function average(values) {
+  if (!values.length) return 0;
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
+}
+
 export default function WeeklyLineupDistribution({ data, loading, error }) {
-  const [selectedSeason, setSelectedSeason] = useState('2025');
+  const [selectedSeason, setSelectedSeason] = useState('ALL');
   const [selectedMetric, setSelectedMetric] = useState('mean');
 
   const seasons = useMemo(
@@ -56,12 +61,50 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
     [data]
   );
 
-  const resolvedSeason = seasons.includes(selectedSeason) ? selectedSeason : seasons[0] || '';
+  const resolvedSeason = selectedSeason === 'ALL' || seasons.includes(selectedSeason)
+    ? selectedSeason
+    : seasons[0] || '';
 
   const seasonRows = useMemo(
-    () => data
-      .filter((row) => row.season === resolvedSeason)
-      .sort((a, b) => a.week - b.week),
+    () => {
+      if (resolvedSeason === 'ALL') {
+        const seasonMap = new Map();
+        for (const row of data) {
+          if (!seasonMap.has(row.season)) {
+            seasonMap.set(row.season, []);
+          }
+          seasonMap.get(row.season).push(row);
+        }
+
+        return [...seasonMap.entries()]
+          .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
+          .map(([season, rows]) => ({
+            season,
+            week: parseInt(season),
+            eligibleQb: average(rows.map((row) => row.eligibleQb)),
+            eligibleRb: average(rows.map((row) => row.eligibleRb)),
+            eligibleWr: average(rows.map((row) => row.eligibleWr)),
+            eligibleTe: average(rows.map((row) => row.eligibleTe)),
+            samples: average(rows.map((row) => row.samples)),
+            mean: average(rows.map((row) => row.mean)),
+            stdev: average(rows.map((row) => row.stdev)),
+            min: average(rows.map((row) => row.min)),
+            p05: average(rows.map((row) => row.p05)),
+            p10: average(rows.map((row) => row.p10)),
+            p25: average(rows.map((row) => row.p25)),
+            p50: average(rows.map((row) => row.p50)),
+            p75: average(rows.map((row) => row.p75)),
+            p90: average(rows.map((row) => row.p90)),
+            p95: average(rows.map((row) => row.p95)),
+            max: average(rows.map((row) => row.max)),
+            scoreGe100Rate: average(rows.map((row) => row.scoreGe100Rate)),
+          }));
+      }
+
+      return data
+        .filter((row) => row.season === resolvedSeason)
+        .sort((a, b) => a.week - b.week);
+    },
     [data, resolvedSeason]
   );
 
@@ -80,8 +123,10 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
     const chartMax = maxValue + padding;
     const chartWidth = 760;
     const chartHeight = 320;
-    const maxWeek = Math.max(...seasonRows.map((row) => row.week));
-    const xForWeek = (week) => (maxWeek === 1 ? chartWidth / 2 : ((week - 1) / (maxWeek - 1)) * chartWidth);
+    const xValues = seasonRows.map((row) => row.week);
+    const minX = Math.min(...xValues);
+    const maxX = Math.max(...xValues);
+    const xForWeek = (week) => (maxX === minX ? chartWidth / 2 : ((week - minX) / (maxX - minX)) * chartWidth);
     const yForValue = (value) => chartHeight - ((value - chartMin) / (chartMax - chartMin || 1)) * chartHeight;
 
     const points = seasonRows.map((row) => ({
@@ -187,6 +232,7 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
       <div className="filters">
         <label>Season</label>
         <select value={resolvedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
+          <option value="ALL">All Seasons</option>
           {seasons.map((season) => (
             <option key={season} value={season}>
               {season}
@@ -227,9 +273,17 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
         </div>
         <div className="stat-card">
           <div className="stat-card-label">Player Pool</div>
-          <div className="stat-card-value">{seasonSummary.latestWeek.eligibleQb + seasonSummary.latestWeek.eligibleRb + seasonSummary.latestWeek.eligibleWr + seasonSummary.latestWeek.eligibleTe}</div>
+          <div className="stat-card-value">
+            {formatNumber(
+              seasonSummary.latestWeek.eligibleQb
+                + seasonSummary.latestWeek.eligibleRb
+                + seasonSummary.latestWeek.eligibleWr
+                + seasonSummary.latestWeek.eligibleTe,
+              2
+            )}
+          </div>
           <div className="stat-card-sub">
-            QB {seasonSummary.latestWeek.eligibleQb} | RB {seasonSummary.latestWeek.eligibleRb} | WR {seasonSummary.latestWeek.eligibleWr} | TE {seasonSummary.latestWeek.eligibleTe}
+            QB {formatNumber(seasonSummary.latestWeek.eligibleQb, 2)} | RB {formatNumber(seasonSummary.latestWeek.eligibleRb, 2)} | WR {formatNumber(seasonSummary.latestWeek.eligibleWr, 2)} | TE {formatNumber(seasonSummary.latestWeek.eligibleTe, 2)}
           </div>
         </div>
       </div>
@@ -237,9 +291,11 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
       <div className="chart-card">
         <div className="chart-header">
           <div>
-            <h2>{activeMetric.label} by Week</h2>
+            <h2>{activeMetric.label} by {resolvedSeason === 'ALL' ? 'Season' : 'Week'}</h2>
             <p>
-              {selectedMetric === 'scoreGe100Rate'
+              {resolvedSeason === 'ALL'
+                ? 'Each point shows that season\'s average weekly value for the selected metric.'
+                : selectedMetric === 'scoreGe100Rate'
                 ? 'Area shows the share of simulated lineups scoring 100 points or more.'
                 : 'Shaded band shows the interquartile range between the 25th and 75th percentiles.'}
             </p>
@@ -257,7 +313,7 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
             ))}
           </div>
           <div className="chart-plot">
-            <svg viewBox="0 0 760 320" role="img" aria-label={`${activeMetric.label} trend for ${resolvedSeason}`}>
+            <svg viewBox="0 0 760 320" role="img" aria-label={`${activeMetric.label} trend for ${resolvedSeason === 'ALL' ? 'all seasons' : resolvedSeason}`}>
               {chartState.yTicks.map((tick, index) => (
                 <line key={`${tick.value}-${index}`} x1="0" x2="760" y1={tick.y} y2={tick.y} className="chart-grid-line" />
               ))}
@@ -266,13 +322,13 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
               {chartState.points.map((point) => (
                 <g key={`week-${point.week}`}>
                   <circle cx={point.x} cy={point.y} r="4.5" className="chart-point" style={{ '--line-color': activeMetric.colorVar }} />
-                  <title>{`Week ${point.week}: ${formatMetricValue(selectedMetric, point.value)}`}</title>
+                  <title>{`${resolvedSeason === 'ALL' ? `Season ${seasonRows.find((row) => row.week === point.week)?.season}` : `Week ${point.week}`}: ${formatMetricValue(selectedMetric, point.value)}`}</title>
                 </g>
               ))}
             </svg>
             <div className="chart-x-axis">
               {seasonRows.map((row) => (
-                <span key={`x-week-${row.week}`}>W{row.week}</span>
+                <span key={`x-week-${row.week}`}>{resolvedSeason === 'ALL' ? row.season : `W${row.week}`}</span>
               ))}
             </div>
           </div>
@@ -282,13 +338,17 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
       <div className="distribution-table-card">
         <div className="distribution-table-header">
           <h2>Weekly Snapshot</h2>
-          <p>The same source data behind the chart, with overall averages shown in the first row.</p>
+          <p>
+            {resolvedSeason === 'ALL'
+              ? 'Season-level averages across all weeks, with overall averages shown in the first row.'
+              : 'The same source data behind the chart, with overall averages shown in the first row.'}
+          </p>
         </div>
         <div className="table-wrap">
           <table>
             <thead>
               <tr>
-                <th>Week</th>
+                <th>{resolvedSeason === 'ALL' ? 'Season' : 'Week'}</th>
                 <th className="num">Mean</th>
                 <th className="num">Stdev</th>
                 <th className="num">Median</th>
@@ -313,7 +373,7 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
               </tr>
               {seasonRows.map((row) => (
                 <tr key={`${row.season}-${row.week}`}>
-                  <td className="player-cell">Week {row.week}</td>
+                  <td className="player-cell">{resolvedSeason === 'ALL' ? row.season : `Week ${row.week}`}</td>
                   <td className="num">{formatNumber(row.mean, 1)}</td>
                   <td className="num">{formatNumber(row.stdev, 1)}</td>
                   <td className="num">{formatNumber(row.p50, 1)}</td>
