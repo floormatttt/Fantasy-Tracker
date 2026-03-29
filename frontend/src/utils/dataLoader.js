@@ -92,6 +92,7 @@ export function parseFootballPlayer(row) {
     gp: parseInt(row.GP) || 0,
     avg: parseFloat(row.AVG) || 0,
     ttl: parseFloat(row.TTL) || 0,
+    war: parseFloat(row.WAR) || 0,
   };
 }
 
@@ -116,6 +117,9 @@ export function parseWeeklyLineupDistributionRow(row) {
     p95: parseFloat(row.p95) || 0,
     max: parseFloat(row.max) || 0,
     scoreGe100Rate: parseFloat(row.score_ge_100_rate) || 0,
+    replacementScore: parseFloat(row.replacement_score) || 0,
+    replacementPercentile: parseFloat(row.replacement_percentile) || 0,
+    replacementWinRate: parseFloat(row.replacement_win_rate) || 0,
   };
 }
 
@@ -148,13 +152,22 @@ export function sortData(data, sortKey, direction = 'desc') {
   return sorted;
 }
 
-export function sortFootballData(data, sortKey) {
+export function sortFootballData(data, sortKey, direction = 'desc') {
   const sorted = [...data];
+  const multiplier = direction === 'asc' ? 1 : -1;
 
-  if (sortKey === 'avg') sorted.sort((a, b) => b.avg - a.avg);
-  else if (sortKey === 'ttl') sorted.sort((a, b) => b.ttl - a.ttl);
-  else if (sortKey === 'gp') sorted.sort((a, b) => b.gp - a.gp);
-  else if (sortKey === 'season') sorted.sort((a, b) => parseInt(b.season) - parseInt(a.season));
+  sorted.sort((a, b) => {
+    if (sortKey === 'player') return a.player.localeCompare(b.player) * multiplier;
+    if (sortKey === 'team') return a.team.localeCompare(b.team) * multiplier;
+    if (sortKey === 'position') return a.position.localeCompare(b.position) * multiplier;
+    if (sortKey === 'season') return (parseInt(a.season) - parseInt(b.season)) * multiplier;
+    if (sortKey === 'gp') return (a.gp - b.gp) * multiplier;
+    if (sortKey === 'avg') return (a.avg - b.avg) * multiplier;
+    if (sortKey === 'ttl') return (a.ttl - b.ttl) * multiplier;
+    if (sortKey === 'war') return (a.war - b.war) * multiplier;
+
+    return 0;
+  });
 
   return sorted;
 }

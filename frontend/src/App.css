@@ -459,14 +459,16 @@ td {
 }
 
 .chart-key-band,
-.chart-key-line {
+.chart-key-line,
+.chart-key-replacement {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
 .chart-key-band::before,
-.chart-key-line::before {
+.chart-key-line::before,
+.chart-key-replacement::before {
   content: '';
   display: inline-block;
   width: 18px;
@@ -480,6 +482,11 @@ td {
 
 .chart-key-line::before {
   background: var(--line-color);
+}
+
+.chart-key-replacement::before {
+  height: 3px;
+  background: var(--ink);
 }
 
 .chart-shell {
@@ -524,8 +531,19 @@ td {
   stroke-linejoin: round;
 }
 
+.chart-line-replacement {
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
 .chart-point {
   fill: var(--line-color);
+  stroke: white;
+  stroke-width: 2;
+}
+
+.chart-point-replacement {
+  fill: var(--ink);
   stroke: white;
   stroke-width: 2;
 }

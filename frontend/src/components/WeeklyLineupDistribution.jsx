@@ -6,8 +6,12 @@ const METRIC_OPTIONS = [
   { value: 'p50', label: 'Median Score', colorVar: 'var(--blue)' },
   { value: 'p75', label: '75th Percentile', colorVar: 'var(--green)' },
   { value: 'p90', label: '90th Percentile', colorVar: 'var(--amber)' },
+  { value: 'replacementScore', label: 'Replacement Team Score', colorVar: 'var(--ink)' },
+  { value: 'replacementWinRate', label: 'Replacement Win Rate', colorVar: 'var(--purple)' },
   { value: 'scoreGe100Rate', label: '100+ Rate', colorVar: 'var(--purple)' },
 ];
+
+const PERCENT_METRICS = new Set(['scoreGe100Rate', 'replacementPercentile', 'replacementWinRate']);
 
 const OVERALL_AVERAGE_METRICS = [
   { key: 'eligibleQb', label: 'Eligible QB', decimals: 1 },
@@ -27,6 +31,9 @@ const OVERALL_AVERAGE_METRICS = [
   { key: 'p95', label: 'P95', decimals: 1 },
   { key: 'max', label: 'Max', decimals: 1 },
   { key: 'scoreGe100Rate', label: '100+ Rate', isPercent: true },
+  { key: 'replacementScore', label: 'Replacement', decimals: 1 },
+  { key: 'replacementPercentile', label: 'Replacement %ile', isPercent: true },
+  { key: 'replacementWinRate', label: 'Replacement Win Rate', isPercent: true },
 ];
 
 function buildLinePath(points) {
@@ -41,7 +48,7 @@ function buildBandPath(upperPoints, lowerPoints) {
 }
 
 function formatMetricValue(metric, value) {
-  if (metric === 'scoreGe100Rate') {
+  if (PERCENT_METRICS.has(metric)) {
     return `${(value * 100).toFixed(1)}%`;
   }
   return formatNumber(value, 1);
@@ -98,6 +105,9 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
             p95: average(rows.map((row) => row.p95)),
             max: average(rows.map((row) => row.max)),
             scoreGe100Rate: average(rows.map((row) => row.scoreGe100Rate)),
+            replacementScore: average(rows.map((row) => row.replacementScore)),
+            replacementPercentile: average(rows.map((row) => row.replacementPercentile)),
+            replacementWinRate: average(rows.map((row) => row.replacementWinRate)),
           }));
       }
 
@@ -110,14 +120,16 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
 
   const chartState = useMemo(() => {
     if (!seasonRows.length) {
-      return { points: [], yTicks: [], linePath: '', bandPath: '' };
+      return { points: [], replacementPoints: [], yTicks: [], linePath: '', replacementLinePath: '', bandPath: '' };
     }
 
+    const showReplacementLine = !PERCENT_METRICS.has(selectedMetric) && selectedMetric !== 'replacementScore';
     const metricValues = seasonRows.map((row) => row[selectedMetric]);
-    const lowerBandValues = selectedMetric === 'scoreGe100Rate' ? seasonRows.map(() => 0) : seasonRows.map((row) => row.p25);
-    const upperBandValues = selectedMetric === 'scoreGe100Rate' ? seasonRows.map((row) => row.scoreGe100Rate) : seasonRows.map((row) => row.p75);
-    const minValue = Math.min(...metricValues, ...lowerBandValues);
-    const maxValue = Math.max(...metricValues, ...upperBandValues);
+    const replacementValues = showReplacementLine ? seasonRows.map((row) => row.replacementScore) : [];
+    const lowerBandValues = PERCENT_METRICS.has(selectedMetric) ? seasonRows.map(() => 0) : seasonRows.map((row) => row.p25);
+    const upperBandValues = PERCENT_METRICS.has(selectedMetric) ? seasonRows.map((row) => row[selectedMetric]) : seasonRows.map((row) => row.p75);
+    const minValue = Math.min(...metricValues, ...lowerBandValues, ...replacementValues);
+    const maxValue = Math.max(...metricValues, ...upperBandValues, ...replacementValues);
     const padding = maxValue === minValue ? Math.max(1, maxValue * 0.1) : (maxValue - minValue) * 0.12;
     const chartMin = Math.max(0, minValue - padding);
     const chartMax = maxValue + padding;
@@ -136,14 +148,23 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
       y: yForValue(row[selectedMetric]),
     }));
 
+    const replacementPoints = showReplacementLine
+      ? seasonRows.map((row) => ({
+        week: row.week,
+        value: row.replacementScore,
+        x: xForWeek(row.week),
+        y: yForValue(row.replacementScore),
+      }))
+      : [];
+
     const p25Points = seasonRows.map((row) => ({
       x: xForWeek(row.week),
-      y: yForValue(selectedMetric === 'scoreGe100Rate' ? 0 : row.p25),
+      y: yForValue(PERCENT_METRICS.has(selectedMetric) ? 0 : row.p25),
     }));
 
     const p75Points = seasonRows.map((row) => ({
       x: xForWeek(row.week),
-      y: yForValue(selectedMetric === 'scoreGe100Rate' ? row.scoreGe100Rate : row.p75),
+      y: yForValue(PERCENT_METRICS.has(selectedMetric) ? row[selectedMetric] : row.p75),
     }));
 
     const yTicks = Array.from({ length: 5 }, (_, index) => {
@@ -157,8 +178,10 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
 
     return {
       points,
+      replacementPoints,
       yTicks,
       linePath: buildLinePath(points),
+      replacementLinePath: buildLinePath(replacementPoints),
       bandPath: buildBandPath(p75Points, p25Points),
     };
   }, [seasonRows, selectedMetric]);
@@ -167,11 +190,7 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
     if (!seasonRows.length) return null;
     const latestWeek = seasonRows[seasonRows.length - 1];
     const highestMean = seasonRows.reduce((best, row) => (row.mean > best.mean ? row : best), seasonRows[0]);
-    const strongestHitRate = seasonRows.reduce(
-      (best, row) => (row.scoreGe100Rate > best.scoreGe100Rate ? row : best),
-      seasonRows[0]
-    );
-    return { latestWeek, highestMean, strongestHitRate };
+    return { latestWeek, highestMean };
   }, [seasonRows]);
 
   const overallAverages = useMemo(() => {
@@ -193,7 +212,7 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
         <div className="error-box">
           Could not load weekly lineup distribution data. {error}
           <br />
-          Make sure to run <code>python python/build_ff_json.py</code> to generate the football JSON files.
+          Make sure to run <code>python "python/FF pipeline/build_ff_json.py"</code> to generate the football JSON files.
         </div>
       </div>
     );
@@ -255,21 +274,23 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
 
       <div className="stat-grid">
         <div className="stat-card">
-          <div className="stat-card-label">Latest Week</div>
-          <div className="stat-card-value">W{seasonSummary.latestWeek.week}</div>
+          <div className="stat-card-label">{resolvedSeason === 'ALL' ? 'Latest Season' : 'Latest Week'}</div>
+          <div className="stat-card-value">{resolvedSeason === 'ALL' ? seasonSummary.latestWeek.season : `W${seasonSummary.latestWeek.week}`}</div>
           <div className="stat-card-sub">
             Mean {formatNumber(seasonSummary.latestWeek.mean, 1)} | 100+ {formatMetricValue('scoreGe100Rate', seasonSummary.latestWeek.scoreGe100Rate)}
           </div>
         </div>
         <div className="stat-card">
-          <div className="stat-card-label">Best Mean Week</div>
+          <div className="stat-card-label">{resolvedSeason === 'ALL' ? 'Best Mean Season' : 'Best Mean Week'}</div>
           <div className="stat-card-value">{formatNumber(seasonSummary.highestMean.mean, 1)}</div>
-          <div className="stat-card-sub">Week {seasonSummary.highestMean.week}</div>
+          <div className="stat-card-sub">{resolvedSeason === 'ALL' ? `Season ${seasonSummary.highestMean.season}` : `Week ${seasonSummary.highestMean.week}`}</div>
         </div>
         <div className="stat-card">
-          <div className="stat-card-label">Best 100+ Hit Rate</div>
-          <div className="stat-card-value">{formatMetricValue('scoreGe100Rate', seasonSummary.strongestHitRate.scoreGe100Rate)}</div>
-          <div className="stat-card-sub">Week {seasonSummary.strongestHitRate.week}</div>
+          <div className="stat-card-label">Replacement Team</div>
+          <div className="stat-card-value">{formatNumber(seasonSummary.latestWeek.replacementScore, 1)}</div>
+          <div className="stat-card-sub">
+            {formatMetricValue('replacementWinRate', seasonSummary.latestWeek.replacementWinRate)} win rate | {formatMetricValue('replacementPercentile', seasonSummary.latestWeek.replacementPercentile)} percentile
+          </div>
         </div>
         <div className="stat-card">
           <div className="stat-card-label">Player Pool</div>
@@ -295,14 +316,15 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
             <p>
               {resolvedSeason === 'ALL'
                 ? 'Each point shows that season\'s average weekly value for the selected metric.'
-                : selectedMetric === 'scoreGe100Rate'
-                ? 'Area shows the share of simulated lineups scoring 100 points or more.'
+                : PERCENT_METRICS.has(selectedMetric)
+                ? 'Area shows the selected weekly rate against the simulated field.'
                 : 'Shaded band shows the interquartile range between the 25th and 75th percentiles.'}
             </p>
           </div>
           <div className="chart-key">
-            <span className="chart-key-band">IQR Band</span>
+            <span className="chart-key-band">{PERCENT_METRICS.has(selectedMetric) ? 'Rate Band' : 'IQR Band'}</span>
             <span className="chart-key-line" style={{ '--line-color': activeMetric.colorVar }}>Selected Metric</span>
+            {chartState.replacementLinePath && <span className="chart-key-replacement">Replacement Team</span>}
           </div>
         </div>
 
@@ -318,7 +340,14 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
                 <line key={`${tick.value}-${index}`} x1="0" x2="760" y1={tick.y} y2={tick.y} className="chart-grid-line" />
               ))}
               {chartState.bandPath && <path d={chartState.bandPath} className="chart-band" />}
+              {chartState.replacementLinePath && <path d={chartState.replacementLinePath} className="chart-line chart-line-replacement" />}
               {chartState.linePath && <path d={chartState.linePath} className="chart-line" style={{ '--line-color': activeMetric.colorVar }} />}
+              {chartState.replacementPoints.map((point) => (
+                <g key={`replacement-${point.week}`}>
+                  <circle cx={point.x} cy={point.y} r="4" className="chart-point chart-point-replacement" />
+                  <title>{`${resolvedSeason === 'ALL' ? `Season ${seasonRows.find((row) => row.week === point.week)?.season}` : `Week ${point.week}`} replacement: ${formatNumber(point.value, 1)}`}</title>
+                </g>
+              ))}
               {chartState.points.map((point) => (
                 <g key={`week-${point.week}`}>
                   <circle cx={point.x} cy={point.y} r="4.5" className="chart-point" style={{ '--line-color': activeMetric.colorVar }} />
@@ -355,6 +384,9 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
                 <th className="num">P25</th>
                 <th className="num">P75</th>
                 <th className="num">P90</th>
+                <th className="num">Replacement</th>
+                <th className="num">Repl %ile</th>
+                <th className="num">Repl Win %</th>
                 <th className="num">100+ Rate</th>
                 <th className="num">Samples</th>
               </tr>
@@ -368,6 +400,9 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
                 <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'p25')?.average ?? 0, 1)}</td>
                 <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'p75')?.average ?? 0, 1)}</td>
                 <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'p90')?.average ?? 0, 1)}</td>
+                <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'replacementScore')?.average ?? 0, 1)}</td>
+                <td className="num">{formatMetricValue('replacementPercentile', overallAverages.find((metric) => metric.key === 'replacementPercentile')?.average ?? 0)}</td>
+                <td className="num">{formatMetricValue('replacementWinRate', overallAverages.find((metric) => metric.key === 'replacementWinRate')?.average ?? 0)}</td>
                 <td className="num">{`${((overallAverages.find((metric) => metric.key === 'scoreGe100Rate')?.average ?? 0) * 100).toFixed(1)}%`}</td>
                 <td className="num">{formatNumber(overallAverages.find((metric) => metric.key === 'samples')?.average ?? 0, 0)}</td>
               </tr>
@@ -380,6 +415,9 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
                   <td className="num">{formatNumber(row.p25, 1)}</td>
                   <td className="num">{formatNumber(row.p75, 1)}</td>
                   <td className="num">{formatNumber(row.p90, 1)}</td>
+                  <td className="num">{formatNumber(row.replacementScore, 1)}</td>
+                  <td className="num">{formatMetricValue('replacementPercentile', row.replacementPercentile)}</td>
+                  <td className="num">{formatMetricValue('replacementWinRate', row.replacementWinRate)}</td>
                   <td className="num">{formatMetricValue('scoreGe100Rate', row.scoreGe100Rate)}</td>
                   <td className="num">{row.samples.toLocaleString()}</td>
                 </tr>

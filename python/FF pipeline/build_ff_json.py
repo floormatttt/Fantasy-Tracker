@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 def main():
-    root_dir = Path(__file__).resolve().parent.parent
+    root_dir = Path(__file__).resolve().parents[2]
     data_dir = root_dir / "Past FF Data"
     output_dir = root_dir / "frontend" / "public" / "ff_data"
     output_dir.mkdir(parents=True, exist_ok=True)

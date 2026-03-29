@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import AllTimeLeaders from './components/AllTimeLeaders';
 import BySeason from './components/BySeason';
 import AllTimeFootball from './components/AllTimeFootball';
+import FootballBySeason from './components/FootballBySeason';
 import WeeklyLineupDistribution from './components/WeeklyLineupDistribution';
 import {
   loadAllTimeData,
@@ -78,6 +79,9 @@ function App() {
         )}
         {activeTab === 'football' && (
           <AllTimeFootball key="football" data={footballData} loading={loading} error={error} />
+        )}
+        {activeTab === 'footballbyseason' && (
+          <FootballBySeason key="footballbyseason" data={footballData} loading={loading} error={error} />
         )}
         {activeTab === 'weeklylineups' && (
           <WeeklyLineupDistribution

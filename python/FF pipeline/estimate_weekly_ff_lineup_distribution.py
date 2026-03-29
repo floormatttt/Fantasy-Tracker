@@ -15,10 +15,16 @@ import statistics
 from math import comb
 from pathlib import Path
 
+from build_ff_points_above_cutoff import (
+    build_weekly_cutoffs_for_season,
+    load_rows as load_source_rows,
+    position_from_name,
+    season_from_name,
+)
 from build_weekly_ff_lineups import INPUT_FILE, POSITION_RULES, SKILL_PATTERNS, parse_float
 
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "Past FF Data"
 OUTPUT_FILE = ROOT_DIR / "Past FF Data" / "weekly_lineup_distribution_summary.csv"
 WEEK_COLUMNS = [str(week) for week in range(1, 19)]
@@ -55,6 +61,23 @@ def load_actual_points() -> dict[tuple[str, str, str, str], dict[str, float]]:
                 actual_points[key] = weekly_points
 
     return actual_points
+
+
+def load_weekly_cutoffs() -> dict[str, dict[str, dict[str, float | None]]]:
+    season_rows_by_position: dict[str, dict[str, list[dict]]] = {}
+
+    for file_path in sorted(DATA_DIR.glob("20*.csv")):
+        position = position_from_name(file_path)
+        if position not in {"QB", "RB", "WR", "TE"}:
+            continue
+
+        season = season_from_name(file_path)
+        season_rows_by_position.setdefault(season, {})[position] = load_source_rows(file_path)
+
+    return {
+        season: build_weekly_cutoffs_for_season(rows_by_position)
+        for season, rows_by_position in season_rows_by_position.items()
+    }
 
 
 def is_eligible(row: dict, week: str) -> bool:
@@ -179,9 +202,16 @@ def summarize_scores(scores: list[float]) -> dict[str, str]:
     }
 
 
+def percentile_rank(scores: list[float], target: float) -> float:
+    below = sum(score < target for score in scores)
+    equal = sum(score == target for score in scores)
+    return (below + (0.5 * equal)) / len(scores)
+
+
 def estimate_week(
     rows: list[dict],
     actual_points: dict[tuple[str, str, str, str], dict[str, float]],
+    weekly_cutoffs: dict[str, dict[str, dict[str, float | None]]],
     season: str,
     week: str,
     samples: int,
@@ -200,6 +230,18 @@ def estimate_week(
         sample_lineup_score(rng, grouped, week, patterns, weights, actual_points)
         for _ in range(samples)
     ]
+    season_cutoffs = weekly_cutoffs.get(season, {})
+    qb_cutoff = season_cutoffs.get("QB", {}).get(week)
+    flex_cutoff = season_cutoffs.get("RB", {}).get(week)
+    replacement_score = None
+    replacement_percentile = None
+    replacement_win_rate = None
+    if qb_cutoff is not None and flex_cutoff is not None:
+        # A full replacement lineup is 1 QB plus 7 skill-position starters
+        # valued at that week's replacement-level skill cutoff.
+        replacement_score = qb_cutoff + (7 * flex_cutoff)
+        replacement_percentile = percentile_rank(scores, replacement_score)
+        replacement_win_rate = replacement_percentile
 
     summary = summarize_scores(scores)
     summary.update(
@@ -210,6 +252,9 @@ def estimate_week(
             "eligible_rb": str(len(grouped["RB"])),
             "eligible_wr": str(len(grouped["WR"])),
             "eligible_te": str(len(grouped["TE"])),
+            "replacement_score": "" if replacement_score is None else f"{replacement_score:.3f}",
+            "replacement_percentile": "" if replacement_percentile is None else f"{replacement_percentile:.4f}",
+            "replacement_win_rate": "" if replacement_win_rate is None else f"{replacement_win_rate:.4f}",
         }
     )
     return summary
@@ -228,13 +273,22 @@ def main() -> None:
     args = parse_args()
     rows = load_rows()
     actual_points = load_actual_points()
+    weekly_cutoffs = load_weekly_cutoffs()
     seasons = [args.season] if args.season else sorted({row["season"] for row in rows})
     weeks = [str(int(args.week))] if args.week else WEEK_COLUMNS
 
     output_rows = []
     for season in seasons:
         for week in weeks:
-            summary = estimate_week(rows, actual_points, season, week, args.samples, args.seed)
+            summary = estimate_week(
+                rows,
+                actual_points,
+                weekly_cutoffs,
+                season,
+                week,
+                args.samples,
+                args.seed,
+            )
             if summary is None:
                 print(f"Skipping {season} week {week}: not enough eligible players")
                 continue
@@ -264,6 +318,9 @@ def main() -> None:
         "p95",
         "max",
         "score_ge_100_rate",
+        "replacement_score",
+        "replacement_percentile",
+        "replacement_win_rate",
     ]
 
     with OUTPUT_FILE.open("w", newline="", encoding="utf-8") as csv_file:

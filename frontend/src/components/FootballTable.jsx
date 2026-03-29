@@ -1,5 +1,21 @@
 import { formatNumber } from '../utils/dataLoader';
 
+const SORTABLE_COLUMNS = [
+  { key: 'player', label: 'Player', minWidth: '180px' },
+  { key: 'season', label: 'Season', className: 'num' },
+  { key: 'team', label: 'Team' },
+  { key: 'position', label: 'Pos' },
+  { key: 'gp', label: 'GP', className: 'num' },
+  { key: 'avg', label: 'AVG', className: 'num' },
+  { key: 'ttl', label: 'TTL', className: 'num' },
+  { key: 'war', label: 'WAR', className: 'num' },
+];
+
+function sortIndicator(sortKey, sortDirection, columnKey) {
+  if (sortKey !== columnKey) return '';
+  return sortDirection === 'asc' ? ' ↑' : ' ↓';
+}
+
 function getPositionClass(position) {
   if (position === 'QB') return 'pill-red';
   if (position === 'RB') return 'pill-green';
@@ -8,20 +24,30 @@ function getPositionClass(position) {
   return 'pill-amber';
 }
 
-export default function FootballTable({ data, startIndex = 0 }) {
+export default function FootballTable({
+  data,
+  startIndex = 0,
+  sortKey = 'war',
+  sortDirection = 'desc',
+  onSortChange = null,
+}) {
   return (
     <div className="table-wrap">
       <table>
         <thead>
           <tr>
             <th className="num" style={{ width: '40px' }}>#</th>
-            <th style={{ minWidth: '180px' }}>Player</th>
-            <th className="num">Season</th>
-            <th>Team</th>
-            <th>Pos</th>
-            <th className="num">GP</th>
-            <th className="num">AVG</th>
-            <th className="num">TTL</th>
+            {SORTABLE_COLUMNS.map((column) => (
+              <th
+                key={column.key}
+                className={`${column.className || ''} ${sortKey === column.key ? 'sorted' : ''}`.trim()}
+                style={column.minWidth ? { minWidth: column.minWidth } : undefined}
+                onClick={() => onSortChange?.(column.key)}
+              >
+                {column.label}
+                {sortIndicator(sortKey, sortDirection, column.key)}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -43,6 +69,9 @@ export default function FootballTable({ data, startIndex = 0 }) {
                 </td>
                 <td className="num" style={{ fontWeight: '700' }}>
                   {formatNumber(player.ttl, 1)}
+                </td>
+                <td className="num" style={{ fontWeight: '700', color: 'var(--blue)' }}>
+                  {formatNumber(player.war, 3)}
                 </td>
               </tr>
             );

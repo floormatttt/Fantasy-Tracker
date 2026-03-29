@@ -2,7 +2,7 @@
 """
 Build a CSV in the same wide format as the source fantasy football files,
 but with each weekly cell replaced by the number of points above that week's
-positional cutoff.
+positional cutoff, plus weekly and season-long WAR values.
 
 Cutoffs:
 - QB: 11th-highest scorer each week
@@ -13,13 +13,16 @@ Cutoffs:
 from __future__ import annotations
 
 import csv
+import math
 from pathlib import Path
+from statistics import NormalDist
 from typing import Dict, List
 
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "Past FF Data"
 OUTPUT_FILE = DATA_DIR / "player_points_above_cutoff.csv"
+WEEKLY_DISTRIBUTION_FILE = DATA_DIR / "weekly_lineup_distribution_summary.csv"
 
 QB_CUTOFF_RANK = 11
 FLEX_STARTER_COUNTS = {
@@ -30,6 +33,8 @@ FLEX_STARTER_COUNTS = {
 FLEX_BENCH_OFFSET = 20
 
 WEEK_COLUMNS = [str(week) for week in range(1, 19)]
+WAR_WEEK_COLUMNS = [f"week {week} WAR" for week in WEEK_COLUMNS]
+STANDARD_NORMAL = NormalDist()
 
 
 def parse_points(raw_value: str | None) -> float | None:
@@ -49,6 +54,10 @@ def format_points(value: float) -> str:
     return formatted
 
 
+def format_war(value: float) -> str:
+    return f"{value:.4f}"
+
+
 def load_rows(file_path: Path) -> List[dict]:
     with file_path.open(newline="", encoding="utf-8-sig") as csv_file:
         rows = []
@@ -57,6 +66,27 @@ def load_rows(file_path: Path) -> List[dict]:
             if player:
                 rows.append(row)
         return rows
+
+
+def load_weekly_distribution_context() -> Dict[tuple[str, str], dict[str, float]]:
+    context: Dict[tuple[str, str], dict[str, float]] = {}
+
+    with WEEKLY_DISTRIBUTION_FILE.open(newline="", encoding="utf-8-sig") as csv_file:
+        for row in csv.DictReader(csv_file):
+            season = (row.get("season") or "").strip()
+            week = (row.get("week") or "").strip()
+            replacement_win_rate = parse_points(row.get("replacement_win_rate"))
+            stdev = parse_points(row.get("stdev"))
+
+            if not season or not week or replacement_win_rate is None or stdev is None or stdev <= 0:
+                continue
+
+            context[(season, week)] = {
+                "replacement_win_rate": replacement_win_rate,
+                "sigma_d": stdev * math.sqrt(2),
+            }
+
+    return context
 
 
 def collect_weekly_scores(rows: List[dict]) -> Dict[str, List[float]]:
@@ -156,8 +186,10 @@ def build_player_row(
     position: str,
     source_row: dict,
     weekly_cutoffs: Dict[str, float | None],
+    weekly_distribution_context: Dict[tuple[str, str], dict[str, float]],
 ) -> dict:
     numeric_diffs: List[float] = []
+    numeric_wars: List[float] = []
     player_row = {
         "season": season,
         "#": "",
@@ -174,16 +206,37 @@ def build_player_row(
 
         if points is None or cutoff_points is None:
             player_row[week] = raw_value
+            player_row[f"week {week} WAR"] = ""
             continue
 
         diff = points - cutoff_points
         numeric_diffs.append(diff)
         player_row[week] = format_points(diff)
 
+        context = weekly_distribution_context.get((season, week))
+        if context is None:
+            player_row[f"week {week} WAR"] = ""
+            continue
+
+        replacement_win_rate = min(
+            max(context["replacement_win_rate"], 1e-9),
+            1 - 1e-9,
+        )
+        sigma_d = context["sigma_d"]
+        weekly_war = (
+            STANDARD_NORMAL.cdf(
+                STANDARD_NORMAL.inv_cdf(replacement_win_rate) + (diff / sigma_d)
+            )
+            - context["replacement_win_rate"]
+        )
+        numeric_wars.append(weekly_war)
+        player_row[f"week {week} WAR"] = format_war(weekly_war)
+
     total = sum(numeric_diffs)
     average = total / len(numeric_diffs) if numeric_diffs else 0.0
     player_row["AVG"] = format_points(average)
     player_row["TTL"] = format_points(total)
+    player_row["WAR"] = format_war(sum(numeric_wars))
 
     return player_row
 
@@ -238,6 +291,7 @@ def should_keep_row(row: dict) -> bool:
 
 def build_output_rows() -> List[dict]:
     output_rows: List[dict] = []
+    weekly_distribution_context = load_weekly_distribution_context()
 
     season_rows_by_position: Dict[str, Dict[str, List[dict]]] = {}
 
@@ -261,6 +315,7 @@ def build_output_rows() -> List[dict]:
                     position,
                     source_row,
                     weekly_cutoffs_by_position[position],
+                    weekly_distribution_context,
                 )
                 for source_row in source_rows
             ]
@@ -292,8 +347,10 @@ def write_output(rows: List[dict]) -> None:
         "Team",
         "GP",
         *WEEK_COLUMNS,
+        *WAR_WEEK_COLUMNS,
         "AVG",
         "TTL",
+        "WAR",
     ]
 
     with OUTPUT_FILE.open("w", newline="", encoding="utf-8") as csv_file:

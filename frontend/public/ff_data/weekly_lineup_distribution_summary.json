@@ -18,7 +18,10 @@
     "p90": "148.300",
     "p95": "157.700",
     "max": "219.600",
-    "score_ge_100_rate": "0.7644"
+    "score_ge_100_rate": "0.7644",
+    "replacement_score": "110.300",
+    "replacement_percentile": "0.3951",
+    "replacement_win_rate": "0.3951"
   },
   {
     "season": "2013",
@@ -39,7 +42,10 @@
     "p90": "142.600",
     "p95": "151.200",
     "max": "208.000",
-    "score_ge_100_rate": "0.7208"
+    "score_ge_100_rate": "0.7208",
+    "replacement_score": "106.100",
+    "replacement_percentile": "0.3838",
+    "replacement_win_rate": "0.3838"
   },
   {
     "season": "2013",
@@ -60,7 +66,10 @@
     "p90": "130.700",
     "p95": "139.600",
     "max": "192.700",
-    "score_ge_100_rate": "0.5478"
+    "score_ge_100_rate": "0.5478",
+    "replacement_score": "102.600",
+    "replacement_percentile": "0.5026",
+    "replacement_win_rate": "0.5026"
   },
   {
     "season": "2013",
@@ -81,7 +90,10 @@
     "p90": "142.500",
     "p95": "150.900",
     "max": "205.200",
-    "score_ge_100_rate": "0.7463"
+    "score_ge_100_rate": "0.7463",
+    "replacement_score": "104.800",
+    "replacement_percentile": "0.3347",
+    "replacement_win_rate": "0.3347"
   },
   {
     "season": "2013",
@@ -102,7 +114,10 @@
     "p90": "137.900",
     "p95": "146.400",
     "max": "205.400",
-    "score_ge_100_rate": "0.6815"
+    "score_ge_100_rate": "0.6815",
+    "replacement_score": "95.800",
+    "replacement_percentile": "0.2481",
+    "replacement_win_rate": "0.2481"
   },
   {
     "season": "2013",
@@ -123,7 +138,10 @@
     "p90": "132.500",
     "p95": "140.900",
     "max": "206.900",
-    "score_ge_100_rate": "0.5653"
+    "score_ge_100_rate": "0.5653",
+    "replacement_score": "93.700",
+    "replacement_percentile": "0.3198",
+    "replacement_win_rate": "0.3198"
   },
   {
     "season": "2013",
@@ -144,7 +162,10 @@
     "p90": "129.700",
     "p95": "137.405",
     "max": "186.500",
-    "score_ge_100_rate": "0.5813"
+    "score_ge_100_rate": "0.5813",
+    "replacement_score": "98.700",
+    "replacement_percentile": "0.3915",
+    "replacement_win_rate": "0.3915"
   },
   {
     "season": "2013",
@@ -165,7 +186,10 @@
     "p90": "131.200",
     "p95": "141.600",
     "max": "211.100",
-    "score_ge_100_rate": "0.5178"
+    "score_ge_100_rate": "0.5178",
+    "replacement_score": "87.000",
+    "replacement_percentile": "0.2422",
+    "replacement_win_rate": "0.2422"
   },
   {
     "season": "2013",
@@ -186,7 +210,10 @@
     "p90": "153.100",
     "p95": "163.700",
     "max": "252.000",
-    "score_ge_100_rate": "0.7744"
+    "score_ge_100_rate": "0.7744",
+    "replacement_score": "95.500",
+    "replacement_percentile": "0.1725",
+    "replacement_win_rate": "0.1725"
   },
   {
     "season": "2013",
@@ -207,7 +234,10 @@
     "p90": "127.600",
     "p95": "135.300",
     "max": "187.200",
-    "score_ge_100_rate": "0.4936"
+    "score_ge_100_rate": "0.4936",
+    "replacement_score": "80.300",
+    "replacement_percentile": "0.1567",
+    "replacement_win_rate": "0.1567"
   },
   {
     "season": "2013",
@@ -228,7 +258,10 @@
     "p90": "134.400",
     "p95": "142.800",
     "max": "196.600",
-    "score_ge_100_rate": "0.6550"
+    "score_ge_100_rate": "0.6550",
+    "replacement_score": "103.100",
+    "replacement_percentile": "0.4080",
+    "replacement_win_rate": "0.4080"
   },
   {
     "season": "2013",
@@ -249,7 +282,10 @@
     "p90": "135.500",
     "p95": "143.405",
     "max": "186.000",
-    "score_ge_100_rate": "0.6623"
+    "score_ge_100_rate": "0.6623",
+    "replacement_score": "91.400",
+    "replacement_percentile": "0.1927",
+    "replacement_win_rate": "0.1927"
   },
   {
     "season": "2013",
@@ -270,7 +306,10 @@
     "p90": "141.300",
     "p95": "151.600",
     "max": "232.300",
-    "score_ge_100_rate": "0.6910"
+    "score_ge_100_rate": "0.6910",
+    "replacement_score": "103.300",
+    "replacement_percentile": "0.3716",
+    "replacement_win_rate": "0.3716"
   },
   {
     "season": "2013",
@@ -291,7 +330,10 @@
     "p90": "143.000",
     "p95": "151.800",
     "max": "208.000",
-    "score_ge_100_rate": "0.7625"
+    "score_ge_100_rate": "0.7625",
+    "replacement_score": "107.500",
+    "replacement_percentile": "0.3675",
+    "replacement_win_rate": "0.3675"
   },
   {
     "season": "2013",
@@ -312,7 +354,10 @@
     "p90": "144.110",
     "p95": "155.400",
     "max": "217.800",
-    "score_ge_100_rate": "0.7310"
+    "score_ge_100_rate": "0.7310",
+    "replacement_score": "106.400",
+    "replacement_percentile": "0.3818",
+    "replacement_win_rate": "0.3818"
   },
   {
     "season": "2013",
@@ -333,7 +378,10 @@
     "p90": "121.100",
     "p95": "129.000",
     "max": "179.800",
-    "score_ge_100_rate": "0.3774"
+    "score_ge_100_rate": "0.3774",
+    "replacement_score": "84.100",
+    "replacement_percentile": "0.3131",
+    "replacement_win_rate": "0.3131"
   },
   {
     "season": "2013",
@@ -354,7 +402,10 @@
     "p90": "129.900",
     "p95": "137.700",
     "max": "195.800",
-    "score_ge_100_rate": "0.5756"
+    "score_ge_100_rate": "0.5756",
+    "replacement_score": "99.800",
+    "replacement_percentile": "0.4217",
+    "replacement_win_rate": "0.4217"
   },
   {
     "season": "2014",
@@ -375,7 +426,10 @@
     "p90": "131.500",
     "p95": "139.000",
     "max": "180.100",
-    "score_ge_100_rate": "0.6319"
+    "score_ge_100_rate": "0.6319",
+    "replacement_score": "107.700",
+    "replacement_percentile": "0.5271",
+    "replacement_win_rate": "0.5271"
   },
   {
     "season": "2014",
@@ -396,7 +450,10 @@
     "p90": "128.300",
     "p95": "136.800",
     "max": "200.200",
-    "score_ge_100_rate": "0.4993"
+    "score_ge_100_rate": "0.4993",
+    "replacement_score": "94.400",
+    "replacement_percentile": "0.3921",
+    "replacement_win_rate": "0.3921"
   },
   {
     "season": "2014",
@@ -417,7 +474,10 @@
     "p90": "127.400",
     "p95": "134.700",
     "max": "180.900",
-    "score_ge_100_rate": "0.5518"
+    "score_ge_100_rate": "0.5518",
+    "replacement_score": "103.100",
+    "replacement_percentile": "0.5101",
+    "replacement_win_rate": "0.5101"
   },
   {
     "season": "2014",
@@ -438,7 +498,10 @@
     "p90": "144.100",
     "p95": "151.600",
     "max": "197.100",
-    "score_ge_100_rate": "0.8070"
+    "score_ge_100_rate": "0.8070",
+    "replacement_score": "103.200",
+    "replacement_percentile": "0.2451",
+    "replacement_win_rate": "0.2451"
   },
   {
     "season": "2014",
@@ -459,7 +522,10 @@
     "p90": "134.700",
     "p95": "143.300",
     "max": "195.600",
-    "score_ge_100_rate": "0.6131"
+    "score_ge_100_rate": "0.6131",
+    "replacement_score": "91.700",
+    "replacement_percentile": "0.2445",
+    "replacement_win_rate": "0.2445"
   },
   {
     "season": "2014",
@@ -480,7 +546,10 @@
     "p90": "134.600",
     "p95": "142.705",
     "max": "207.900",
-    "score_ge_100_rate": "0.6372"
+    "score_ge_100_rate": "0.6372",
+    "replacement_score": "99.200",
+    "replacement_percentile": "0.3481",
+    "replacement_win_rate": "0.3481"
   },
   {
     "season": "2014",
@@ -501,7 +570,10 @@
     "p90": "127.400",
     "p95": "135.400",
     "max": "191.300",
-    "score_ge_100_rate": "0.5109"
+    "score_ge_100_rate": "0.5109",
+    "replacement_score": "92.500",
+    "replacement_percentile": "0.3417",
+    "replacement_win_rate": "0.3417"
   },
   {
     "season": "2014",
@@ -522,7 +594,10 @@
     "p90": "149.800",
     "p95": "160.200",
     "max": "228.000",
-    "score_ge_100_rate": "0.7508"
+    "score_ge_100_rate": "0.7508",
+    "replacement_score": "101.200",
+    "replacement_percentile": "0.2669",
+    "replacement_win_rate": "0.2669"
   },
   {
     "season": "2014",
@@ -543,7 +618,10 @@
     "p90": "135.800",
     "p95": "144.100",
     "max": "212.100",
-    "score_ge_100_rate": "0.6421"
+    "score_ge_100_rate": "0.6421",
+    "replacement_score": "86.900",
+    "replacement_percentile": "0.1578",
+    "replacement_win_rate": "0.1578"
   },
   {
     "season": "2014",
@@ -564,7 +642,10 @@
     "p90": "133.200",
     "p95": "142.300",
     "max": "203.300",
-    "score_ge_100_rate": "0.5679"
+    "score_ge_100_rate": "0.5679",
+    "replacement_score": "82.800",
+    "replacement_percentile": "0.1546",
+    "replacement_win_rate": "0.1546"
   },
   {
     "season": "2014",
@@ -585,7 +666,10 @@
     "p90": "128.600",
     "p95": "137.300",
     "max": "194.600",
-    "score_ge_100_rate": "0.4844"
+    "score_ge_100_rate": "0.4844",
+    "replacement_score": "88.300",
+    "replacement_percentile": "0.2910",
+    "replacement_win_rate": "0.2910"
   },
   {
     "season": "2014",
@@ -606,7 +690,10 @@
     "p90": "133.800",
     "p95": "142.000",
     "max": "203.100",
-    "score_ge_100_rate": "0.6411"
+    "score_ge_100_rate": "0.6411",
+    "replacement_score": "100.100",
+    "replacement_percentile": "0.3614",
+    "replacement_win_rate": "0.3614"
   },
   {
     "season": "2014",
@@ -627,7 +714,10 @@
     "p90": "137.700",
     "p95": "147.305",
     "max": "220.600",
-    "score_ge_100_rate": "0.5663"
+    "score_ge_100_rate": "0.5663",
+    "replacement_score": "101.900",
+    "replacement_percentile": "0.4677",
+    "replacement_win_rate": "0.4677"
   },
   {
     "season": "2014",
@@ -648,7 +738,10 @@
     "p90": "138.800",
     "p95": "149.200",
     "max": "233.800",
-    "score_ge_100_rate": "0.5776"
+    "score_ge_100_rate": "0.5776",
+    "replacement_score": "93.800",
+    "replacement_percentile": "0.3229",
+    "replacement_win_rate": "0.3229"
   },
   {
     "season": "2014",
@@ -669,7 +762,10 @@
     "p90": "117.100",
     "p95": "124.900",
     "max": "174.100",
-    "score_ge_100_rate": "0.3411"
+    "score_ge_100_rate": "0.3411",
+    "replacement_score": "89.500",
+    "replacement_percentile": "0.4270",
+    "replacement_win_rate": "0.4270"
   },
   {
     "season": "2014",
@@ -690,7 +786,10 @@
     "p90": "138.400",
     "p95": "145.900",
     "max": "192.500",
-    "score_ge_100_rate": "0.7446"
+    "score_ge_100_rate": "0.7446",
+    "replacement_score": "109.300",
+    "replacement_percentile": "0.4289",
+    "replacement_win_rate": "0.4289"
   },
   {
     "season": "2014",
@@ -711,7 +810,10 @@
     "p90": "121.900",
     "p95": "129.400",
     "max": "177.200",
-    "score_ge_100_rate": "0.4266"
+    "score_ge_100_rate": "0.4266",
+    "replacement_score": "91.900",
+    "replacement_percentile": "0.3941",
+    "replacement_win_rate": "0.3941"
   },
   {
     "season": "2015",
@@ -732,7 +834,10 @@
     "p90": "131.800",
     "p95": "139.600",
     "max": "192.300",
-    "score_ge_100_rate": "0.5823"
+    "score_ge_100_rate": "0.5823",
+    "replacement_score": "101.700",
+    "replacement_percentile": "0.4529",
+    "replacement_win_rate": "0.4529"
   },
   {
     "season": "2015",
@@ -753,7 +858,10 @@
     "p90": "136.900",
     "p95": "145.400",
     "max": "197.500",
-    "score_ge_100_rate": "0.6573"
+    "score_ge_100_rate": "0.6573",
+    "replacement_score": "108.400",
+    "replacement_percentile": "0.5024",
+    "replacement_win_rate": "0.5024"
   },
   {
     "season": "2015",
@@ -774,7 +882,10 @@
     "p90": "151.800",
     "p95": "161.800",
     "max": "250.100",
-    "score_ge_100_rate": "0.7447"
+    "score_ge_100_rate": "0.7447",
+    "replacement_score": "105.000",
+    "replacement_percentile": "0.3243",
+    "replacement_win_rate": "0.3243"
   },
   {
     "season": "2015",
@@ -795,7 +906,10 @@
     "p90": "130.110",
     "p95": "137.900",
     "max": "189.600",
-    "score_ge_100_rate": "0.5873"
+    "score_ge_100_rate": "0.5873",
+    "replacement_score": "104.800",
+    "replacement_percentile": "0.5065",
+    "replacement_win_rate": "0.5065"
   },
   {
     "season": "2015",
@@ -816,7 +930,10 @@
     "p90": "137.800",
     "p95": "145.500",
     "max": "192.500",
-    "score_ge_100_rate": "0.7092"
+    "score_ge_100_rate": "0.7092",
+    "replacement_score": "100.200",
+    "replacement_percentile": "0.2944",
+    "replacement_win_rate": "0.2944"
   },
   {
     "season": "2015",
@@ -837,7 +954,10 @@
     "p90": "142.900",
     "p95": "151.600",
     "max": "208.400",
-    "score_ge_100_rate": "0.7626"
+    "score_ge_100_rate": "0.7626",
+    "replacement_score": "103.100",
+    "replacement_percentile": "0.2879",
+    "replacement_win_rate": "0.2879"
   },
   {
     "season": "2015",
@@ -858,7 +978,10 @@
     "p90": "140.400",
     "p95": "149.200",
     "max": "207.400",
-    "score_ge_100_rate": "0.7044"
+    "score_ge_100_rate": "0.7044",
+    "replacement_score": "95.700",
+    "replacement_percentile": "0.2287",
+    "replacement_win_rate": "0.2287"
   },
   {
     "season": "2015",
@@ -879,7 +1002,10 @@
     "p90": "137.710",
     "p95": "146.300",
     "max": "191.100",
-    "score_ge_100_rate": "0.6503"
+    "score_ge_100_rate": "0.6503",
+    "replacement_score": "94.400",
+    "replacement_percentile": "0.2593",
+    "replacement_win_rate": "0.2593"
   },
   {
     "season": "2015",
@@ -900,7 +1026,10 @@
     "p90": "149.600",
     "p95": "158.500",
     "max": "224.600",
-    "score_ge_100_rate": "0.8095"
+    "score_ge_100_rate": "0.8095",
+    "replacement_score": "97.300",
+    "replacement_percentile": "0.1573",
+    "replacement_win_rate": "0.1573"
   },
   {
     "season": "2015",
@@ -921,7 +1050,10 @@
     "p90": "127.200",
     "p95": "135.900",
     "max": "191.600",
-    "score_ge_100_rate": "0.4962"
+    "score_ge_100_rate": "0.4962",
+    "replacement_score": "88.900",
+    "replacement_percentile": "0.2881",
+    "replacement_win_rate": "0.2881"
   },
   {
     "season": "2015",
@@ -942,7 +1074,10 @@
     "p90": "124.200",
     "p95": "132.100",
     "max": "178.800",
-    "score_ge_100_rate": "0.4943"
+    "score_ge_100_rate": "0.4943",
+    "replacement_score": "94.200",
+    "replacement_percentile": "0.3806",
+    "replacement_win_rate": "0.3806"
   },
   {
     "season": "2015",
@@ -963,7 +1098,10 @@
     "p90": "143.900",
     "p95": "152.100",
     "max": "214.400",
-    "score_ge_100_rate": "0.7522"
+    "score_ge_100_rate": "0.7522",
+    "replacement_score": "108.100",
+    "replacement_percentile": "0.3840",
+    "replacement_win_rate": "0.3840"
   },
   {
     "season": "2015",
@@ -984,7 +1122,10 @@
     "p90": "141.400",
     "p95": "150.100",
     "max": "198.500",
-    "score_ge_100_rate": "0.7149"
+    "score_ge_100_rate": "0.7149",
+    "replacement_score": "103.200",
+    "replacement_percentile": "0.3406",
+    "replacement_win_rate": "0.3406"
   },
   {
     "season": "2015",
@@ -1005,7 +1146,10 @@
     "p90": "129.100",
     "p95": "136.600",
     "max": "183.400",
-    "score_ge_100_rate": "0.5767"
+    "score_ge_100_rate": "0.5767",
+    "replacement_score": "96.800",
+    "replacement_percentile": "0.3583",
+    "replacement_win_rate": "0.3583"
   },
   {
     "season": "2015",
@@ -1026,7 +1170,10 @@
     "p90": "150.600",
     "p95": "160.100",
     "max": "228.100",
-    "score_ge_100_rate": "0.8106"
+    "score_ge_100_rate": "0.8106",
+    "replacement_score": "108.900",
+    "replacement_percentile": "0.3251",
+    "replacement_win_rate": "0.3251"
   },
   {
     "season": "2015",
@@ -1047,7 +1194,10 @@
     "p90": "134.200",
     "p95": "141.600",
     "max": "197.100",
-    "score_ge_100_rate": "0.6671"
+    "score_ge_100_rate": "0.6671",
+    "replacement_score": "99.800",
+    "replacement_percentile": "0.3301",
+    "replacement_win_rate": "0.3301"
   },
   {
     "season": "2015",
@@ -1068,7 +1218,10 @@
     "p90": "129.700",
     "p95": "136.900",
     "max": "178.400",
-    "score_ge_100_rate": "0.6394"
+    "score_ge_100_rate": "0.6394",
+    "replacement_score": "104.200",
+    "replacement_percentile": "0.4535",
+    "replacement_win_rate": "0.4535"
   },
   {
     "season": "2016",
@@ -1089,7 +1242,10 @@
     "p90": "136.800",
     "p95": "144.600",
     "max": "197.000",
-    "score_ge_100_rate": "0.6655"
+    "score_ge_100_rate": "0.6655",
+    "replacement_score": "110.200",
+    "replacement_percentile": "0.5299",
+    "replacement_win_rate": "0.5299"
   },
   {
     "season": "2016",
@@ -1110,7 +1266,10 @@
     "p90": "128.900",
     "p95": "136.000",
     "max": "176.800",
-    "score_ge_100_rate": "0.5924"
+    "score_ge_100_rate": "0.5924",
+    "replacement_score": "107.300",
+    "replacement_percentile": "0.5625",
+    "replacement_win_rate": "0.5625"
   },
   {
     "season": "2016",
@@ -1131,7 +1290,10 @@
     "p90": "136.300",
     "p95": "144.700",
     "max": "204.400",
-    "score_ge_100_rate": "0.6027"
+    "score_ge_100_rate": "0.6027",
+    "replacement_score": "96.600",
+    "replacement_percentile": "0.3443",
+    "replacement_win_rate": "0.3443"
   },
   {
     "season": "2016",
@@ -1152,7 +1314,10 @@
     "p90": "133.200",
     "p95": "142.000",
     "max": "199.700",
-    "score_ge_100_rate": "0.6263"
+    "score_ge_100_rate": "0.6263",
+    "replacement_score": "101.700",
+    "replacement_percentile": "0.4083",
+    "replacement_win_rate": "0.4083"
   },
   {
     "season": "2016",
@@ -1173,7 +1338,10 @@
     "p90": "139.500",
     "p95": "147.500",
     "max": "200.300",
-    "score_ge_100_rate": "0.6978"
+    "score_ge_100_rate": "0.6978",
+    "replacement_score": "94.200",
+    "replacement_percentile": "0.2147",
+    "replacement_win_rate": "0.2147"
   },
   {
     "season": "2016",
@@ -1194,7 +1362,10 @@
     "p90": "138.400",
     "p95": "147.300",
     "max": "205.400",
-    "score_ge_100_rate": "0.6413"
+    "score_ge_100_rate": "0.6413",
+    "replacement_score": "99.300",
+    "replacement_percentile": "0.3474",
+    "replacement_win_rate": "0.3474"
   },
   {
     "season": "2016",
@@ -1215,7 +1386,10 @@
     "p90": "135.600",
     "p95": "144.600",
     "max": "196.600",
-    "score_ge_100_rate": "0.6231"
+    "score_ge_100_rate": "0.6231",
+    "replacement_score": "97.200",
+    "replacement_percentile": "0.3300",
+    "replacement_win_rate": "0.3300"
   },
   {
     "season": "2016",
@@ -1236,7 +1410,10 @@
     "p90": "139.900",
     "p95": "146.900",
     "max": "191.200",
-    "score_ge_100_rate": "0.7922"
+    "score_ge_100_rate": "0.7922",
+    "replacement_score": "102.500",
+    "replacement_percentile": "0.2503",
+    "replacement_win_rate": "0.2503"
   },
   {
     "season": "2016",
@@ -1257,7 +1434,10 @@
     "p90": "138.700",
     "p95": "147.200",
     "max": "200.000",
-    "score_ge_100_rate": "0.7034"
+    "score_ge_100_rate": "0.7034",
+    "replacement_score": "97.100",
+    "replacement_percentile": "0.2474",
+    "replacement_win_rate": "0.2474"
   },
   {
     "season": "2016",
@@ -1278,7 +1458,10 @@
     "p90": "139.500",
     "p95": "148.600",
     "max": "200.200",
-    "score_ge_100_rate": "0.6966"
+    "score_ge_100_rate": "0.6966",
+    "replacement_score": "92.700",
+    "replacement_percentile": "0.1866",
+    "replacement_win_rate": "0.1866"
   },
   {
     "season": "2016",
@@ -1299,7 +1482,10 @@
     "p90": "125.700",
     "p95": "132.700",
     "max": "171.500",
-    "score_ge_100_rate": "0.5266"
+    "score_ge_100_rate": "0.5266",
+    "replacement_score": "97.200",
+    "replacement_percentile": "0.4120",
+    "replacement_win_rate": "0.4120"
   },
   {
     "season": "2016",
@@ -1320,7 +1506,10 @@
     "p90": "135.300",
     "p95": "143.300",
     "max": "192.000",
-    "score_ge_100_rate": "0.6625"
+    "score_ge_100_rate": "0.6625",
+    "replacement_score": "104.600",
+    "replacement_percentile": "0.4266",
+    "replacement_win_rate": "0.4266"
   },
   {
     "season": "2016",
@@ -1341,7 +1530,10 @@
     "p90": "134.900",
     "p95": "142.800",
     "max": "192.600",
-    "score_ge_100_rate": "0.6656"
+    "score_ge_100_rate": "0.6656",
+    "replacement_score": "95.100",
+    "replacement_percentile": "0.2505",
+    "replacement_win_rate": "0.2505"
   },
   {
     "season": "2016",
@@ -1362,7 +1554,10 @@
     "p90": "124.500",
     "p95": "134.300",
     "max": "185.500",
-    "score_ge_100_rate": "0.4413"
+    "score_ge_100_rate": "0.4413",
+    "replacement_score": "93.700",
+    "replacement_percentile": "0.4302",
+    "replacement_win_rate": "0.4302"
   },
   {
     "season": "2016",
@@ -1383,7 +1578,10 @@
     "p90": "125.900",
     "p95": "133.600",
     "max": "188.300",
-    "score_ge_100_rate": "0.5085"
+    "score_ge_100_rate": "0.5085",
+    "replacement_score": "101.400",
+    "replacement_percentile": "0.5220",
+    "replacement_win_rate": "0.5220"
   },
   {
     "season": "2016",
@@ -1404,7 +1602,10 @@
     "p90": "145.900",
     "p95": "155.000",
     "max": "213.200",
-    "score_ge_100_rate": "0.7746"
+    "score_ge_100_rate": "0.7746",
+    "replacement_score": "109.600",
+    "replacement_percentile": "0.3861",
+    "replacement_win_rate": "0.3861"
   },
   {
     "season": "2016",
@@ -1425,7 +1626,10 @@
     "p90": "136.400",
     "p95": "144.500",
     "max": "195.400",
-    "score_ge_100_rate": "0.6834"
+    "score_ge_100_rate": "0.6834",
+    "replacement_score": "103.100",
+    "replacement_percentile": "0.3783",
+    "replacement_win_rate": "0.3783"
   },
   {
     "season": "2017",
@@ -1446,7 +1650,10 @@
     "p90": "119.700",
     "p95": "128.200",
     "max": "186.000",
-    "score_ge_100_rate": "0.3738"
+    "score_ge_100_rate": "0.3738",
+    "replacement_score": "91.900",
+    "replacement_percentile": "0.4526",
+    "replacement_win_rate": "0.4526"
   },
   {
     "season": "2017",
@@ -1467,7 +1674,10 @@
     "p90": "121.300",
     "p95": "128.405",
     "max": "186.000",
-    "score_ge_100_rate": "0.4214"
+    "score_ge_100_rate": "0.4214",
+    "replacement_score": "92.900",
+    "replacement_percentile": "0.4320",
+    "replacement_win_rate": "0.4320"
   },
   {
     "season": "2017",
@@ -1488,7 +1698,10 @@
     "p90": "140.800",
     "p95": "149.900",
     "max": "208.400",
-    "score_ge_100_rate": "0.6683"
+    "score_ge_100_rate": "0.6683",
+    "replacement_score": "111.500",
+    "replacement_percentile": "0.5196",
+    "replacement_win_rate": "0.5196"
   },
   {
     "season": "2017",
@@ -1509,7 +1722,10 @@
     "p90": "126.000",
     "p95": "133.500",
     "max": "193.300",
-    "score_ge_100_rate": "0.4906"
+    "score_ge_100_rate": "0.4906",
+    "replacement_score": "96.800",
+    "replacement_percentile": "0.4474",
+    "replacement_win_rate": "0.4474"
   },
   {
     "season": "2017",
@@ -1530,7 +1746,10 @@
     "p90": "123.400",
     "p95": "131.200",
     "max": "191.000",
-    "score_ge_100_rate": "0.4475"
+    "score_ge_100_rate": "0.4475",
+    "replacement_score": "89.600",
+    "replacement_percentile": "0.3424",
+    "replacement_win_rate": "0.3424"
   },
   {
     "season": "2017",
@@ -1551,7 +1770,10 @@
     "p90": "124.400",
     "p95": "131.800",
     "max": "179.300",
-    "score_ge_100_rate": "0.4822"
+    "score_ge_100_rate": "0.4822",
+    "replacement_score": "88.400",
+    "replacement_percentile": "0.2818",
+    "replacement_win_rate": "0.2818"
   },
   {
     "season": "2017",
@@ -1572,7 +1794,10 @@
     "p90": "127.600",
     "p95": "136.800",
     "max": "195.800",
-    "score_ge_100_rate": "0.4741"
+    "score_ge_100_rate": "0.4741",
+    "replacement_score": "93.600",
+    "replacement_percentile": "0.3992",
+    "replacement_win_rate": "0.3992"
   },
   {
     "season": "2017",
@@ -1593,7 +1818,10 @@
     "p90": "124.700",
     "p95": "133.100",
     "max": "188.700",
-    "score_ge_100_rate": "0.4637"
+    "score_ge_100_rate": "0.4637",
+    "replacement_score": "79.600",
+    "replacement_percentile": "0.1574",
+    "replacement_win_rate": "0.1574"
   },
   {
     "season": "2017",
@@ -1614,7 +1842,10 @@
     "p90": "128.910",
     "p95": "135.900",
     "max": "195.500",
-    "score_ge_100_rate": "0.5897"
+    "score_ge_100_rate": "0.5897",
+    "replacement_score": "87.700",
+    "replacement_percentile": "0.1774",
+    "replacement_win_rate": "0.1774"
   },
   {
     "season": "2017",
@@ -1635,7 +1866,10 @@
     "p90": "128.200",
     "p95": "135.900",
     "max": "181.800",
-    "score_ge_100_rate": "0.5714"
+    "score_ge_100_rate": "0.5714",
+    "replacement_score": "98.900",
+    "replacement_percentile": "0.4038",
+    "replacement_win_rate": "0.4038"
   },
   {
     "season": "2017",
@@ -1656,7 +1890,10 @@
     "p90": "126.900",
     "p95": "134.700",
     "max": "204.200",
-    "score_ge_100_rate": "0.5026"
+    "score_ge_100_rate": "0.5026",
+    "replacement_score": "95.800",
+    "replacement_percentile": "0.4088",
+    "replacement_win_rate": "0.4088"
   },
   {
     "season": "2017",
@@ -1677,7 +1914,10 @@
     "p90": "133.600",
     "p95": "143.200",
     "max": "205.000",
-    "score_ge_100_rate": "0.5323"
+    "score_ge_100_rate": "0.5323",
+    "replacement_score": "95.500",
+    "replacement_percentile": "0.3851",
+    "replacement_win_rate": "0.3851"
   },
   {
     "season": "2017",
@@ -1698,7 +1938,10 @@
     "p90": "128.400",
     "p95": "136.300",
     "max": "182.100",
-    "score_ge_100_rate": "0.5489"
+    "score_ge_100_rate": "0.5489",
+    "replacement_score": "91.800",
+    "replacement_percentile": "0.2907",
+    "replacement_win_rate": "0.2907"
   },
   {
     "season": "2017",
@@ -1719,7 +1962,10 @@
     "p90": "137.700",
     "p95": "146.600",
     "max": "205.600",
-    "score_ge_100_rate": "0.6490"
+    "score_ge_100_rate": "0.6490",
+    "replacement_score": "100.700",
+    "replacement_percentile": "0.3635",
+    "replacement_win_rate": "0.3635"
   },
   {
     "season": "2017",
@@ -1740,7 +1986,10 @@
     "p90": "137.200",
     "p95": "146.400",
     "max": "206.100",
-    "score_ge_100_rate": "0.6373"
+    "score_ge_100_rate": "0.6373",
+    "replacement_score": "98.400",
+    "replacement_percentile": "0.3344",
+    "replacement_win_rate": "0.3344"
   },
   {
     "season": "2017",
@@ -1761,7 +2010,10 @@
     "p90": "117.600",
     "p95": "126.600",
     "max": "188.300",
-    "score_ge_100_rate": "0.3377"
+    "score_ge_100_rate": "0.3377",
+    "replacement_score": "86.300",
+    "replacement_percentile": "0.3626",
+    "replacement_win_rate": "0.3626"
   },
   {
     "season": "2017",
@@ -1782,7 +2034,10 @@
     "p90": "120.500",
     "p95": "128.000",
     "max": "180.600",
-    "score_ge_100_rate": "0.4038"
+    "score_ge_100_rate": "0.4038",
+    "replacement_score": "91.900",
+    "replacement_percentile": "0.4277",
+    "replacement_win_rate": "0.4277"
   },
   {
     "season": "2018",
@@ -1803,7 +2058,10 @@
     "p90": "146.700",
     "p95": "155.800",
     "max": "210.000",
-    "score_ge_100_rate": "0.7389"
+    "score_ge_100_rate": "0.7389",
+    "replacement_score": "114.100",
+    "replacement_percentile": "0.4835",
+    "replacement_win_rate": "0.4835"
   },
   {
     "season": "2018",
@@ -1824,7 +2082,10 @@
     "p90": "145.900",
     "p95": "154.500",
     "max": "204.700",
-    "score_ge_100_rate": "0.8020"
+    "score_ge_100_rate": "0.8020",
+    "replacement_score": "111.600",
+    "replacement_percentile": "0.3926",
+    "replacement_win_rate": "0.3926"
   },
   {
     "season": "2018",
@@ -1845,7 +2106,10 @@
     "p90": "139.700",
     "p95": "148.000",
     "max": "207.600",
-    "score_ge_100_rate": "0.7383"
+    "score_ge_100_rate": "0.7383",
+    "replacement_score": "112.600",
+    "replacement_percentile": "0.4969",
+    "replacement_win_rate": "0.4969"
   },
   {
     "season": "2018",
@@ -1866,7 +2130,10 @@
     "p90": "158.300",
     "p95": "168.000",
     "max": "226.300",
-    "score_ge_100_rate": "0.8414"
+    "score_ge_100_rate": "0.8414",
+    "replacement_score": "116.000",
+    "replacement_percentile": "0.3550",
+    "replacement_win_rate": "0.3550"
   },
   {
     "season": "2018",
@@ -1887,7 +2154,10 @@
     "p90": "142.100",
     "p95": "149.705",
     "max": "197.900",
-    "score_ge_100_rate": "0.7995"
+    "score_ge_100_rate": "0.7995",
+    "replacement_score": "103.900",
+    "replacement_percentile": "0.2674",
+    "replacement_win_rate": "0.2674"
   },
   {
     "season": "2018",
@@ -1908,7 +2178,10 @@
     "p90": "147.400",
     "p95": "156.300",
     "max": "212.300",
-    "score_ge_100_rate": "0.7827"
+    "score_ge_100_rate": "0.7827",
+    "replacement_score": "108.600",
+    "replacement_percentile": "0.3551",
+    "replacement_win_rate": "0.3551"
   },
   {
     "season": "2018",
@@ -1929,7 +2202,10 @@
     "p90": "138.800",
     "p95": "147.100",
     "max": "195.000",
-    "score_ge_100_rate": "0.7477"
+    "score_ge_100_rate": "0.7477",
+    "replacement_score": "98.700",
+    "replacement_percentile": "0.2308",
+    "replacement_win_rate": "0.2308"
   },
   {
     "season": "2018",
@@ -1950,7 +2226,10 @@
     "p90": "149.600",
     "p95": "157.200",
     "max": "209.400",
-    "score_ge_100_rate": "0.8940"
+    "score_ge_100_rate": "0.8940",
+    "replacement_score": "105.600",
+    "replacement_percentile": "0.1721",
+    "replacement_win_rate": "0.1721"
   },
   {
     "season": "2018",
@@ -1971,7 +2250,10 @@
     "p90": "137.900",
     "p95": "146.800",
     "max": "213.000",
-    "score_ge_100_rate": "0.6543"
+    "score_ge_100_rate": "0.6543",
+    "replacement_score": "88.100",
+    "replacement_percentile": "0.1559",
+    "replacement_win_rate": "0.1559"
   },
   {
     "season": "2018",
@@ -1992,7 +2274,10 @@
     "p90": "151.200",
     "p95": "161.300",
     "max": "222.800",
-    "score_ge_100_rate": "0.7932"
+    "score_ge_100_rate": "0.7932",
+    "replacement_score": "95.200",
+    "replacement_percentile": "0.1475",
+    "replacement_win_rate": "0.1475"
   },
   {
     "season": "2018",
@@ -2013,7 +2298,10 @@
     "p90": "142.600",
     "p95": "151.900",
     "max": "209.600",
-    "score_ge_100_rate": "0.7053"
+    "score_ge_100_rate": "0.7053",
+    "replacement_score": "89.900",
+    "replacement_percentile": "0.1553",
+    "replacement_win_rate": "0.1553"
   },
   {
     "season": "2018",
@@ -2034,7 +2322,10 @@
     "p90": "143.900",
     "p95": "152.600",
     "max": "215.000",
-    "score_ge_100_rate": "0.7734"
+    "score_ge_100_rate": "0.7734",
+    "replacement_score": "104.000",
+    "replacement_percentile": "0.2937",
+    "replacement_win_rate": "0.2937"
   },
   {
     "season": "2018",
@@ -2055,7 +2346,10 @@
     "p90": "133.300",
     "p95": "142.200",
     "max": "194.000",
-    "score_ge_100_rate": "0.5933"
+    "score_ge_100_rate": "0.5933",
+    "replacement_score": "97.000",
+    "replacement_percentile": "0.3455",
+    "replacement_win_rate": "0.3455"
   },
   {
     "season": "2018",
@@ -2076,7 +2370,10 @@
     "p90": "138.400",
     "p95": "148.700",
     "max": "203.500",
-    "score_ge_100_rate": "0.6157"
+    "score_ge_100_rate": "0.6157",
+    "replacement_score": "99.000",
+    "replacement_percentile": "0.3670",
+    "replacement_win_rate": "0.3670"
   },
   {
     "season": "2018",
@@ -2097,7 +2394,10 @@
     "p90": "123.700",
     "p95": "131.700",
     "max": "183.700",
-    "score_ge_100_rate": "0.4214"
+    "score_ge_100_rate": "0.4214",
+    "replacement_score": "89.100",
+    "replacement_percentile": "0.3622",
+    "replacement_win_rate": "0.3622"
   },
   {
     "season": "2018",
@@ -2118,7 +2418,10 @@
     "p90": "143.710",
     "p95": "152.905",
     "max": "215.600",
-    "score_ge_100_rate": "0.7605"
+    "score_ge_100_rate": "0.7605",
+    "replacement_score": "107.200",
+    "replacement_percentile": "0.3632",
+    "replacement_win_rate": "0.3632"
   },
   {
     "season": "2018",
@@ -2139,7 +2442,10 @@
     "p90": "136.500",
     "p95": "144.400",
     "max": "193.000",
-    "score_ge_100_rate": "0.6654"
+    "score_ge_100_rate": "0.6654",
+    "replacement_score": "103.600",
+    "replacement_percentile": "0.4013",
+    "replacement_win_rate": "0.4013"
   },
   {
     "season": "2019",
@@ -2160,7 +2466,10 @@
     "p90": "150.400",
     "p95": "160.700",
     "max": "214.700",
-    "score_ge_100_rate": "0.7587"
+    "score_ge_100_rate": "0.7587",
+    "replacement_score": "112.900",
+    "replacement_percentile": "0.4344",
+    "replacement_win_rate": "0.4344"
   },
   {
     "season": "2019",
@@ -2181,7 +2490,10 @@
     "p90": "133.000",
     "p95": "140.700",
     "max": "188.000",
-    "score_ge_100_rate": "0.6362"
+    "score_ge_100_rate": "0.6362",
+    "replacement_score": "105.200",
+    "replacement_percentile": "0.4661",
+    "replacement_win_rate": "0.4661"
   },
   {
     "season": "2019",
@@ -2202,7 +2514,10 @@
     "p90": "148.900",
     "p95": "158.300",
     "max": "234.200",
-    "score_ge_100_rate": "0.7738"
+    "score_ge_100_rate": "0.7738",
+    "replacement_score": "109.000",
+    "replacement_percentile": "0.3709",
+    "replacement_win_rate": "0.3709"
   },
   {
     "season": "2019",
@@ -2223,7 +2538,10 @@
     "p90": "136.500",
     "p95": "145.500",
     "max": "202.900",
-    "score_ge_100_rate": "0.6479"
+    "score_ge_100_rate": "0.6479",
+    "replacement_score": "96.400",
+    "replacement_percentile": "0.2870",
+    "replacement_win_rate": "0.2870"
   },
   {
     "season": "2019",
@@ -2244,7 +2562,10 @@
     "p90": "151.600",
     "p95": "163.000",
     "max": "267.400",
-    "score_ge_100_rate": "0.7173"
+    "score_ge_100_rate": "0.7173",
+    "replacement_score": "97.300",
+    "replacement_percentile": "0.2438",
+    "replacement_win_rate": "0.2438"
   },
   {
     "season": "2019",
@@ -2265,7 +2586,10 @@
     "p90": "134.900",
     "p95": "144.200",
     "max": "207.500",
-    "score_ge_100_rate": "0.6130"
+    "score_ge_100_rate": "0.6130",
+    "replacement_score": "92.600",
+    "replacement_percentile": "0.2569",
+    "replacement_win_rate": "0.2569"
   },
   {
     "season": "2019",
@@ -2286,7 +2610,10 @@
     "p90": "126.500",
     "p95": "135.400",
     "max": "198.700",
-    "score_ge_100_rate": "0.4430"
+    "score_ge_100_rate": "0.4430",
+    "replacement_score": "90.500",
+    "replacement_percentile": "0.3774",
+    "replacement_win_rate": "0.3774"
   },
   {
     "season": "2019",
@@ -2307,7 +2634,10 @@
     "p90": "144.000",
     "p95": "153.300",
     "max": "230.500",
-    "score_ge_100_rate": "0.7402"
+    "score_ge_100_rate": "0.7402",
+    "replacement_score": "97.800",
+    "replacement_percentile": "0.2249",
+    "replacement_win_rate": "0.2249"
   },
   {
     "season": "2019",
@@ -2328,7 +2658,10 @@
     "p90": "140.800",
     "p95": "148.800",
     "max": "206.100",
-    "score_ge_100_rate": "0.7326"
+    "score_ge_100_rate": "0.7326",
+    "replacement_score": "98.800",
+    "replacement_percentile": "0.2485",
+    "replacement_win_rate": "0.2485"
   },
   {
     "season": "2019",
@@ -2349,7 +2682,10 @@
     "p90": "138.600",
     "p95": "146.600",
     "max": "191.800",
-    "score_ge_100_rate": "0.7044"
+    "score_ge_100_rate": "0.7044",
+    "replacement_score": "91.700",
+    "replacement_percentile": "0.1696",
+    "replacement_win_rate": "0.1696"
   },
   {
     "season": "2019",
@@ -2370,7 +2706,10 @@
     "p90": "131.800",
     "p95": "139.100",
     "max": "183.700",
-    "score_ge_100_rate": "0.6477"
+    "score_ge_100_rate": "0.6477",
+    "replacement_score": "99.900",
+    "replacement_percentile": "0.3511",
+    "replacement_win_rate": "0.3511"
   },
   {
     "season": "2019",
@@ -2391,7 +2730,10 @@
     "p90": "133.300",
     "p95": "142.505",
     "max": "202.600",
-    "score_ge_100_rate": "0.5348"
+    "score_ge_100_rate": "0.5348",
+    "replacement_score": "87.100",
+    "replacement_percentile": "0.2495",
+    "replacement_win_rate": "0.2495"
   },
   {
     "season": "2019",
@@ -2412,7 +2754,10 @@
     "p90": "135.700",
     "p95": "143.700",
     "max": "191.300",
-    "score_ge_100_rate": "0.6935"
+    "score_ge_100_rate": "0.6935",
+    "replacement_score": "106.300",
+    "replacement_percentile": "0.4299",
+    "replacement_win_rate": "0.4299"
   },
   {
     "season": "2019",
@@ -2433,7 +2778,10 @@
     "p90": "141.400",
     "p95": "149.700",
     "max": "202.200",
-    "score_ge_100_rate": "0.7357"
+    "score_ge_100_rate": "0.7357",
+    "replacement_score": "104.100",
+    "replacement_percentile": "0.3364",
+    "replacement_win_rate": "0.3364"
   },
   {
     "season": "2019",
@@ -2454,7 +2802,10 @@
     "p90": "148.900",
     "p95": "158.000",
     "max": "215.800",
-    "score_ge_100_rate": "0.7881"
+    "score_ge_100_rate": "0.7881",
+    "replacement_score": "104.800",
+    "replacement_percentile": "0.2822",
+    "replacement_win_rate": "0.2822"
   },
   {
     "season": "2019",
@@ -2475,7 +2826,10 @@
     "p90": "143.700",
     "p95": "152.800",
     "max": "218.000",
-    "score_ge_100_rate": "0.7228"
+    "score_ge_100_rate": "0.7228",
+    "replacement_score": "104.400",
+    "replacement_percentile": "0.3494",
+    "replacement_win_rate": "0.3494"
   },
   {
     "season": "2019",
@@ -2496,7 +2850,10 @@
     "p90": "139.800",
     "p95": "148.100",
     "max": "202.400",
-    "score_ge_100_rate": "0.7498"
+    "score_ge_100_rate": "0.7498",
+    "replacement_score": "99.800",
+    "replacement_percentile": "0.2467",
+    "replacement_win_rate": "0.2467"
   },
   {
     "season": "2020",
@@ -2517,7 +2874,10 @@
     "p90": "138.000",
     "p95": "146.600",
     "max": "201.500",
-    "score_ge_100_rate": "0.6939"
+    "score_ge_100_rate": "0.6939",
+    "replacement_score": "106.100",
+    "replacement_percentile": "0.4263",
+    "replacement_win_rate": "0.4263"
   },
   {
     "season": "2020",
@@ -2538,7 +2898,10 @@
     "p90": "149.500",
     "p95": "158.505",
     "max": "228.700",
-    "score_ge_100_rate": "0.8165"
+    "score_ge_100_rate": "0.8165",
+    "replacement_score": "115.300",
+    "replacement_percentile": "0.4236",
+    "replacement_win_rate": "0.4236"
   },
   {
     "season": "2020",
@@ -2559,7 +2922,10 @@
     "p90": "148.900",
     "p95": "158.200",
     "max": "215.200",
-    "score_ge_100_rate": "0.8120"
+    "score_ge_100_rate": "0.8120",
+    "replacement_score": "111.700",
+    "replacement_percentile": "0.3721",
+    "replacement_win_rate": "0.3721"
   },
   {
     "season": "2020",
@@ -2580,7 +2946,10 @@
     "p90": "148.400",
     "p95": "157.800",
     "max": "219.200",
-    "score_ge_100_rate": "0.8044"
+    "score_ge_100_rate": "0.8044",
+    "replacement_score": "108.500",
+    "replacement_percentile": "0.3303",
+    "replacement_win_rate": "0.3303"
   },
   {
     "season": "2020",
@@ -2601,7 +2970,10 @@
     "p90": "145.400",
     "p95": "153.200",
     "max": "205.900",
-    "score_ge_100_rate": "0.8456"
+    "score_ge_100_rate": "0.8456",
+    "replacement_score": "101.200",
+    "replacement_percentile": "0.1694",
+    "replacement_win_rate": "0.1694"
   },
   {
     "season": "2020",
@@ -2622,7 +2994,10 @@
     "p90": "135.600",
     "p95": "144.200",
     "max": "195.700",
-    "score_ge_100_rate": "0.6539"
+    "score_ge_100_rate": "0.6539",
+    "replacement_score": "91.600",
+    "replacement_percentile": "0.2008",
+    "replacement_win_rate": "0.2008"
   },
   {
     "season": "2020",
@@ -2643,7 +3018,10 @@
     "p90": "146.300",
     "p95": "156.300",
     "max": "224.100",
-    "score_ge_100_rate": "0.7780"
+    "score_ge_100_rate": "0.7780",
+    "replacement_score": "107.100",
+    "replacement_percentile": "0.3402",
+    "replacement_win_rate": "0.3402"
   },
   {
     "season": "2020",
@@ -2664,7 +3042,10 @@
     "p90": "133.000",
     "p95": "142.200",
     "max": "204.000",
-    "score_ge_100_rate": "0.6032"
+    "score_ge_100_rate": "0.6032",
+    "replacement_score": "93.800",
+    "replacement_percentile": "0.2756",
+    "replacement_win_rate": "0.2756"
   },
   {
     "season": "2020",
@@ -2685,7 +3066,10 @@
     "p90": "139.000",
     "p95": "147.600",
     "max": "203.800",
-    "score_ge_100_rate": "0.7296"
+    "score_ge_100_rate": "0.7296",
+    "replacement_score": "106.000",
+    "replacement_percentile": "0.3880",
+    "replacement_win_rate": "0.3880"
   },
   {
     "season": "2020",
@@ -2706,7 +3090,10 @@
     "p90": "131.000",
     "p95": "138.500",
     "max": "183.100",
-    "score_ge_100_rate": "0.6190"
+    "score_ge_100_rate": "0.6190",
+    "replacement_score": "89.300",
+    "replacement_percentile": "0.1897",
+    "replacement_win_rate": "0.1897"
   },
   {
     "season": "2020",
@@ -2727,7 +3114,10 @@
     "p90": "134.000",
     "p95": "141.000",
     "max": "175.900",
-    "score_ge_100_rate": "0.7385"
+    "score_ge_100_rate": "0.7385",
+    "replacement_score": "99.900",
+    "replacement_percentile": "0.2600",
+    "replacement_win_rate": "0.2600"
   },
   {
     "season": "2020",
@@ -2748,7 +3138,10 @@
     "p90": "137.100",
     "p95": "147.305",
     "max": "228.100",
-    "score_ge_100_rate": "0.5928"
+    "score_ge_100_rate": "0.5928",
+    "replacement_score": "94.700",
+    "replacement_percentile": "0.3122",
+    "replacement_win_rate": "0.3122"
   },
   {
     "season": "2020",
@@ -2769,7 +3162,10 @@
     "p90": "144.210",
     "p95": "152.700",
     "max": "209.400",
-    "score_ge_100_rate": "0.7803"
+    "score_ge_100_rate": "0.7803",
+    "replacement_score": "113.400",
+    "replacement_percentile": "0.4582",
+    "replacement_win_rate": "0.4582"
   },
   {
     "season": "2020",
@@ -2790,7 +3186,10 @@
     "p90": "138.400",
     "p95": "146.100",
     "max": "208.000",
-    "score_ge_100_rate": "0.6984"
+    "score_ge_100_rate": "0.6984",
+    "replacement_score": "99.800",
+    "replacement_percentile": "0.2982",
+    "replacement_win_rate": "0.2982"
   },
   {
     "season": "2020",
@@ -2811,7 +3210,10 @@
     "p90": "147.500",
     "p95": "155.500",
     "max": "208.100",
-    "score_ge_100_rate": "0.8307"
+    "score_ge_100_rate": "0.8307",
+    "replacement_score": "107.400",
+    "replacement_percentile": "0.2717",
+    "replacement_win_rate": "0.2717"
   },
   {
     "season": "2020",
@@ -2832,7 +3234,10 @@
     "p90": "154.700",
     "p95": "166.000",
     "max": "220.900",
-    "score_ge_100_rate": "0.8489"
+    "score_ge_100_rate": "0.8489",
+    "replacement_score": "109.500",
+    "replacement_percentile": "0.2933",
+    "replacement_win_rate": "0.2933"
   },
   {
     "season": "2020",
@@ -2853,7 +3258,10 @@
     "p90": "156.900",
     "p95": "166.200",
     "max": "231.800",
-    "score_ge_100_rate": "0.8695"
+    "score_ge_100_rate": "0.8695",
+    "replacement_score": "111.800",
+    "replacement_percentile": "0.2774",
+    "replacement_win_rate": "0.2774"
   },
   {
     "season": "2021",
@@ -2874,7 +3282,10 @@
     "p90": "140.700",
     "p95": "148.905",
     "max": "209.400",
-    "score_ge_100_rate": "0.7094"
+    "score_ge_100_rate": "0.7094",
+    "replacement_score": "114.600",
+    "replacement_percentile": "0.5503",
+    "replacement_win_rate": "0.5503"
   },
   {
     "season": "2021",
@@ -2895,7 +3306,10 @@
     "p90": "137.200",
     "p95": "147.000",
     "max": "222.400",
-    "score_ge_100_rate": "0.6367"
+    "score_ge_100_rate": "0.6367",
+    "replacement_score": "110.100",
+    "replacement_percentile": "0.5490",
+    "replacement_win_rate": "0.5490"
   },
   {
     "season": "2021",
@@ -2916,7 +3330,10 @@
     "p90": "138.300",
     "p95": "145.900",
     "max": "188.700",
-    "score_ge_100_rate": "0.7487"
+    "score_ge_100_rate": "0.7487",
+    "replacement_score": "107.600",
+    "replacement_percentile": "0.3951",
+    "replacement_win_rate": "0.3951"
   },
   {
     "season": "2021",
@@ -2937,7 +3354,10 @@
     "p90": "143.700",
     "p95": "152.400",
     "max": "218.500",
-    "score_ge_100_rate": "0.8006"
+    "score_ge_100_rate": "0.8006",
+    "replacement_score": "107.700",
+    "replacement_percentile": "0.3269",
+    "replacement_win_rate": "0.3269"
   },
   {
     "season": "2021",
@@ -2958,7 +3378,10 @@
     "p90": "153.900",
     "p95": "164.500",
     "max": "229.000",
-    "score_ge_100_rate": "0.7816"
+    "score_ge_100_rate": "0.7816",
+    "replacement_score": "102.900",
+    "replacement_percentile": "0.2547",
+    "replacement_win_rate": "0.2547"
   },
   {
     "season": "2021",
@@ -2979,7 +3402,10 @@
     "p90": "144.100",
     "p95": "151.600",
     "max": "201.700",
-    "score_ge_100_rate": "0.8433"
+    "score_ge_100_rate": "0.8433",
+    "replacement_score": "99.200",
+    "replacement_percentile": "0.1464",
+    "replacement_win_rate": "0.1464"
   },
   {
     "season": "2021",
@@ -3000,7 +3426,10 @@
     "p90": "139.500",
     "p95": "147.000",
     "max": "197.000",
-    "score_ge_100_rate": "0.7750"
+    "score_ge_100_rate": "0.7750",
+    "replacement_score": "95.300",
+    "replacement_percentile": "0.1513",
+    "replacement_win_rate": "0.1513"
   },
   {
     "season": "2021",
@@ -3021,7 +3450,10 @@
     "p90": "127.900",
     "p95": "134.905",
     "max": "177.200",
-    "score_ge_100_rate": "0.5556"
+    "score_ge_100_rate": "0.5556",
+    "replacement_score": "99.400",
+    "replacement_percentile": "0.4337",
+    "replacement_win_rate": "0.4337"
   },
   {
     "season": "2021",
@@ -3042,7 +3474,10 @@
     "p90": "127.900",
     "p95": "135.600",
     "max": "180.900",
-    "score_ge_100_rate": "0.5729"
+    "score_ge_100_rate": "0.5729",
+    "replacement_score": "91.600",
+    "replacement_percentile": "0.2449",
+    "replacement_win_rate": "0.2449"
   },
   {
     "season": "2021",
@@ -3063,7 +3498,10 @@
     "p90": "126.300",
     "p95": "133.705",
     "max": "185.300",
-    "score_ge_100_rate": "0.5202"
+    "score_ge_100_rate": "0.5202",
+    "replacement_score": "87.000",
+    "replacement_percentile": "0.2198",
+    "replacement_win_rate": "0.2198"
   },
   {
     "season": "2021",
@@ -3084,7 +3522,10 @@
     "p90": "137.500",
     "p95": "147.900",
     "max": "218.400",
-    "score_ge_100_rate": "0.5856"
+    "score_ge_100_rate": "0.5856",
+    "replacement_score": "88.400",
+    "replacement_percentile": "0.2275",
+    "replacement_win_rate": "0.2275"
   },
   {
     "season": "2021",
@@ -3105,7 +3546,10 @@
     "p90": "125.900",
     "p95": "134.600",
     "max": "199.000",
-    "score_ge_100_rate": "0.4972"
+    "score_ge_100_rate": "0.4972",
+    "replacement_score": "90.200",
+    "replacement_percentile": "0.2947",
+    "replacement_win_rate": "0.2947"
   },
   {
     "season": "2021",
@@ -3126,7 +3570,10 @@
     "p90": "135.200",
     "p95": "144.200",
     "max": "196.100",
-    "score_ge_100_rate": "0.6208"
+    "score_ge_100_rate": "0.6208",
+    "replacement_score": "90.000",
+    "replacement_percentile": "0.2101",
+    "replacement_win_rate": "0.2101"
   },
   {
     "season": "2021",
@@ -3147,7 +3594,10 @@
     "p90": "145.100",
     "p95": "153.600",
     "max": "200.400",
-    "score_ge_100_rate": "0.7984"
+    "score_ge_100_rate": "0.7984",
+    "replacement_score": "105.500",
+    "replacement_percentile": "0.2898",
+    "replacement_win_rate": "0.2898"
   },
   {
     "season": "2021",
@@ -3168,7 +3618,10 @@
     "p90": "123.700",
     "p95": "132.400",
     "max": "185.200",
-    "score_ge_100_rate": "0.4067"
+    "score_ge_100_rate": "0.4067",
+    "replacement_score": "85.800",
+    "replacement_percentile": "0.3192",
+    "replacement_win_rate": "0.3192"
   },
   {
     "season": "2021",
@@ -3189,7 +3642,10 @@
     "p90": "135.900",
     "p95": "144.700",
     "max": "205.400",
-    "score_ge_100_rate": "0.6239"
+    "score_ge_100_rate": "0.6239",
+    "replacement_score": "97.900",
+    "replacement_percentile": "0.3402",
+    "replacement_win_rate": "0.3402"
   },
   {
     "season": "2021",
@@ -3210,7 +3666,10 @@
     "p90": "142.500",
     "p95": "152.200",
     "max": "225.000",
-    "score_ge_100_rate": "0.7704"
+    "score_ge_100_rate": "0.7704",
+    "replacement_score": "103.600",
+    "replacement_percentile": "0.2919",
+    "replacement_win_rate": "0.2919"
   },
   {
     "season": "2021",
@@ -3231,7 +3690,10 @@
     "p90": "139.400",
     "p95": "146.700",
     "max": "212.000",
-    "score_ge_100_rate": "0.7441"
+    "score_ge_100_rate": "0.7441",
+    "replacement_score": "104.900",
+    "replacement_percentile": "0.3456",
+    "replacement_win_rate": "0.3456"
   },
   {
     "season": "2022",
@@ -3252,7 +3714,10 @@
     "p90": "130.100",
     "p95": "138.000",
     "max": "215.900",
-    "score_ge_100_rate": "0.5581"
+    "score_ge_100_rate": "0.5581",
+    "replacement_score": "101.900",
+    "replacement_percentile": "0.4819",
+    "replacement_win_rate": "0.4819"
   },
   {
     "season": "2022",
@@ -3273,7 +3738,10 @@
     "p90": "134.200",
     "p95": "144.305",
     "max": "212.500",
-    "score_ge_100_rate": "0.5432"
+    "score_ge_100_rate": "0.5432",
+    "replacement_score": "100.200",
+    "replacement_percentile": "0.4607",
+    "replacement_win_rate": "0.4607"
   },
   {
     "season": "2022",
@@ -3294,7 +3762,10 @@
     "p90": "130.100",
     "p95": "137.805",
     "max": "182.400",
-    "score_ge_100_rate": "0.6037"
+    "score_ge_100_rate": "0.6037",
+    "replacement_score": "108.400",
+    "replacement_percentile": "0.5744",
+    "replacement_win_rate": "0.5744"
   },
   {
     "season": "2022",
@@ -3315,7 +3786,10 @@
     "p90": "134.200",
     "p95": "143.500",
     "max": "196.900",
-    "score_ge_100_rate": "0.5599"
+    "score_ge_100_rate": "0.5599",
+    "replacement_score": "97.500",
+    "replacement_percentile": "0.3967",
+    "replacement_win_rate": "0.3967"
   },
   {
     "season": "2022",
@@ -3336,7 +3810,10 @@
     "p90": "137.600",
     "p95": "146.705",
     "max": "196.800",
-    "score_ge_100_rate": "0.6153"
+    "score_ge_100_rate": "0.6153",
+    "replacement_score": "100.500",
+    "replacement_percentile": "0.3937",
+    "replacement_win_rate": "0.3937"
   },
   {
     "season": "2022",
@@ -3357,7 +3834,10 @@
     "p90": "128.700",
     "p95": "136.100",
     "max": "190.900",
-    "score_ge_100_rate": "0.5561"
+    "score_ge_100_rate": "0.5561",
+    "replacement_score": "89.900",
+    "replacement_percentile": "0.2534",
+    "replacement_win_rate": "0.2534"
   },
   {
     "season": "2022",
@@ -3378,7 +3858,10 @@
     "p90": "134.000",
     "p95": "141.900",
     "max": "209.800",
-    "score_ge_100_rate": "0.6402"
+    "score_ge_100_rate": "0.6402",
+    "replacement_score": "92.900",
+    "replacement_percentile": "0.2344",
+    "replacement_win_rate": "0.2344"
   },
   {
     "season": "2022",
@@ -3399,7 +3882,10 @@
     "p90": "143.700",
     "p95": "153.005",
     "max": "214.800",
-    "score_ge_100_rate": "0.7188"
+    "score_ge_100_rate": "0.7188",
+    "replacement_score": "100.800",
+    "replacement_percentile": "0.2951",
+    "replacement_win_rate": "0.2951"
   },
   {
     "season": "2022",
@@ -3420,7 +3906,10 @@
     "p90": "130.700",
     "p95": "141.500",
     "max": "214.200",
-    "score_ge_100_rate": "0.4607"
+    "score_ge_100_rate": "0.4607",
+    "replacement_score": "77.600",
+    "replacement_percentile": "0.1550",
+    "replacement_win_rate": "0.1550"
   },
   {
     "season": "2022",
@@ -3441,7 +3930,10 @@
     "p90": "129.800",
     "p95": "138.400",
     "max": "197.800",
-    "score_ge_100_rate": "0.5646"
+    "score_ge_100_rate": "0.5646",
+    "replacement_score": "93.400",
+    "replacement_percentile": "0.3058",
+    "replacement_win_rate": "0.3058"
   },
   {
     "season": "2022",
@@ -3462,7 +3954,10 @@
     "p90": "132.100",
     "p95": "140.400",
     "max": "204.400",
-    "score_ge_100_rate": "0.5715"
+    "score_ge_100_rate": "0.5715",
+    "replacement_score": "90.000",
+    "replacement_percentile": "0.2502",
+    "replacement_win_rate": "0.2502"
   },
   {
     "season": "2022",
@@ -3483,7 +3978,10 @@
     "p90": "132.400",
     "p95": "141.100",
     "max": "186.000",
-    "score_ge_100_rate": "0.6227"
+    "score_ge_100_rate": "0.6227",
+    "replacement_score": "101.500",
+    "replacement_percentile": "0.4106",
+    "replacement_win_rate": "0.4106"
   },
   {
     "season": "2022",
@@ -3504,7 +4002,10 @@
     "p90": "126.300",
     "p95": "133.800",
     "max": "179.000",
-    "score_ge_100_rate": "0.5153"
+    "score_ge_100_rate": "0.5153",
+    "replacement_score": "95.300",
+    "replacement_percentile": "0.3851",
+    "replacement_win_rate": "0.3851"
   },
   {
     "season": "2022",
@@ -3525,7 +4026,10 @@
     "p90": "134.300",
     "p95": "143.400",
     "max": "201.200",
-    "score_ge_100_rate": "0.6182"
+    "score_ge_100_rate": "0.6182",
+    "replacement_score": "90.100",
+    "replacement_percentile": "0.2077",
+    "replacement_win_rate": "0.2077"
   },
   {
     "season": "2022",
@@ -3546,7 +4050,10 @@
     "p90": "141.700",
     "p95": "149.500",
     "max": "204.100",
-    "score_ge_100_rate": "0.7582"
+    "score_ge_100_rate": "0.7582",
+    "replacement_score": "103.600",
+    "replacement_percentile": "0.3055",
+    "replacement_win_rate": "0.3055"
   },
   {
     "season": "2022",
@@ -3567,7 +4074,10 @@
     "p90": "132.800",
     "p95": "141.300",
     "max": "205.100",
-    "score_ge_100_rate": "0.5647"
+    "score_ge_100_rate": "0.5647",
+    "replacement_score": "95.900",
+    "replacement_percentile": "0.3652",
+    "replacement_win_rate": "0.3652"
   },
   {
     "season": "2022",
@@ -3588,7 +4098,10 @@
     "p90": "126.400",
     "p95": "135.300",
     "max": "210.300",
-    "score_ge_100_rate": "0.4475"
+    "score_ge_100_rate": "0.4475",
+    "replacement_score": "88.500",
+    "replacement_percentile": "0.3362",
+    "replacement_win_rate": "0.3362"
   },
   {
     "season": "2022",
@@ -3609,7 +4122,10 @@
     "p90": "109.400",
     "p95": "115.700",
     "max": "154.200",
-    "score_ge_100_rate": "0.2267"
+    "score_ge_100_rate": "0.2267",
+    "replacement_score": "88.000",
+    "replacement_percentile": "0.5215",
+    "replacement_win_rate": "0.5215"
   },
   {
     "season": "2023",
@@ -3630,7 +4146,10 @@
     "p90": "118.300",
     "p95": "126.200",
     "max": "198.400",
-    "score_ge_100_rate": "0.3453"
+    "score_ge_100_rate": "0.3453",
+    "replacement_score": "95.300",
+    "replacement_percentile": "0.5621",
+    "replacement_win_rate": "0.5621"
   },
   {
     "season": "2023",
@@ -3651,7 +4170,10 @@
     "p90": "141.300",
     "p95": "148.300",
     "max": "200.500",
-    "score_ge_100_rate": "0.7977"
+    "score_ge_100_rate": "0.7977",
+    "replacement_score": "110.400",
+    "replacement_percentile": "0.3906",
+    "replacement_win_rate": "0.3906"
   },
   {
     "season": "2023",
@@ -3672,7 +4194,10 @@
     "p90": "141.300",
     "p95": "151.800",
     "max": "228.700",
-    "score_ge_100_rate": "0.6353"
+    "score_ge_100_rate": "0.6353",
+    "replacement_score": "96.300",
+    "replacement_percentile": "0.3004",
+    "replacement_win_rate": "0.3004"
   },
   {
     "season": "2023",
@@ -3693,7 +4218,10 @@
     "p90": "138.000",
     "p95": "147.800",
     "max": "215.700",
-    "score_ge_100_rate": "0.6059"
+    "score_ge_100_rate": "0.6059",
+    "replacement_score": "94.800",
+    "replacement_percentile": "0.3061",
+    "replacement_win_rate": "0.3061"
   },
   {
     "season": "2023",
@@ -3714,7 +4242,10 @@
     "p90": "138.800",
     "p95": "149.100",
     "max": "218.000",
-    "score_ge_100_rate": "0.6151"
+    "score_ge_100_rate": "0.6151",
+    "replacement_score": "90.600",
+    "replacement_percentile": "0.2240",
+    "replacement_win_rate": "0.2240"
   },
   {
     "season": "2023",
@@ -3735,7 +4266,10 @@
     "p90": "123.200",
     "p95": "130.300",
     "max": "171.200",
-    "score_ge_100_rate": "0.5115"
+    "score_ge_100_rate": "0.5115",
+    "replacement_score": "90.600",
+    "replacement_percentile": "0.2701",
+    "replacement_win_rate": "0.2701"
   },
   {
     "season": "2023",
@@ -3756,7 +4290,10 @@
     "p90": "135.500",
     "p95": "143.000",
     "max": "204.800",
-    "score_ge_100_rate": "0.6760"
+    "score_ge_100_rate": "0.6760",
+    "replacement_score": "87.900",
+    "replacement_percentile": "0.1333",
+    "replacement_win_rate": "0.1333"
   },
   {
     "season": "2023",
@@ -3777,7 +4314,10 @@
     "p90": "141.010",
     "p95": "149.500",
     "max": "208.000",
-    "score_ge_100_rate": "0.7479"
+    "score_ge_100_rate": "0.7479",
+    "replacement_score": "102.900",
+    "replacement_percentile": "0.2997",
+    "replacement_win_rate": "0.2997"
   },
   {
     "season": "2023",
@@ -3798,7 +4338,10 @@
     "p90": "126.700",
     "p95": "134.200",
     "max": "185.100",
-    "score_ge_100_rate": "0.5475"
+    "score_ge_100_rate": "0.5475",
+    "replacement_score": "85.300",
+    "replacement_percentile": "0.1730",
+    "replacement_win_rate": "0.1730"
   },
   {
     "season": "2023",
@@ -3819,7 +4362,10 @@
     "p90": "136.600",
     "p95": "145.200",
     "max": "210.900",
-    "score_ge_100_rate": "0.6718"
+    "score_ge_100_rate": "0.6718",
+    "replacement_score": "92.200",
+    "replacement_percentile": "0.1926",
+    "replacement_win_rate": "0.1926"
   },
   {
     "season": "2023",
@@ -3840,7 +4386,10 @@
     "p90": "123.700",
     "p95": "131.100",
     "max": "182.900",
-    "score_ge_100_rate": "0.4686"
+    "score_ge_100_rate": "0.4686",
+    "replacement_score": "85.000",
+    "replacement_percentile": "0.2253",
+    "replacement_win_rate": "0.2253"
   },
   {
     "season": "2023",
@@ -3861,7 +4410,10 @@
     "p90": "133.900",
     "p95": "141.700",
     "max": "186.800",
-    "score_ge_100_rate": "0.6299"
+    "score_ge_100_rate": "0.6299",
+    "replacement_score": "94.500",
+    "replacement_percentile": "0.2717",
+    "replacement_win_rate": "0.2717"
   },
   {
     "season": "2023",
@@ -3882,7 +4434,10 @@
     "p90": "145.600",
     "p95": "154.800",
     "max": "212.800",
-    "score_ge_100_rate": "0.7399"
+    "score_ge_100_rate": "0.7399",
+    "replacement_score": "88.800",
+    "replacement_percentile": "0.1224",
+    "replacement_win_rate": "0.1224"
   },
   {
     "season": "2023",
@@ -3903,7 +4458,10 @@
     "p90": "128.910",
     "p95": "136.900",
     "max": "188.600",
-    "score_ge_100_rate": "0.5688"
+    "score_ge_100_rate": "0.5688",
+    "replacement_score": "92.500",
+    "replacement_percentile": "0.2839",
+    "replacement_win_rate": "0.2839"
   },
   {
     "season": "2023",
@@ -3924,7 +4482,10 @@
     "p90": "130.500",
     "p95": "138.900",
     "max": "190.900",
-    "score_ge_100_rate": "0.5396"
+    "score_ge_100_rate": "0.5396",
+    "replacement_score": "91.200",
+    "replacement_percentile": "0.2988",
+    "replacement_win_rate": "0.2988"
   },
   {
     "season": "2023",
@@ -3945,7 +4506,10 @@
     "p90": "138.300",
     "p95": "148.500",
     "max": "207.700",
-    "score_ge_100_rate": "0.6744"
+    "score_ge_100_rate": "0.6744",
+    "replacement_score": "98.900",
+    "replacement_percentile": "0.3056",
+    "replacement_win_rate": "0.3056"
   },
   {
     "season": "2023",
@@ -3966,7 +4530,10 @@
     "p90": "133.300",
     "p95": "142.000",
     "max": "197.400",
-    "score_ge_100_rate": "0.6236"
+    "score_ge_100_rate": "0.6236",
+    "replacement_score": "97.500",
+    "replacement_percentile": "0.3258",
+    "replacement_win_rate": "0.3258"
   },
   {
     "season": "2023",
@@ -3987,7 +4554,10 @@
     "p90": "132.500",
     "p95": "140.400",
     "max": "204.400",
-    "score_ge_100_rate": "0.6015"
+    "score_ge_100_rate": "0.6015",
+    "replacement_score": "95.500",
+    "replacement_percentile": "0.3141",
+    "replacement_win_rate": "0.3141"
   },
   {
     "season": "2024",
@@ -4008,7 +4578,10 @@
     "p90": "123.300",
     "p95": "130.900",
     "max": "176.500",
-    "score_ge_100_rate": "0.4560"
+    "score_ge_100_rate": "0.4560",
+    "replacement_score": "97.900",
+    "replacement_percentile": "0.5002",
+    "replacement_win_rate": "0.5002"
   },
   {
     "season": "2024",
@@ -4029,7 +4602,10 @@
     "p90": "124.800",
     "p95": "133.400",
     "max": "189.000",
-    "score_ge_100_rate": "0.4314"
+    "score_ge_100_rate": "0.4314",
+    "replacement_score": "84.700",
+    "replacement_percentile": "0.2733",
+    "replacement_win_rate": "0.2733"
   },
   {
     "season": "2024",
@@ -4050,7 +4626,10 @@
     "p90": "136.700",
     "p95": "146.100",
     "max": "219.600",
-    "score_ge_100_rate": "0.6363"
+    "score_ge_100_rate": "0.6363",
+    "replacement_score": "102.000",
+    "replacement_percentile": "0.4003",
+    "replacement_win_rate": "0.4003"
   },
   {
     "season": "2024",
@@ -4071,7 +4650,10 @@
     "p90": "134.700",
     "p95": "142.400",
     "max": "195.500",
-    "score_ge_100_rate": "0.6521"
+    "score_ge_100_rate": "0.6521",
+    "replacement_score": "100.000",
+    "replacement_percentile": "0.3484",
+    "replacement_win_rate": "0.3484"
   },
   {
     "season": "2024",
@@ -4092,7 +4674,10 @@
     "p90": "138.410",
     "p95": "146.300",
     "max": "197.400",
-    "score_ge_100_rate": "0.7629"
+    "score_ge_100_rate": "0.7629",
+    "replacement_score": "104.700",
+    "replacement_percentile": "0.3273",
+    "replacement_win_rate": "0.3273"
   },
   {
     "season": "2024",
@@ -4113,7 +4698,10 @@
     "p90": "134.800",
     "p95": "142.100",
     "max": "192.000",
-    "score_ge_100_rate": "0.6841"
+    "score_ge_100_rate": "0.6841",
+    "replacement_score": "96.600",
+    "replacement_percentile": "0.2597",
+    "replacement_win_rate": "0.2597"
   },
   {
     "season": "2024",
@@ -4134,7 +4722,10 @@
     "p90": "126.700",
     "p95": "133.800",
     "max": "181.200",
-    "score_ge_100_rate": "0.5239"
+    "score_ge_100_rate": "0.5239",
+    "replacement_score": "88.800",
+    "replacement_percentile": "0.2591",
+    "replacement_win_rate": "0.2591"
   },
   {
     "season": "2024",
@@ -4155,7 +4746,10 @@
     "p90": "145.600",
     "p95": "152.900",
     "max": "196.300",
-    "score_ge_100_rate": "0.8827"
+    "score_ge_100_rate": "0.8827",
+    "replacement_score": "114.600",
+    "replacement_percentile": "0.3596",
+    "replacement_win_rate": "0.3596"
   },
   {
     "season": "2024",
@@ -4176,7 +4770,10 @@
     "p90": "140.900",
     "p95": "149.100",
     "max": "200.700",
-    "score_ge_100_rate": "0.7624"
+    "score_ge_100_rate": "0.7624",
+    "replacement_score": "100.400",
+    "replacement_percentile": "0.2439",
+    "replacement_win_rate": "0.2439"
   },
   {
     "season": "2024",
@@ -4197,7 +4794,10 @@
     "p90": "125.900",
     "p95": "135.800",
     "max": "200.600",
-    "score_ge_100_rate": "0.5121"
+    "score_ge_100_rate": "0.5121",
+    "replacement_score": "82.300",
+    "replacement_percentile": "0.1330",
+    "replacement_win_rate": "0.1330"
   },
   {
     "season": "2024",
@@ -4218,7 +4818,10 @@
     "p90": "145.500",
     "p95": "155.100",
     "max": "215.200",
-    "score_ge_100_rate": "0.7290"
+    "score_ge_100_rate": "0.7290",
+    "replacement_score": "95.400",
+    "replacement_percentile": "0.2029",
+    "replacement_win_rate": "0.2029"
   },
   {
     "season": "2024",
@@ -4239,7 +4842,10 @@
     "p90": "133.200",
     "p95": "142.305",
     "max": "215.700",
-    "score_ge_100_rate": "0.6024"
+    "score_ge_100_rate": "0.6024",
+    "replacement_score": "86.300",
+    "replacement_percentile": "0.1637",
+    "replacement_win_rate": "0.1637"
   },
   {
     "season": "2024",
@@ -4260,7 +4866,10 @@
     "p90": "137.800",
     "p95": "145.000",
     "max": "192.900",
-    "score_ge_100_rate": "0.7510"
+    "score_ge_100_rate": "0.7510",
+    "replacement_score": "105.700",
+    "replacement_percentile": "0.3579",
+    "replacement_win_rate": "0.3579"
   },
   {
     "season": "2024",
@@ -4281,7 +4890,10 @@
     "p90": "150.500",
     "p95": "159.800",
     "max": "226.400",
-    "score_ge_100_rate": "0.8234"
+    "score_ge_100_rate": "0.8234",
+    "replacement_score": "93.900",
+    "replacement_percentile": "0.1086",
+    "replacement_win_rate": "0.1086"
   },
   {
     "season": "2024",
@@ -4302,7 +4914,10 @@
     "p90": "136.900",
     "p95": "146.305",
     "max": "199.100",
-    "score_ge_100_rate": "0.6016"
+    "score_ge_100_rate": "0.6016",
+    "replacement_score": "94.800",
+    "replacement_percentile": "0.3090",
+    "replacement_win_rate": "0.3090"
   },
   {
     "season": "2024",
@@ -4323,7 +4938,10 @@
     "p90": "143.800",
     "p95": "151.800",
     "max": "221.400",
-    "score_ge_100_rate": "0.8074"
+    "score_ge_100_rate": "0.8074",
+    "replacement_score": "105.300",
+    "replacement_percentile": "0.2785",
+    "replacement_win_rate": "0.2785"
   },
   {
     "season": "2024",
@@ -4344,7 +4962,10 @@
     "p90": "147.500",
     "p95": "156.100",
     "max": "201.700",
-    "score_ge_100_rate": "0.7918"
+    "score_ge_100_rate": "0.7918",
+    "replacement_score": "108.900",
+    "replacement_percentile": "0.3416",
+    "replacement_win_rate": "0.3416"
   },
   {
     "season": "2024",
@@ -4365,7 +4986,10 @@
     "p90": "144.900",
     "p95": "154.200",
     "max": "208.100",
-    "score_ge_100_rate": "0.7607"
+    "score_ge_100_rate": "0.7607",
+    "replacement_score": "108.000",
+    "replacement_percentile": "0.3722",
+    "replacement_win_rate": "0.3722"
   },
   {
     "season": "2025",
@@ -4386,7 +5010,10 @@
     "p90": "123.200",
     "p95": "130.100",
     "max": "168.500",
-    "score_ge_100_rate": "0.4733"
+    "score_ge_100_rate": "0.4733",
+    "replacement_score": "103.700",
+    "replacement_percentile": "0.6025",
+    "replacement_win_rate": "0.6025"
   },
   {
     "season": "2025",
@@ -4407,7 +5034,10 @@
     "p90": "131.610",
     "p95": "140.005",
     "max": "194.800",
-    "score_ge_100_rate": "0.5759"
+    "score_ge_100_rate": "0.5759",
+    "replacement_score": "101.000",
+    "replacement_percentile": "0.4437",
+    "replacement_win_rate": "0.4437"
   },
   {
     "season": "2025",
@@ -4428,7 +5058,10 @@
     "p90": "124.300",
     "p95": "132.300",
     "max": "182.900",
-    "score_ge_100_rate": "0.4522"
+    "score_ge_100_rate": "0.4522",
+    "replacement_score": "88.600",
+    "replacement_percentile": "0.3195",
+    "replacement_win_rate": "0.3195"
   },
   {
     "season": "2025",
@@ -4449,7 +5082,10 @@
     "p90": "136.300",
     "p95": "144.800",
     "max": "194.000",
-    "score_ge_100_rate": "0.6644"
+    "score_ge_100_rate": "0.6644",
+    "replacement_score": "98.200",
+    "replacement_percentile": "0.3009",
+    "replacement_win_rate": "0.3009"
   },
   {
     "season": "2025",
@@ -4470,7 +5106,10 @@
     "p90": "142.800",
     "p95": "150.400",
     "max": "200.500",
-    "score_ge_100_rate": "0.7920"
+    "score_ge_100_rate": "0.7920",
+    "replacement_score": "104.700",
+    "replacement_percentile": "0.2868",
+    "replacement_win_rate": "0.2868"
   },
   {
     "season": "2025",
@@ -4491,7 +5130,10 @@
     "p90": "129.300",
     "p95": "137.500",
     "max": "189.000",
-    "score_ge_100_rate": "0.5085"
+    "score_ge_100_rate": "0.5085",
+    "replacement_score": "88.900",
+    "replacement_percentile": "0.2841",
+    "replacement_win_rate": "0.2841"
   },
   {
     "season": "2025",
@@ -4512,7 +5154,10 @@
     "p90": "140.600",
     "p95": "149.700",
     "max": "215.700",
-    "score_ge_100_rate": "0.6292"
+    "score_ge_100_rate": "0.6292",
+    "replacement_score": "90.800",
+    "replacement_percentile": "0.2236",
+    "replacement_win_rate": "0.2236"
   },
   {
     "season": "2025",
@@ -4533,7 +5178,10 @@
     "p90": "135.300",
     "p95": "143.200",
     "max": "193.100",
-    "score_ge_100_rate": "0.6602"
+    "score_ge_100_rate": "0.6602",
+    "replacement_score": "94.800",
+    "replacement_percentile": "0.2482",
+    "replacement_win_rate": "0.2482"
   },
   {
     "season": "2025",
@@ -4554,7 +5202,10 @@
     "p90": "137.000",
     "p95": "145.905",
     "max": "206.800",
-    "score_ge_100_rate": "0.6759"
+    "score_ge_100_rate": "0.6759",
+    "replacement_score": "96.900",
+    "replacement_percentile": "0.2661",
+    "replacement_win_rate": "0.2661"
   },
   {
     "season": "2025",
@@ -4575,7 +5226,10 @@
     "p90": "138.500",
     "p95": "148.205",
     "max": "208.100",
-    "score_ge_100_rate": "0.6616"
+    "score_ge_100_rate": "0.6616",
+    "replacement_score": "91.200",
+    "replacement_percentile": "0.1873",
+    "replacement_win_rate": "0.1873"
   },
   {
     "season": "2025",
@@ -4596,7 +5250,10 @@
     "p90": "129.910",
     "p95": "138.900",
     "max": "217.700",
-    "score_ge_100_rate": "0.5081"
+    "score_ge_100_rate": "0.5081",
+    "replacement_score": "84.600",
+    "replacement_percentile": "0.2162",
+    "replacement_win_rate": "0.2162"
   },
   {
     "season": "2025",
@@ -4617,7 +5274,10 @@
     "p90": "132.400",
     "p95": "143.600",
     "max": "212.200",
-    "score_ge_100_rate": "0.5202"
+    "score_ge_100_rate": "0.5202",
+    "replacement_score": "84.900",
+    "replacement_percentile": "0.2155",
+    "replacement_win_rate": "0.2155"
   },
   {
     "season": "2025",
@@ -4638,7 +5298,10 @@
     "p90": "124.500",
     "p95": "131.600",
     "max": "175.300",
-    "score_ge_100_rate": "0.5081"
+    "score_ge_100_rate": "0.5081",
+    "replacement_score": "98.300",
+    "replacement_percentile": "0.4553",
+    "replacement_win_rate": "0.4553"
   },
   {
     "season": "2025",
@@ -4659,7 +5322,10 @@
     "p90": "128.400",
     "p95": "137.200",
     "max": "189.500",
-    "score_ge_100_rate": "0.5217"
+    "score_ge_100_rate": "0.5217",
+    "replacement_score": "90.300",
+    "replacement_percentile": "0.2912",
+    "replacement_win_rate": "0.2912"
   },
   {
     "season": "2025",
@@ -4680,7 +5346,10 @@
     "p90": "141.000",
     "p95": "150.500",
     "max": "206.200",
-    "score_ge_100_rate": "0.6607"
+    "score_ge_100_rate": "0.6607",
+    "replacement_score": "98.200",
+    "replacement_percentile": "0.3082",
+    "replacement_win_rate": "0.3082"
   },
   {
     "season": "2025",
@@ -4701,7 +5370,10 @@
     "p90": "138.400",
     "p95": "148.205",
     "max": "204.400",
-    "score_ge_100_rate": "0.6393"
+    "score_ge_100_rate": "0.6393",
+    "replacement_score": "101.800",
+    "replacement_percentile": "0.3925",
+    "replacement_win_rate": "0.3925"
   },
   {
     "season": "2025",
@@ -4722,7 +5394,10 @@
     "p90": "131.400",
     "p95": "140.605",
     "max": "193.500",
-    "score_ge_100_rate": "0.5404"
+    "score_ge_100_rate": "0.5404",
+    "replacement_score": "89.700",
+    "replacement_percentile": "0.2699",
+    "replacement_win_rate": "0.2699"
   },
   {
     "season": "2025",
@@ -4743,6 +5418,9 @@
     "p90": "115.500",
     "p95": "123.200",
     "max": "173.900",
-    "score_ge_100_rate": "0.3019"
+    "score_ge_100_rate": "0.3019",
+    "replacement_score": "82.600",
+    "replacement_percentile": "0.3529",
+    "replacement_win_rate": "0.3529"
   }
 ]

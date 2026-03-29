@@ -7,7 +7,8 @@ const POSITION_OPTIONS = ['ALL', 'QB', 'RB', 'WR', 'TE'];
 
 export default function AllTimeFootball({ data, loading, error }) {
   const [position, setPosition] = useState('ALL');
-  const [sortBy, setSortBy] = useState('avg');
+  const [sortBy, setSortBy] = useState('war');
+  const [sortDirection, setSortDirection] = useState('desc');
   const [searchQuery, setSearchQuery] = useState('');
   const [minGp, setMinGp] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(50);
@@ -21,14 +22,23 @@ export default function AllTimeFootball({ data, loading, error }) {
       return matchesPosition && matchesSearch && player.gp >= minGp;
     });
 
-    return sortFootballData(filtered, sortBy);
-  }, [data, position, sortBy, minGp, searchQuery]);
+    return sortFootballData(filtered, sortBy, sortDirection);
+  }, [data, position, sortBy, sortDirection, minGp, searchQuery]);
 
   const totalPages = Math.ceil(filteredAndSorted.length / rowsPerPage);
   const startIdx = (currentPage - 1) * rowsPerPage;
   const displayData = filteredAndSorted.slice(startIdx, startIdx + rowsPerPage);
 
   const resetPage = () => setCurrentPage(1);
+  const handleSortChange = (nextSortKey) => {
+    if (nextSortKey === sortBy) {
+      setSortDirection((currentDirection) => (currentDirection === 'desc' ? 'asc' : 'desc'));
+    } else {
+      setSortBy(nextSortKey);
+      setSortDirection(nextSortKey === 'player' || nextSortKey === 'team' || nextSortKey === 'position' ? 'asc' : 'desc');
+    }
+    resetPage();
+  };
 
   if (error) {
     return (
@@ -36,7 +46,7 @@ export default function AllTimeFootball({ data, loading, error }) {
         <div className="error-box">
           Could not load football data. {error}
           <br />
-          Make sure to run <code>python python/build_ff_json.py</code> to generate the football JSON file.
+          Make sure to run <code>python "python/FF pipeline/build_ff_json.py"</code> to generate the football JSON file.
         </div>
       </div>
     );
@@ -94,11 +104,16 @@ export default function AllTimeFootball({ data, loading, error }) {
           value={sortBy}
           onChange={(e) => {
             setSortBy(e.target.value);
+            setSortDirection(e.target.value === 'player' || e.target.value === 'team' || e.target.value === 'position' ? 'asc' : 'desc');
             resetPage();
           }}
         >
+          <option value="player">Player</option>
+          <option value="team">Team</option>
+          <option value="position">Position</option>
           <option value="avg">Average Above Replacement</option>
           <option value="ttl">Total Above Replacement</option>
+          <option value="war">Wins Above Replacement</option>
           <option value="gp">Games Played</option>
           <option value="season">Season</option>
         </select>
@@ -121,7 +136,13 @@ export default function AllTimeFootball({ data, loading, error }) {
         <span className="last-updated">Updated Daily</span>
       </div>
 
-      <FootballTable data={displayData} startIndex={startIdx} />
+      <FootballTable
+        data={displayData}
+        startIndex={startIdx}
+        sortKey={sortBy}
+        sortDirection={sortDirection}
+        onSortChange={handleSortChange}
+      />
 
       <Pagination
         currentPage={currentPage}

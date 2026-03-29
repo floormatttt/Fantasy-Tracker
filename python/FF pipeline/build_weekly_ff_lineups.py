@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Iterable
 
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parents[2]
 INPUT_FILE = ROOT_DIR / "Past FF Data" / "player_points_above_cutoff.csv"
 OUTPUT_DIR = ROOT_DIR / "Past FF Data" / "weekly_lineups"
 
