@@ -1,11 +1,8 @@
 export default function Navigation({ activeTab, onTabChange }) {
-  const tabs = ['alltime', 'byseason', 'football', 'footballbyseason', 'weeklylineups'];
+  const tabs = ['nba', 'nfl'];
   const labels = {
-    alltime: 'All Time Leaders 🏀',
-    byseason: 'By Season 🏀',
-    football: 'All Time Leaders 🏈',
-    footballbyseason: 'By Season 🏈',
-    weeklylineups: 'Weekly Lineups 📈',
+    nba: 'NBA 🏀',
+    nfl: 'NFL 🏈',
   };
 
   return (

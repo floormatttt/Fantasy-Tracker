@@ -248,28 +248,29 @@ export default function WeeklyLineupDistribution({ data, loading, error }) {
         </div>
       </div>
 
-      <div className="filters">
-        <label>Season</label>
-        <select value={resolvedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
-          <option value="ALL">All Seasons</option>
-          {seasons.map((season) => (
-            <option key={season} value={season}>
-              {season}
-            </option>
-          ))}
-        </select>
+      <div className="filters filters-compact">
+        <div className="filter-card filter-card-season">
+          <label>Season</label>
+          <select value={resolvedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
+            <option value="ALL">All Seasons</option>
+            {seasons.map((season) => (
+              <option key={season} value={season}>
+                {season}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <label>Metric</label>
-        <select value={selectedMetric} onChange={(e) => setSelectedMetric(e.target.value)}>
-          {METRIC_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-
-        <div className="filter-spacer"></div>
-        <span className="last-updated">Weekly simulation summary</span>
+        <div className="filter-card filter-card-sort">
+          <label>Metric</label>
+          <select value={selectedMetric} onChange={(e) => setSelectedMetric(e.target.value)}>
+            {METRIC_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="stat-grid">

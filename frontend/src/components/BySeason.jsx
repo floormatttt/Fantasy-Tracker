@@ -108,35 +108,38 @@ export default function BySeason({ seasons, seasonData, loading, error }) {
         </div>
       </div>
 
-      <div className="filters">
-        <label>Season</label>
-        <select value={selectedSeason} onChange={(e) => handleSeasonChange(e.target.value)}>
-          {seasons.map(season => (
-            <option key={season} value={season}>
-              {season}
-            </option>
-          ))}
-        </select>
+      <div className="filters filters-nba">
+        <div className="filter-card filter-card-season">
+          <label>Season</label>
+          <select value={selectedSeason} onChange={(e) => handleSeasonChange(e.target.value)}>
+            {seasons.map((season) => (
+              <option key={season} value={season}>
+                {season}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <label>Player</label>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => handleSearchChange(e.target.value)}
-          placeholder="Search player"
-        />
+        <div className="filter-card filter-card-player">
+          <label>Player</label>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => handleSearchChange(e.target.value)}
+            placeholder="Search player"
+          />
+        </div>
 
-        <label>Sort By</label>
-        <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
-          {SORT_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-
-        <div className="filter-spacer"></div>
-        <span className="last-updated">Updated Daily</span>
+        <div className="filter-card filter-card-sort">
+          <label>Sort By</label>
+          <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {!selectedSeason ? (

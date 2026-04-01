@@ -87,82 +87,89 @@ export default function FootballBySeason({ data, loading, error }) {
         </div>
       </div>
 
-      <div className="filters">
-        <label>Season</label>
-        <select
-          value={selectedSeason}
-          onChange={(e) => {
-            setSelectedSeason(e.target.value);
-            resetPage();
-          }}
-        >
-          {seasons.map((season) => (
-            <option key={season} value={season}>
-              {season}
-            </option>
-          ))}
-        </select>
+      <div className="filters filters-compact">
+        <div className="filter-card filter-card-season">
+          <label>Season</label>
+          <select
+            value={selectedSeason}
+            onChange={(e) => {
+              setSelectedSeason(e.target.value);
+              resetPage();
+            }}
+          >
+            {seasons.map((season) => (
+              <option key={season} value={season}>
+                {season}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <label>Player</label>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-            resetPage();
-          }}
-          placeholder="Search player"
-        />
+        <div className="filter-card filter-card-player">
+          <label>Player</label>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              resetPage();
+            }}
+            placeholder="Search player"
+          />
+        </div>
 
-        <label>Position</label>
-        <select
-          value={position}
-          onChange={(e) => {
-            setPosition(e.target.value);
-            resetPage();
-          }}
-        >
-          {POSITION_OPTIONS.map((option) => (
-            <option key={option} value={option}>
-              {option === 'ALL' ? 'All Positions' : option}
-            </option>
-          ))}
-        </select>
+        <div className="filter-card filter-card-position">
+          <label>Position</label>
+          <select
+            value={position}
+            onChange={(e) => {
+              setPosition(e.target.value);
+              resetPage();
+            }}
+          >
+            {POSITION_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option === 'ALL' ? 'All Positions' : option}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <label>Sort By</label>
-        <select
-          value={sortBy}
-          onChange={(e) => {
-            setSortBy(e.target.value);
-            setSortDirection(textSort(e.target.value) ? 'asc' : 'desc');
-            resetPage();
-          }}
-        >
-          <option value="player">Player</option>
-          <option value="team">Team</option>
-          <option value="position">Position</option>
-          <option value="avg">Average Above Replacement</option>
-          <option value="ttl">Total Above Replacement</option>
-          <option value="war">Wins Above Replacement</option>
-          <option value="gp">Games Played</option>
-        </select>
+        <div className="filter-card filter-card-sort">
+          <label>Sort By</label>
+          <select
+            value={sortBy}
+            onChange={(e) => {
+              setSortBy(e.target.value);
+              setSortDirection(textSort(e.target.value) ? 'asc' : 'desc');
+              resetPage();
+            }}
+          >
+            <option value="player">Player</option>
+            <option value="team">Team</option>
+            <option value="position">Position</option>
+            <option value="avg">Average Above Replacement</option>
+            <option value="ttl">Total Above Replacement</option>
+            <option value="war">Wins Above Replacement</option>
+            <option value="gp">Games Played</option>
+          </select>
+        </div>
 
-        <label>Min Games</label>
-        <select
-          value={minGp}
-          onChange={(e) => {
-            setMinGp(parseInt(e.target.value));
-            resetPage();
-          }}
-        >
-          <option value="0">All</option>
-          <option value="5">5+</option>
-          <option value="10">10+</option>
-          <option value="15">15+</option>
-        </select>
-
-        <div className="filter-spacer"></div>
-        <span className="last-updated">Updated Daily</span>
+        <div className="filter-card filter-card-min">
+          <label>Min Games</label>
+          <select
+            value={minGp}
+            onChange={(e) => {
+              setMinGp(parseInt(e.target.value));
+              resetPage();
+            }}
+          >
+            <option value="0">All</option>
+            <option value="5">5+</option>
+            <option value="10">10+</option>
+            <option value="15">15+</option>
+          </select>
+        </div>
       </div>
 
       <FootballTable

@@ -107,34 +107,37 @@ export default function AllTimeLeaders({ data, loading, error }) {
         </div>
       </div>
 
-      <div className="filters">
-        <label>Player</label>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => handleSearchChange(e.target.value)}
-          placeholder="Search player"
-        />
+      <div className="filters filters-compact">
+        <div className="filter-card filter-card-player">
+          <label>Player</label>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => handleSearchChange(e.target.value)}
+            placeholder="Search player"
+          />
+        </div>
 
-        <label>Sort By</label>
-        <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
-          {SORT_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        <div className="filter-card filter-card-sort">
+          <label>Sort By</label>
+          <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <label>Min Games</label>
-        <select value={minGp} onChange={(e) => handleMinGpChange(e.target.value)}>
-          <option value="0">All</option>
-          <option value="10">10+</option>
-          <option value="25">25+</option>
-          <option value="50">50+</option>
-        </select>
-
-        <div className="filter-spacer"></div>
-        <span className="last-updated">Updated Daily</span>
+        <div className="filter-card filter-card-min">
+          <label>Min Games</label>
+          <select value={minGp} onChange={(e) => handleMinGpChange(e.target.value)}>
+            <option value="0">All</option>
+            <option value="10">10+</option>
+            <option value="25">25+</option>
+            <option value="50">50+</option>
+          </select>
+        </div>
       </div>
 
       <DataTable

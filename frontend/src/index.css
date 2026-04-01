@@ -10,6 +10,7 @@
 :root {
   --bg: #f9f7f4;
   --surface: #fff;
+  --surface-muted: #f4f1ed;
   --border: #e2ddd7;
   --text-primary: #1a1916;
   --text-secondary: #6b6560;
@@ -24,8 +25,40 @@
   --amber-light: #fef9ec;
   --purple: #7d3c98;
   --purple-light: #f5eef8;
+  --input-bg: #fff;
+  --row-hover: #faf8f5;
+  --chart-band: rgba(36, 113, 163, 0.14);
+  --chart-band-key: rgba(36, 113, 163, 0.18);
+  --danger-border: #f5c6c4;
+  --shadow-soft: 0 10px 30px rgba(26, 25, 22, 0.04);
   --font-sans: 'Libre Franklin', sans-serif;
   --font-serif: 'Source Serif 4', serif;
+}
+
+:root[data-theme='dark'] {
+  --bg: #14181d;
+  --surface: #1b2128;
+  --surface-muted: #252d36;
+  --border: #36404b;
+  --text-primary: #eef3f8;
+  --text-secondary: #b3bdc8;
+  --text-muted: #7f8a96;
+  --accent: #f05b4f;
+  --accent-light: rgba(240, 91, 79, 0.14);
+  --green: #4fd18a;
+  --green-light: rgba(79, 209, 138, 0.14);
+  --blue: #6db7ff;
+  --blue-light: rgba(109, 183, 255, 0.14);
+  --amber: #f2b84a;
+  --amber-light: rgba(242, 184, 74, 0.14);
+  --purple: #c08cff;
+  --purple-light: rgba(192, 140, 255, 0.14);
+  --input-bg: #11161b;
+  --row-hover: #202730;
+  --chart-band: rgba(109, 183, 255, 0.16);
+  --chart-band-key: rgba(109, 183, 255, 0.24);
+  --danger-border: rgba(240, 91, 79, 0.35);
+  --shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.28);
 }
 
 html, body, #root {
