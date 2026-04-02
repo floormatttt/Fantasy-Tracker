@@ -37,12 +37,12 @@ The project uses CSV files as source data, generates JSON files for the frontend
 ### NFL data
 - `Past FF Data/`
   - yearly source CSVs like `2013QB.csv`, `2024WR.csv`
-  - derived outputs like `player_points_above_cutoff.csv`
+  - derived outputs like `player_points_above_cutoff.csv` and `player_weekly_war.csv`
   - weekly simulation output `weekly_lineup_distribution_summary.csv`
 - `python/FF pipeline/`
   - `build_ff_points_above_cutoff.py`
     - builds football points-above-replacement CSV
-    - also writes weekly WAR columns and season WAR
+    - also writes a separate weekly WAR CSV with season WAR
   - `estimate_weekly_ff_lineup_distribution.py`
     - simulates weekly lineup distributions
     - includes replacement-team score, percentile, and win rate
@@ -104,7 +104,7 @@ python "python\FBB pipeline\build_nba_json.py"
 
 ### NFL
 
-Rebuild football player outputs, including weekly WAR columns and season WAR:
+Rebuild football player outputs, including separate points-above-cutoff and weekly WAR files:
 
 ```powershell
 python "python\FF pipeline\build_ff_points_above_cutoff.py"
@@ -148,7 +148,7 @@ The app currently includes:
 
 ### NFL flow
 
-`Past FF Data/* position csvs` -> `build_ff_points_above_cutoff.py` -> `player_points_above_cutoff.csv`
+`Past FF Data/* position csvs` -> `build_ff_points_above_cutoff.py` -> `player_points_above_cutoff.csv` + `player_weekly_war.csv`
 
 then:
 

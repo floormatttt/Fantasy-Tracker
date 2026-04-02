@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """
-Build a CSV in the same wide format as the source fantasy football files,
-but with each weekly cell replaced by the number of points above that week's
-positional cutoff, plus weekly and season-long WAR values.
+Build football player CSV outputs in the same wide format as the source
+fantasy football files.
+
+The points-above-cutoff output replaces each weekly cell with the number of
+points above that week's positional cutoff. A separate WAR output stores
+weekly WAR values plus season-long WAR.
 
 Cutoffs:
 - QB: 11th-highest scorer each week
@@ -15,13 +18,16 @@ from __future__ import annotations
 import csv
 import math
 from pathlib import Path
-from statistics import NormalDist
+from statistics import NormalDist, pstdev
 from typing import Dict, List
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "Past FF Data"
-OUTPUT_FILE = DATA_DIR / "player_points_above_cutoff.csv"
+POINTS_OUTPUT_FILE = DATA_DIR / "player_points_above_cutoff.csv"
+WAR_OUTPUT_FILE = DATA_DIR / "player_weekly_war.csv"
+POINTS_CONSISTENCY_OUTPUT_FILE = DATA_DIR / "player_points_above_cutoff_consistency.csv"
+WAR_CONSISTENCY_OUTPUT_FILE = DATA_DIR / "player_weekly_war_consistency.csv"
 WEEKLY_DISTRIBUTION_FILE = DATA_DIR / "weekly_lineup_distribution_summary.csv"
 
 QB_CUTOFF_RANK = 11
@@ -56,6 +62,10 @@ def format_points(value: float) -> str:
 
 def format_war(value: float) -> str:
     return f"{value:.4f}"
+
+
+def format_percentage(value: float) -> str:
+    return f"{value:.2f}"
 
 
 def load_rows(file_path: Path) -> List[dict]:
@@ -241,6 +251,122 @@ def build_player_row(
     return player_row
 
 
+def build_points_row(player_row: dict) -> dict:
+    points_row = {
+        "season": player_row["season"],
+        "#": player_row["#"],
+        "Player": player_row["Player"],
+        "Pos": player_row["Pos"],
+        "Team": player_row["Team"],
+        "GP": player_row["GP"],
+        "AVG": player_row["AVG"],
+        "TTL": player_row["TTL"],
+    }
+
+    for week in WEEK_COLUMNS:
+        points_row[week] = player_row[week]
+
+    return points_row
+
+
+def build_war_row(player_row: dict) -> dict:
+    war_row = {
+        "season": player_row["season"],
+        "#": player_row["#"],
+        "Player": player_row["Player"],
+        "Pos": player_row["Pos"],
+        "Team": player_row["Team"],
+        "GP": player_row["GP"],
+        "WAR": player_row["WAR"],
+    }
+
+    for war_week_column in WAR_WEEK_COLUMNS:
+        war_row[war_week_column] = player_row[war_week_column]
+
+    return war_row
+
+
+def build_consistency_row(
+    player_row: dict,
+    value_columns: List[str],
+    summary_value_column: str,
+    zscore_suffix: str,
+) -> dict:
+    values: List[float] = []
+    for column in value_columns:
+        value = parse_points(player_row.get(column))
+        if value is not None:
+            values.append(value)
+
+    stddev = pstdev(values) if len(values) > 1 else 0.0
+    z_scores: Dict[str, float | None] = {}
+
+    if values:
+        mean_value = sum(values) / len(values)
+        for column in value_columns:
+            value = parse_points(player_row.get(column))
+            if value is None:
+                z_scores[column] = None
+            elif stddev > 0:
+                z_scores[column] = (value - mean_value) / stddev
+            else:
+                z_scores[column] = 0.0
+    else:
+        for column in value_columns:
+            z_scores[column] = None
+
+    valid_z_scores = [value for value in z_scores.values() if value is not None]
+    within_one_sd_rate = (
+        (sum(1 for value in valid_z_scores if abs(value) <= 1.0) / len(valid_z_scores)) * 100
+        if valid_z_scores
+        else 0.0
+    )
+    average_absolute_z_score = (
+        sum(abs(value) for value in valid_z_scores) / len(valid_z_scores)
+        if valid_z_scores
+        else 0.0
+    )
+    consistency_index = 1 / (1 + average_absolute_z_score)
+
+    consistency_row = {
+        "season": player_row["season"],
+        "#": player_row["#"],
+        "Player": player_row["Player"],
+        "Pos": player_row["Pos"],
+        "Team": player_row["Team"],
+        "GP": player_row["GP"],
+        summary_value_column: player_row[summary_value_column],
+        "stdev": format_war(stddev),
+        "pct_within_1_stdev": format_percentage(within_one_sd_rate),
+        "consistency_index": format_war(consistency_index),
+    }
+
+    for column in value_columns:
+        zscore_column = f"{column} {zscore_suffix}"
+        z_score = z_scores[column]
+        consistency_row[zscore_column] = "" if z_score is None else format_war(z_score)
+
+    return consistency_row
+
+
+def build_points_consistency_row(player_row: dict) -> dict:
+    return build_consistency_row(
+        player_row=player_row,
+        value_columns=WEEK_COLUMNS,
+        summary_value_column="TTL",
+        zscore_suffix="z-score",
+    )
+
+
+def build_war_consistency_row(player_row: dict) -> dict:
+    return build_consistency_row(
+        player_row=player_row,
+        value_columns=WAR_WEEK_COLUMNS,
+        summary_value_column="WAR",
+        zscore_suffix="z-score",
+    )
+
+
 def played_game_count(row: dict) -> int:
     return sum(1 for week in WEEK_COLUMNS if parse_points(row.get(week)) is not None)
 
@@ -339,7 +465,7 @@ def build_output_rows() -> List[dict]:
 
 
 def write_output(rows: List[dict]) -> None:
-    fieldnames = [
+    points_fieldnames = [
         "season",
         "#",
         "Player",
@@ -347,22 +473,78 @@ def write_output(rows: List[dict]) -> None:
         "Team",
         "GP",
         *WEEK_COLUMNS,
-        *WAR_WEEK_COLUMNS,
         "AVG",
         "TTL",
+    ]
+    war_fieldnames = [
+        "season",
+        "#",
+        "Player",
+        "Pos",
+        "Team",
+        "GP",
+        *WAR_WEEK_COLUMNS,
         "WAR",
     ]
+    points_rows = [build_points_row(row) for row in rows]
+    war_rows = [build_war_row(row) for row in rows]
+    points_consistency_rows = [build_points_consistency_row(row) for row in rows]
+    war_consistency_rows = [build_war_consistency_row(row) for row in rows]
+    points_consistency_fieldnames = [
+        "season",
+        "#",
+        "Player",
+        "Pos",
+        "Team",
+        "GP",
+        "TTL",
+        "stdev",
+        "pct_within_1_stdev",
+        "consistency_index",
+        *[f"{week} z-score" for week in WEEK_COLUMNS],
+    ]
+    war_consistency_fieldnames = [
+        "season",
+        "#",
+        "Player",
+        "Pos",
+        "Team",
+        "GP",
+        "WAR",
+        "stdev",
+        "pct_within_1_stdev",
+        "consistency_index",
+        *[f"{week_column} z-score" for week_column in WAR_WEEK_COLUMNS],
+    ]
 
-    with OUTPUT_FILE.open("w", newline="", encoding="utf-8") as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+    with POINTS_OUTPUT_FILE.open("w", newline="", encoding="utf-8") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=points_fieldnames)
         writer.writeheader()
-        writer.writerows(rows)
+        writer.writerows(points_rows)
+
+    with WAR_OUTPUT_FILE.open("w", newline="", encoding="utf-8") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=war_fieldnames)
+        writer.writeheader()
+        writer.writerows(war_rows)
+
+    with POINTS_CONSISTENCY_OUTPUT_FILE.open("w", newline="", encoding="utf-8") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=points_consistency_fieldnames)
+        writer.writeheader()
+        writer.writerows(points_consistency_rows)
+
+    with WAR_CONSISTENCY_OUTPUT_FILE.open("w", newline="", encoding="utf-8") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=war_consistency_fieldnames)
+        writer.writeheader()
+        writer.writerows(war_consistency_rows)
 
 
 def main() -> None:
     rows = build_output_rows()
     write_output(rows)
-    print(f"Wrote {len(rows)} player rows to {OUTPUT_FILE}")
+    print(f"Wrote {len(rows)} player rows to {POINTS_OUTPUT_FILE}")
+    print(f"Wrote {len(rows)} player rows to {WAR_OUTPUT_FILE}")
+    print(f"Wrote {len(rows)} player rows to {POINTS_CONSISTENCY_OUTPUT_FILE}")
+    print(f"Wrote {len(rows)} player rows to {WAR_CONSISTENCY_OUTPUT_FILE}")
 
 
 if __name__ == "__main__":

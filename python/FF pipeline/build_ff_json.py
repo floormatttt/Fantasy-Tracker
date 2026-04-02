@@ -16,6 +16,9 @@ def main():
 
     datasets = [
         ("player_points_above_cutoff.csv", "player_points_above_cutoff.json"),
+        ("player_weekly_war.csv", "player_weekly_war.json"),
+        ("player_points_above_cutoff_consistency.csv", "player_points_above_cutoff_consistency.json"),
+        ("player_weekly_war_consistency.csv", "player_weekly_war_consistency.json"),
         ("weekly_lineup_distribution_summary.csv", "weekly_lineup_distribution_summary.json"),
     ]
 

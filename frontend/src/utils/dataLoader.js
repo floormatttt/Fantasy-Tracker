@@ -16,10 +16,20 @@ export async function loadAllTimeData() {
 
 export async function loadFootballAllTimeData() {
   try {
-    const res = await fetch('./ff_data/player_points_above_cutoff.json');
-    if (!res.ok) throw new Error('Could not load football points-above-cutoff data');
-    const data = await res.json();
-    return data.map(parseFootballPlayer).filter(p => p.player && p.gp > 0);
+    const [pointsRes, warRes] = await Promise.all([
+      fetch('./ff_data/player_points_above_cutoff.json'),
+      fetch('./ff_data/player_weekly_war.json'),
+    ]);
+
+    if (!pointsRes.ok) throw new Error('Could not load football points-above-cutoff data');
+    if (!warRes.ok) throw new Error('Could not load football weekly WAR data');
+
+    const [pointsData, warData] = await Promise.all([pointsRes.json(), warRes.json()]);
+    const warByPlayer = new Map(warData.map((row) => [footballPlayerKey(row), row]));
+
+    return pointsData
+      .map((row) => parseFootballPlayer(row, warByPlayer.get(footballPlayerKey(row))))
+      .filter(p => p.player && p.gp > 0);
   } catch (err) {
     console.error('Error loading football all-time data:', err);
     throw err;
@@ -83,7 +93,16 @@ export function parsePlayer(row, season = null) {
   };
 }
 
-export function parseFootballPlayer(row) {
+function footballPlayerKey(row) {
+  return [
+    String(row.season || ''),
+    String(row.Player || ''),
+    String(row.Pos || ''),
+    String(row.Team || ''),
+  ].join('::');
+}
+
+export function parseFootballPlayer(row, warRow = null) {
   return {
     player: String(row.Player || ''),
     season: String(row.season || ''),
@@ -92,7 +111,7 @@ export function parseFootballPlayer(row) {
     gp: parseInt(row.GP) || 0,
     avg: parseFloat(row.AVG) || 0,
     ttl: parseFloat(row.TTL) || 0,
-    war: parseFloat(row.WAR) || 0,
+    war: parseFloat(warRow?.WAR) || 0,
   };
 }
 
