@@ -338,6 +338,7 @@ def build_consistency_row(
         summary_value_column: player_row[summary_value_column],
         "stdev": format_war(stddev),
         "pct_within_1_stdev": format_percentage(within_one_sd_rate),
+        "avg_abs_z_score": format_war(average_absolute_z_score),
         "consistency_index": format_war(consistency_index),
     }
 
@@ -500,6 +501,7 @@ def write_output(rows: List[dict]) -> None:
         "TTL",
         "stdev",
         "pct_within_1_stdev",
+        "avg_abs_z_score",
         "consistency_index",
         *[f"{week} z-score" for week in WEEK_COLUMNS],
     ]
@@ -513,6 +515,7 @@ def write_output(rows: List[dict]) -> None:
         "WAR",
         "stdev",
         "pct_within_1_stdev",
+        "avg_abs_z_score",
         "consistency_index",
         *[f"{week_column} z-score" for week_column in WAR_WEEK_COLUMNS],
     ]
