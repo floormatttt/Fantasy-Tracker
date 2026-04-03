@@ -14,6 +14,7 @@ import {
   loadWeeklyLineupDistributionData,
 } from './utils/dataLoader';
 import './App.css';
+import "./firebase";
 
 function App() {
   const [activeTab, setActiveTab] = useState('nba');
