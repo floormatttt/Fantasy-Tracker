@@ -29,7 +29,7 @@ def write_json(data, output_path):
 
 
 def main():
-    root_dir = Path(__file__).resolve().parent.parent
+    root_dir = Path(__file__).resolve().parents[2]
     candidate_data_dirs = [
         root_dir / "Past FBB Data",
         root_dir / "Past Fantasy Data",
