@@ -1,12 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import FootballTable from './FootballTable';
-import FootballLeagueSettings from './FootballLeagueSettings';
 import Pagination from './Pagination';
 import { sortFootballData } from '../utils/dataLoader';
 
 const POSITION_OPTIONS = ['ALL', 'QB', 'RB', 'WR', 'TE'];
 
-export default function FootballBySeason({ data, loading, error, leagueSettings, onLeagueSettingsChange }) {
+export default function FootballBySeason({ data, loading, error }) {
   const [selectedSeason, setSelectedSeason] = useState('');
   const [position, setPosition] = useState('ALL');
   const [sortBy, setSortBy] = useState('war');
@@ -84,11 +83,9 @@ export default function FootballBySeason({ data, loading, error, leagueSettings,
       <div className="page-title">
         <div>
           <h1>By Season 🏈</h1>
-          <p>Football leaders for a selected season using your current league settings</p>
+          <p>Football leaders for a selected season</p>
         </div>
       </div>
-
-      <FootballLeagueSettings settings={leagueSettings} onChange={onLeagueSettingsChange} />
 
       <div className="filters filters-compact">
         <div className="filter-card filter-card-season">

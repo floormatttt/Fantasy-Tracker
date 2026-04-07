@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import AllTimeLeaders from './components/AllTimeLeaders';
@@ -13,7 +13,6 @@ import {
   loadSeasonData,
   loadWeeklyLineupDistributionData,
 } from './utils/dataLoader';
-import { computeFootballSeasonSummaries, DEFAULT_LEAGUE_SETTINGS } from './utils/footballAnalytics';
 import './App.css';
 import "./firebase";
 
@@ -23,18 +22,12 @@ function App() {
   const [nflView, setNflView] = useState('alltime');
   const [theme, setTheme] = useState('light');
   const [allTimeData, setAllTimeData] = useState([]);
-  const [footballRawData, setFootballRawData] = useState([]);
+  const [footballData, setFootballData] = useState([]);
   const [weeklyLineupData, setWeeklyLineupData] = useState([]);
   const [seasonData, setSeasonData] = useState({});
   const [availableSeasons, setAvailableSeasons] = useState([]);
-  const [footballLeagueSettings, setFootballLeagueSettings] = useState(DEFAULT_LEAGUE_SETTINGS);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const footballData = useMemo(
-    () => computeFootballSeasonSummaries(footballRawData, footballLeagueSettings),
-    [footballRawData, footballLeagueSettings]
-  );
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem('fantasy-tracker-theme');
@@ -62,7 +55,7 @@ function App() {
         setAllTimeData(fullData);
 
         const footballAllTimeData = await loadFootballAllTimeData();
-        setFootballRawData(footballAllTimeData);
+        setFootballData(footballAllTimeData);
 
         const weeklyDistributionData = await loadWeeklyLineupDistributionData();
         setWeeklyLineupData(weeklyDistributionData);
@@ -150,8 +143,6 @@ function App() {
                 data={footballData}
                 loading={loading}
                 error={error}
-                leagueSettings={footballLeagueSettings}
-                onLeagueSettingsChange={setFootballLeagueSettings}
               />
             )}
             {nflView === 'byseason' && (
@@ -160,8 +151,6 @@ function App() {
                 data={footballData}
                 loading={loading}
                 error={error}
-                leagueSettings={footballLeagueSettings}
-                onLeagueSettingsChange={setFootballLeagueSettings}
               />
             )}
             {nflView === 'weeklylineups' && (
