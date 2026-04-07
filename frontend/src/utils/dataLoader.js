@@ -47,18 +47,6 @@ export async function loadFootballAllTimeData() {
   }
 }
 
-export async function loadFootballRawData() {
-  try {
-    const res = await fetch('./ff_data/player_weekly_raw.json');
-    if (!res.ok) throw new Error('Could not load football raw weekly data');
-    const data = await res.json();
-    return data.filter((row) => row.Player && row.Pos && row.season);
-  } catch (err) {
-    console.error('Error loading football all-time data:', err);
-    throw err;
-  }
-}
-
 function footballPlayerKey(row) {
   return [
     String(row.season || ''),
