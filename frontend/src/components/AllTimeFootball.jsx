@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react';
 import FootballTable from './FootballTable';
+import FootballLeagueSettings from './FootballLeagueSettings';
 import Pagination from './Pagination';
 import { sortFootballData } from '../utils/dataLoader';
 
 const POSITION_OPTIONS = ['ALL', 'QB', 'RB', 'WR', 'TE'];
 
-export default function AllTimeFootball({ data, loading, error }) {
+export default function AllTimeFootball({ data, loading, error, leagueSettings, onLeagueSettingsChange }) {
   const [position, setPosition] = useState('ALL');
   const [sortBy, setSortBy] = useState('war');
   const [sortDirection, setSortDirection] = useState('desc');
@@ -68,9 +69,11 @@ export default function AllTimeFootball({ data, loading, error }) {
       <div className="page-title">
         <div>
           <h1>All-Time Leaders 🏈</h1>
-          <p>Player points above replacement across all available football seasons</p>
+          <p>Player value recalculated from your league settings across all available football seasons</p>
         </div>
       </div>
+
+      <FootballLeagueSettings settings={leagueSettings} onChange={onLeagueSettingsChange} />
 
       <div className="filters filters-compact">
         <div className="filter-card filter-card-player">
