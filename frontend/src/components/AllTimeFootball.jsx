@@ -119,6 +119,8 @@ export default function AllTimeFootball({ data, loading, error }) {
             <option value="avg">Average Above Replacement</option>
             <option value="ttl">Total Above Replacement</option>
             <option value="war">Wins Above Replacement</option>
+            <option value="consistencyScore">Consistency Score</option>
+            <option value="improvementScore">Improvement Score</option>
             <option value="gp">Games Played</option>
             <option value="season">Season</option>
           </select>

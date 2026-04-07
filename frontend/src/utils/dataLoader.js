@@ -16,19 +16,30 @@ export async function loadAllTimeData() {
 
 export async function loadFootballAllTimeData() {
   try {
-    const [pointsRes, warRes] = await Promise.all([
+    const [pointsRes, warRes, pointsConsistencyRes] = await Promise.all([
       fetch('./ff_data/player_points_above_cutoff.json'),
       fetch('./ff_data/player_weekly_war.json'),
+      fetch('./ff_data/player_points_above_cutoff_consistency.json'),
     ]);
 
     if (!pointsRes.ok) throw new Error('Could not load football points-above-cutoff data');
     if (!warRes.ok) throw new Error('Could not load football weekly WAR data');
+    if (!pointsConsistencyRes.ok) throw new Error('Could not load football consistency data');
 
-    const [pointsData, warData] = await Promise.all([pointsRes.json(), warRes.json()]);
+    const [pointsData, warData, pointsConsistencyData] = await Promise.all([
+      pointsRes.json(),
+      warRes.json(),
+      pointsConsistencyRes.json(),
+    ]);
     const warByPlayer = new Map(warData.map((row) => [footballPlayerKey(row), row]));
+    const consistencyByPlayer = new Map(pointsConsistencyData.map((row) => [footballPlayerKey(row), row]));
 
     return pointsData
-      .map((row) => parseFootballPlayer(row, warByPlayer.get(footballPlayerKey(row))))
+      .map((row) => parseFootballPlayer(
+        row,
+        warByPlayer.get(footballPlayerKey(row)),
+        consistencyByPlayer.get(footballPlayerKey(row))
+      ))
       .filter(p => p.player && p.gp > 0);
   } catch (err) {
     console.error('Error loading football all-time data:', err);
@@ -102,7 +113,7 @@ function footballPlayerKey(row) {
   ].join('::');
 }
 
-export function parseFootballPlayer(row, warRow = null) {
+export function parseFootballPlayer(row, warRow = null, consistencyRow = null) {
   return {
     player: String(row.Player || ''),
     season: String(row.season || ''),
@@ -112,6 +123,8 @@ export function parseFootballPlayer(row, warRow = null) {
     avg: parseFloat(row.AVG) || 0,
     ttl: parseFloat(row.TTL) || 0,
     war: parseFloat(warRow?.WAR) || 0,
+    consistencyScore: parseFloat(consistencyRow?.consistency_score) || 0,
+    improvementScore: parseFloat(consistencyRow?.improvement_score) || 0,
   };
 }
 
@@ -184,6 +197,8 @@ export function sortFootballData(data, sortKey, direction = 'desc') {
     if (sortKey === 'avg') return (a.avg - b.avg) * multiplier;
     if (sortKey === 'ttl') return (a.ttl - b.ttl) * multiplier;
     if (sortKey === 'war') return (a.war - b.war) * multiplier;
+    if (sortKey === 'consistencyScore') return (a.consistencyScore - b.consistencyScore) * multiplier;
+    if (sortKey === 'improvementScore') return (a.improvementScore - b.improvementScore) * multiplier;
 
     return 0;
   });

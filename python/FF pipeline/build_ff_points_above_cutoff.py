@@ -7,6 +7,16 @@ The points-above-cutoff output replaces each weekly cell with the number of
 points above that week's positional cutoff. A separate WAR output stores
 weekly WAR values plus season-long WAR.
 
+After those two base CSVs are built, the script also writes two summary CSVs:
+- player_points_above_cutoff_consistency.csv
+- player_weekly_war_consistency.csv
+
+Each summary CSV contains only:
+- total production
+- average weekly production
+- weekly standard deviation
+- a 0-100 consistency score scaled within each position group
+
 Cutoffs:
 - QB: 11th-highest scorer each week
 - RB/WR/TE: the score of the player after the top 20 RBs, top 20 WRs,
@@ -38,6 +48,7 @@ FLEX_STARTER_COUNTS = {
 }
 FLEX_BENCH_OFFSET = 20
 
+POSITIONS = ["QB", "RB", "WR", "TE"]
 WEEK_COLUMNS = [str(week) for week in range(1, 19)]
 WAR_WEEK_COLUMNS = [f"week {week} WAR" for week in WEEK_COLUMNS]
 STANDARD_NORMAL = NormalDist()
@@ -62,10 +73,6 @@ def format_points(value: float) -> str:
 
 def format_war(value: float) -> str:
     return f"{value:.4f}"
-
-
-def format_percentage(value: float) -> str:
-    return f"{value:.2f}"
 
 
 def load_rows(file_path: Path) -> List[dict]:
@@ -242,17 +249,17 @@ def build_player_row(
         numeric_wars.append(weekly_war)
         player_row[f"week {week} WAR"] = format_war(weekly_war)
 
-    total = sum(numeric_diffs)
-    average = total / len(numeric_diffs) if numeric_diffs else 0.0
-    player_row["AVG"] = format_points(average)
-    player_row["TTL"] = format_points(total)
+    total_points = sum(numeric_diffs)
+    average_points = total_points / len(numeric_diffs) if numeric_diffs else 0.0
+    player_row["AVG"] = format_points(average_points)
+    player_row["TTL"] = format_points(total_points)
     player_row["WAR"] = format_war(sum(numeric_wars))
 
     return player_row
 
 
 def build_points_row(player_row: dict) -> dict:
-    points_row = {
+    row = {
         "season": player_row["season"],
         "#": player_row["#"],
         "Player": player_row["Player"],
@@ -264,13 +271,13 @@ def build_points_row(player_row: dict) -> dict:
     }
 
     for week in WEEK_COLUMNS:
-        points_row[week] = player_row[week]
+        row[week] = player_row[week]
 
-    return points_row
+    return row
 
 
 def build_war_row(player_row: dict) -> dict:
-    war_row = {
+    row = {
         "season": player_row["season"],
         "#": player_row["#"],
         "Player": player_row["Player"],
@@ -280,92 +287,10 @@ def build_war_row(player_row: dict) -> dict:
         "WAR": player_row["WAR"],
     }
 
-    for war_week_column in WAR_WEEK_COLUMNS:
-        war_row[war_week_column] = player_row[war_week_column]
+    for week_column in WAR_WEEK_COLUMNS:
+        row[week_column] = player_row[week_column]
 
-    return war_row
-
-
-def build_consistency_row(
-    player_row: dict,
-    value_columns: List[str],
-    summary_value_column: str,
-    zscore_suffix: str,
-) -> dict:
-    values: List[float] = []
-    for column in value_columns:
-        value = parse_points(player_row.get(column))
-        if value is not None:
-            values.append(value)
-
-    stddev = pstdev(values) if len(values) > 1 else 0.0
-    z_scores: Dict[str, float | None] = {}
-
-    if values:
-        mean_value = sum(values) / len(values)
-        for column in value_columns:
-            value = parse_points(player_row.get(column))
-            if value is None:
-                z_scores[column] = None
-            elif stddev > 0:
-                z_scores[column] = (value - mean_value) / stddev
-            else:
-                z_scores[column] = 0.0
-    else:
-        for column in value_columns:
-            z_scores[column] = None
-
-    valid_z_scores = [value for value in z_scores.values() if value is not None]
-    within_one_sd_rate = (
-        (sum(1 for value in valid_z_scores if abs(value) <= 1.0) / len(valid_z_scores)) * 100
-        if valid_z_scores
-        else 0.0
-    )
-    average_absolute_z_score = (
-        sum(abs(value) for value in valid_z_scores) / len(valid_z_scores)
-        if valid_z_scores
-        else 0.0
-    )
-    consistency_index = 1 / (1 + average_absolute_z_score)
-
-    consistency_row = {
-        "season": player_row["season"],
-        "#": player_row["#"],
-        "Player": player_row["Player"],
-        "Pos": player_row["Pos"],
-        "Team": player_row["Team"],
-        "GP": player_row["GP"],
-        summary_value_column: player_row[summary_value_column],
-        "stdev": format_war(stddev),
-        "pct_within_1_stdev": format_percentage(within_one_sd_rate),
-        "avg_abs_z_score": format_war(average_absolute_z_score),
-        "consistency_index": format_war(consistency_index),
-    }
-
-    for column in value_columns:
-        zscore_column = f"{column} {zscore_suffix}"
-        z_score = z_scores[column]
-        consistency_row[zscore_column] = "" if z_score is None else format_war(z_score)
-
-    return consistency_row
-
-
-def build_points_consistency_row(player_row: dict) -> dict:
-    return build_consistency_row(
-        player_row=player_row,
-        value_columns=WEEK_COLUMNS,
-        summary_value_column="TTL",
-        zscore_suffix="z-score",
-    )
-
-
-def build_war_consistency_row(player_row: dict) -> dict:
-    return build_consistency_row(
-        player_row=player_row,
-        value_columns=WAR_WEEK_COLUMNS,
-        summary_value_column="WAR",
-        zscore_suffix="z-score",
-    )
+    return row
 
 
 def played_game_count(row: dict) -> int:
@@ -419,12 +344,11 @@ def should_keep_row(row: dict) -> bool:
 def build_output_rows() -> List[dict]:
     output_rows: List[dict] = []
     weekly_distribution_context = load_weekly_distribution_context()
-
     season_rows_by_position: Dict[str, Dict[str, List[dict]]] = {}
 
     for file_path in sorted(DATA_DIR.glob("*.csv")):
         position = position_from_name(file_path)
-        if position not in {"QB", "RB", "WR", "TE"}:
+        if position not in set(POSITIONS):
             continue
 
         season = season_from_name(file_path)
@@ -434,9 +358,9 @@ def build_output_rows() -> List[dict]:
         rows_by_position = season_rows_by_position[season]
         weekly_cutoffs_by_position = build_weekly_cutoffs_for_season(rows_by_position)
 
-        for position in ["QB", "RB", "WR", "TE"]:
+        for position in POSITIONS:
             source_rows = rows_by_position.get(position, [])
-            file_rows = [
+            position_rows = [
                 build_player_row(
                     season,
                     position,
@@ -446,9 +370,9 @@ def build_output_rows() -> List[dict]:
                 )
                 for source_row in source_rows
             ]
-            file_rows = [row for row in file_rows if should_keep_row(row)]
+            position_rows = [row for row in position_rows if should_keep_row(row)]
 
-            file_rows.sort(
+            position_rows.sort(
                 key=lambda row: (
                     row["season"],
                     row["Pos"],
@@ -457,12 +381,133 @@ def build_output_rows() -> List[dict]:
                 )
             )
 
-            for index, row in enumerate(file_rows, start=1):
+            for index, row in enumerate(position_rows, start=1):
                 row["#"] = str(index)
 
-            output_rows.extend(file_rows)
+            output_rows.extend(position_rows)
 
     return output_rows
+
+
+def average_for_columns(row: dict, value_columns: List[str]) -> float:
+    values = [value for column in value_columns if (value := parse_points(row.get(column))) is not None]
+    if not values:
+        return 0.0
+    return sum(values) / len(values)
+
+
+def stddev_for_columns(row: dict, value_columns: List[str]) -> float:
+    values = [value for column in value_columns if (value := parse_points(row.get(column))) is not None]
+    if len(values) <= 1:
+        return 0.0
+    return pstdev(values)
+
+
+def slope_for_columns(row: dict, value_columns: List[str]) -> float:
+    points = []
+    for index, column in enumerate(value_columns, start=1):
+        value = parse_points(row.get(column))
+        if value is not None:
+            points.append((index, value))
+
+    if len(points) <= 1:
+        return 0.0
+
+    x_mean = sum(x for x, _ in points) / len(points)
+    y_mean = sum(y for _, y in points) / len(points)
+    numerator = sum((x - x_mean) * (y - y_mean) for x, y in points)
+    denominator = sum((x - x_mean) ** 2 for x, _ in points)
+
+    if math.isclose(denominator, 0.0):
+        return 0.0
+
+    return numerator / denominator
+
+
+def improvement_score_for_columns(row: dict, value_columns: List[str]) -> float:
+    stddev = stddev_for_columns(row, value_columns)
+    if math.isclose(stddev, 0.0):
+        return 50.0
+
+    trend = slope_for_columns(row, value_columns) / stddev
+    powered_trend = math.copysign(abs(trend) ** 0.7, trend)
+    return 50.0 + 50.0 * math.tanh(powered_trend)
+
+
+def add_consistency_scores(rows: List[dict]) -> List[dict]:
+    stdevs_by_position: Dict[str, List[float]] = {}
+
+    for row in rows:
+        position = row["Pos"]
+        stdev = float(row["stdev"])
+        stdevs_by_position.setdefault(position, []).append(stdev)
+
+    ranges_by_position = {
+        position: (min(stdevs), max(stdevs))
+        for position, stdevs in stdevs_by_position.items()
+        if stdevs
+    }
+
+    updated_rows: List[dict] = []
+    for row in rows:
+        updated_row = dict(row)
+        stdev = float(updated_row["stdev"])
+        stdev_min, stdev_max = ranges_by_position[updated_row["Pos"]]
+
+        if math.isclose(stdev_max, stdev_min):
+            score = 100.0
+        else:
+            raw_score = 100.0 * ((stdev_max - stdev) / (stdev_max - stdev_min))
+            score = 100.0 * ((raw_score / 100.0) ** 0.75)
+
+        updated_row["consistency_score"] = format_war(score)
+        updated_rows.append(updated_row)
+
+    return updated_rows
+
+
+def build_points_consistency_rows(player_rows: List[dict]) -> List[dict]:
+    rows = []
+    for player_row in player_rows:
+        rows.append(
+            {
+                "season": player_row["season"],
+                "#": player_row["#"],
+                "Player": player_row["Player"],
+                "Pos": player_row["Pos"],
+                "Team": player_row["Team"],
+                "GP": player_row["GP"],
+                "TTL": player_row["TTL"],
+                "AVG": format_points(average_for_columns(player_row, WEEK_COLUMNS)),
+                "stdev": format_war(stddev_for_columns(player_row, WEEK_COLUMNS)),
+                "improvement_score": format_war(
+                    improvement_score_for_columns(player_row, WEEK_COLUMNS)
+                ),
+            }
+        )
+    return add_consistency_scores(rows)
+
+
+def build_war_consistency_rows(player_rows: List[dict]) -> List[dict]:
+    rows = []
+    for player_row in player_rows:
+        rows.append(
+            {
+                "season": player_row["season"],
+                "#": player_row["#"],
+                "Player": player_row["Player"],
+                "Pos": player_row["Pos"],
+                "Team": player_row["Team"],
+                "GP": player_row["GP"],
+                "WAR": player_row["WAR"],
+                "AVG": format_war(average_for_columns(player_row, WAR_WEEK_COLUMNS)),
+                "stdev": format_war(stddev_for_columns(player_row, WAR_WEEK_COLUMNS)),
+                "improvement_score": format_war(
+                    improvement_score_for_columns(player_row, WAR_WEEK_COLUMNS)
+                ),
+            }
+        )
+    return add_consistency_scores(rows)
 
 
 def write_output(rows: List[dict]) -> None:
@@ -487,10 +532,6 @@ def write_output(rows: List[dict]) -> None:
         *WAR_WEEK_COLUMNS,
         "WAR",
     ]
-    points_rows = [build_points_row(row) for row in rows]
-    war_rows = [build_war_row(row) for row in rows]
-    points_consistency_rows = [build_points_consistency_row(row) for row in rows]
-    war_consistency_rows = [build_war_consistency_row(row) for row in rows]
     points_consistency_fieldnames = [
         "season",
         "#",
@@ -499,11 +540,10 @@ def write_output(rows: List[dict]) -> None:
         "Team",
         "GP",
         "TTL",
+        "AVG",
         "stdev",
-        "pct_within_1_stdev",
-        "avg_abs_z_score",
-        "consistency_index",
-        *[f"{week} z-score" for week in WEEK_COLUMNS],
+        "improvement_score",
+        "consistency_score",
     ]
     war_consistency_fieldnames = [
         "season",
@@ -513,12 +553,16 @@ def write_output(rows: List[dict]) -> None:
         "Team",
         "GP",
         "WAR",
+        "AVG",
         "stdev",
-        "pct_within_1_stdev",
-        "avg_abs_z_score",
-        "consistency_index",
-        *[f"{week_column} z-score" for week_column in WAR_WEEK_COLUMNS],
+        "improvement_score",
+        "consistency_score",
     ]
+
+    points_rows = [build_points_row(row) for row in rows]
+    war_rows = [build_war_row(row) for row in rows]
+    points_consistency_rows = build_points_consistency_rows(rows)
+    war_consistency_rows = build_war_consistency_rows(rows)
 
     with POINTS_OUTPUT_FILE.open("w", newline="", encoding="utf-8") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=points_fieldnames)

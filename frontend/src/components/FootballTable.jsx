@@ -9,6 +9,8 @@ const SORTABLE_COLUMNS = [
   { key: 'avg', label: 'AVG', className: 'num' },
   { key: 'ttl', label: 'TTL', className: 'num' },
   { key: 'war', label: 'WAR', className: 'num' },
+  { key: 'consistencyScore', label: 'Consistency', className: 'num' },
+  { key: 'improvementScore', label: 'Improvement', className: 'num' },
 ];
 
 function sortIndicator(sortKey, sortDirection, columnKey) {
@@ -22,6 +24,21 @@ function getPositionClass(position) {
   if (position === 'WR') return 'pill-blue';
   if (position === 'TE') return 'pill-orange';
   return 'pill-amber';
+}
+
+function getConsistencyColor(score) {
+  if (score < 40) return 'var(--accent)';
+  if (score < 60) return 'var(--amber)';
+  if (score < 80) return 'var(--green)';
+  return 'var(--blue)';
+}
+
+function getImprovementColor(score) {
+  if (score < 40) return 'var(--accent)';
+  if (score < 48) return 'var(--amber)';
+  if (score <= 52) return 'var(--text-secondary)';
+  if (score < 60) return 'var(--green)';
+  return 'var(--blue)';
 }
 
 export default function FootballTable({
@@ -72,6 +89,18 @@ export default function FootballTable({
                 </td>
                 <td className="num" style={{ fontWeight: '700', color: 'var(--blue)' }}>
                   {formatNumber(player.war, 3)}
+                </td>
+                <td
+                  className="num"
+                  style={{ fontWeight: '700', color: getConsistencyColor(player.consistencyScore) }}
+                >
+                  {formatNumber(player.consistencyScore, 1)}
+                </td>
+                <td
+                  className="num"
+                  style={{ fontWeight: '700', color: getImprovementColor(player.improvementScore) }}
+                >
+                  {formatNumber(player.improvementScore, 1)}
                 </td>
               </tr>
             );
