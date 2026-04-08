@@ -5,6 +5,7 @@ import AllTimeLeaders from './components/AllTimeLeaders';
 import BySeason from './components/BySeason';
 import AllTimeFootball from './components/AllTimeFootball';
 import FootballBySeason from './components/FootballBySeason';
+import MetricGraphs from './components/MetricGraphs';
 import WeeklyLineupDistribution from './components/WeeklyLineupDistribution';
 import {
   loadAllTimeData,
@@ -136,6 +137,12 @@ function App() {
               >
                 Weekly Lineups
               </button>
+              <button
+                className={`subnav-tab ${nflView === 'metricgraphs' ? 'active' : ''}`}
+                onClick={() => setNflView('metricgraphs')}
+              >
+                Metric Graphs
+              </button>
             </div>
             {nflView === 'alltime' && (
               <AllTimeFootball
@@ -157,6 +164,14 @@ function App() {
               <WeeklyLineupDistribution
                 key="weeklylineups"
                 data={weeklyLineupData}
+                loading={loading}
+                error={error}
+              />
+            )}
+            {nflView === 'metricgraphs' && (
+              <MetricGraphs
+                key="metricgraphs"
+                data={footballData}
                 loading={loading}
                 error={error}
               />

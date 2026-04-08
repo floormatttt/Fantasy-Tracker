@@ -726,6 +726,214 @@ td {
   text-align: center;
 }
 
+.metric-graph-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.metric-graph-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.metric-graph-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.metric-graph-head h2 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.metric-graph-head p {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.metric-graph-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.metric-graph-tools button {
+  min-width: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.metric-graph-tools button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.metric-graph-zoom-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.metric-graph-shell {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.metric-graph-frame {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.metric-graph-axis-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.metric-graph-axis-title-y {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+}
+
+.metric-graph-axis-title-x {
+  grid-column: 2 / 3;
+  justify-self: center;
+  margin-top: 8px;
+}
+
+.metric-graph-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 2px 0 24px;
+}
+
+.metric-graph-plot-wrap {
+  min-width: 0;
+}
+
+.metric-graph-plot {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at top right, rgba(79, 70, 229, 0.08), transparent 35%),
+    linear-gradient(180deg, var(--surface), var(--surface-muted));
+  cursor: crosshair;
+}
+
+.metric-graph-plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.metric-grid-line {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.metric-average-line {
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  stroke-dasharray: 8 8;
+  opacity: 0.75;
+}
+
+.metric-dot {
+  fill: var(--dot-color);
+  fill-opacity: 0.72;
+  stroke: white;
+  stroke-width: 1.5;
+  transition: r 0.12s, fill-opacity 0.12s;
+}
+
+.metric-dot:hover {
+  r: 6;
+  fill-opacity: 1;
+}
+
+.metric-tooltip {
+  position: absolute;
+  min-width: 180px;
+  max-width: 220px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.94);
+  color: white;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.28);
+  pointer-events: none;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.metric-tooltip-name {
+  font-weight: 700;
+}
+
+.metric-tooltip-meta {
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 6px;
+}
+
+.metric-graph-x-axis {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.metric-graph-x-axis span {
+  text-align: center;
+}
+
+.metric-graph-note {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
 /* Pagination Controls */
 .pagination-container {
   display: flex;
@@ -819,8 +1027,23 @@ td {
   }
 
   .chart-header,
-  .distribution-table-header {
+  .distribution-table-header,
+  .metric-graph-head {
     flex-direction: column;
+  }
+
+  .metric-graph-shell,
+  .metric-graph-frame {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-graph-axis-title-y,
+  .metric-graph-y-axis {
+    display: none;
+  }
+
+  .metric-graph-axis-title-x {
+    grid-column: auto;
   }
 
   .pagination-container {
