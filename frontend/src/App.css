@@ -853,6 +853,13 @@ td {
     radial-gradient(circle at top right, rgba(79, 70, 229, 0.08), transparent 35%),
     linear-gradient(180deg, var(--surface), var(--surface-muted));
   cursor: crosshair;
+  overscroll-behavior: contain;
+  touch-action: none;
+  user-select: none;
+}
+
+.metric-graph-plot.is-dragging {
+  cursor: grabbing;
 }
 
 .metric-graph-plot svg {

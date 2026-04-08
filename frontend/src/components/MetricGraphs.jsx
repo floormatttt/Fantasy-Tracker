@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { formatNumber } from '../utils/dataLoader';
 
 const GRAPH_CONFIGS = [
@@ -80,6 +80,8 @@ function ScatterMetricCard({ data, config }) {
   const [zoom, setZoom] = useState(1);
   const [center, setCenter] = useState(null);
   const [tooltip, setTooltip] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStateRef = useRef(null);
 
   const plotData = useMemo(() => {
     const points = data
@@ -178,11 +180,64 @@ function ScatterMetricCard({ data, config }) {
 
   const handleWheel = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     const rect = event.currentTarget.getBoundingClientRect();
     const ratioX = clamp((event.clientX - rect.left) / rect.width, 0, 1);
     const ratioY = clamp((event.clientY - rect.top) / rect.height, 0, 1);
     const nextZoom = event.deltaY < 0 ? zoom * ZOOM_STEP : zoom / ZOOM_STEP;
     applyZoom(nextZoom, ratioX, ratioY);
+  };
+
+  const handlePointerDown = (event) => {
+    if (!plotData || !viewState) return;
+    event.preventDefault();
+    event.stopPropagation();
+    dragStateRef.current = {
+      pointerId: event.pointerId,
+      startClientX: event.clientX,
+      startClientY: event.clientY,
+      startCenterX: viewState.xCenter,
+      startCenterY: viewState.yCenter,
+      valuePerPixelX: viewState.width / event.currentTarget.clientWidth,
+      valuePerPixelY: viewState.height / event.currentTarget.clientHeight,
+    };
+    setIsDragging(true);
+    setTooltip(null);
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event) => {
+    if (!dragStateRef.current || !plotData || !viewState) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const dragState = dragStateRef.current;
+    const deltaX = event.clientX - dragState.startClientX;
+    const deltaY = event.clientY - dragState.startClientY;
+    setCenter({
+      x: clampCenter(
+        dragState.startCenterX - (deltaX * dragState.valuePerPixelX),
+        plotData.minX,
+        plotData.maxX,
+        viewState.width
+      ),
+      y: clampCenter(
+        dragState.startCenterY + (deltaY * dragState.valuePerPixelY),
+        plotData.minY,
+        plotData.maxY,
+        viewState.height
+      ),
+    });
+  };
+
+  const endDrag = (event) => {
+    if (!dragStateRef.current) return;
+    if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    dragStateRef.current = null;
+    setIsDragging(false);
   };
 
   const resetZoom = () => {
@@ -219,9 +274,13 @@ function ScatterMetricCard({ data, config }) {
           </div>
           <div className="metric-graph-plot-wrap">
             <div
-              className="metric-graph-plot"
+              className={`metric-graph-plot ${isDragging ? 'is-dragging' : ''}`}
               onWheel={handleWheel}
               onMouseLeave={() => setTooltip(null)}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={endDrag}
+              onPointerCancel={endDrag}
             >
               <svg viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`} role="img" aria-label={config.title}>
                 {viewState.yTicks.map((tick) => (
@@ -278,6 +337,7 @@ function ScatterMetricCard({ data, config }) {
                       className="metric-dot"
                       style={{ '--dot-color': fill }}
                       onMouseEnter={(event) => {
+                        if (dragStateRef.current) return;
                         const rect = event.currentTarget.ownerSVGElement.getBoundingClientRect();
                         setTooltip({
                           player: point,
@@ -288,6 +348,7 @@ function ScatterMetricCard({ data, config }) {
                         });
                       }}
                       onMouseMove={(event) => {
+                        if (dragStateRef.current) return;
                         const rect = event.currentTarget.ownerSVGElement.getBoundingClientRect();
                         setTooltip({
                           player: point,
@@ -338,6 +399,7 @@ function ScatterMetricCard({ data, config }) {
 }
 
 export default function MetricGraphs({ data, loading, error }) {
+  const [selectedGraphKey, setSelectedGraphKey] = useState(GRAPH_CONFIGS[0].key);
   const playerData = useMemo(
     () => data.filter((player) => (
       Number.isFinite(player.war) &&
@@ -357,6 +419,8 @@ export default function MetricGraphs({ data, loading, error }) {
       avgImprovement: average(playerData.map((player) => player.improvementScore)),
     };
   }, [playerData]);
+
+  const selectedGraph = GRAPH_CONFIGS.find((graph) => graph.key === selectedGraphKey) || GRAPH_CONFIGS[0];
 
   if (error) {
     return (
@@ -398,6 +462,19 @@ export default function MetricGraphs({ data, loading, error }) {
         </div>
       </div>
 
+      <div className="filters filters-compact">
+        <div className="filter-card filter-card-sort">
+          <label>Graph</label>
+          <select value={selectedGraph.key} onChange={(event) => setSelectedGraphKey(event.target.value)}>
+            {GRAPH_CONFIGS.map((graph) => (
+              <option key={graph.key} value={graph.key}>
+                {graph.title}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <div className="stat-grid">
         <div className="stat-card">
           <div className="stat-card-label">Player-Seasons</div>
@@ -422,9 +499,7 @@ export default function MetricGraphs({ data, loading, error }) {
       </div>
 
       <div className="metric-graph-grid">
-        {GRAPH_CONFIGS.map((config) => (
-          <ScatterMetricCard key={config.key} data={playerData} config={config} />
-        ))}
+        <ScatterMetricCard key={selectedGraph.key} data={playerData} config={selectedGraph} />
       </div>
     </div>
   );
