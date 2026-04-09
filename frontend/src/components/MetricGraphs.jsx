@@ -52,6 +52,13 @@ const MIN_ZOOM = 1;
 const MAX_ZOOM = 12;
 const ZOOM_STEP = 1.4;
 
+function parseOptionalNumber(value) {
+  const trimmed = String(value ?? '').trim();
+  if (trimmed === '') return null;
+  const parsed = Number(trimmed);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
 function average(values) {
   if (!values.length) return 0;
   return values.reduce((sum, value) => sum + value, 0) / values.length;
@@ -400,6 +407,7 @@ function ScatterMetricCard({ data, config }) {
 
 export default function MetricGraphs({ data, loading, error }) {
   const [selectedGraphKey, setSelectedGraphKey] = useState(GRAPH_CONFIGS[0].key);
+  const [rangeFilters, setRangeFilters] = useState({});
   const playerData = useMemo(
     () => data.filter((player) => (
       Number.isFinite(player.war) &&
@@ -408,19 +416,73 @@ export default function MetricGraphs({ data, loading, error }) {
     )),
     [data]
   );
+  const selectedGraph = GRAPH_CONFIGS.find((graph) => graph.key === selectedGraphKey) || GRAPH_CONFIGS[0];
+  const selectedRange = rangeFilters[selectedGraph.key] || { xMin: '', xMax: '', yMin: '', yMax: '' };
 
-  const summary = useMemo(() => {
+  const graphBounds = useMemo(() => {
     if (!playerData.length) return null;
 
-    return {
-      players: playerData.length,
-      avgWar: average(playerData.map((player) => player.war)),
-      avgConsistency: average(playerData.map((player) => player.consistencyScore)),
-      avgImprovement: average(playerData.map((player) => player.improvementScore)),
-    };
-  }, [playerData]);
+    const xValues = playerData.map((player) => Number(player[selectedGraph.xKey])).filter(Number.isFinite);
+    const yValues = playerData.map((player) => Number(player[selectedGraph.yKey])).filter(Number.isFinite);
 
-  const selectedGraph = GRAPH_CONFIGS.find((graph) => graph.key === selectedGraphKey) || GRAPH_CONFIGS[0];
+    if (!xValues.length || !yValues.length) return null;
+
+    return {
+      xMin: Math.min(...xValues),
+      xMax: Math.max(...xValues),
+      yMin: Math.min(...yValues),
+      yMax: Math.max(...yValues),
+    };
+  }, [playerData, selectedGraph.xKey, selectedGraph.yKey]);
+
+  const filteredPlayerData = useMemo(() => {
+    const xMin = parseOptionalNumber(selectedRange.xMin);
+    const xMax = parseOptionalNumber(selectedRange.xMax);
+    const yMin = parseOptionalNumber(selectedRange.yMin);
+    const yMax = parseOptionalNumber(selectedRange.yMax);
+
+    return playerData.filter((player) => {
+      const xValue = Number(player[selectedGraph.xKey]);
+      const yValue = Number(player[selectedGraph.yKey]);
+
+      if (xMin != null && xValue < xMin) return false;
+      if (xMax != null && xValue > xMax) return false;
+      if (yMin != null && yValue < yMin) return false;
+      if (yMax != null && yValue > yMax) return false;
+      return true;
+    });
+  }, [playerData, selectedGraph.xKey, selectedGraph.yKey, selectedRange.xMax, selectedRange.xMin, selectedRange.yMax, selectedRange.yMin]);
+
+  const summary = useMemo(() => {
+    if (!filteredPlayerData.length) return null;
+
+    return {
+      players: filteredPlayerData.length,
+      avgWar: average(filteredPlayerData.map((player) => player.war)),
+      avgConsistency: average(filteredPlayerData.map((player) => player.consistencyScore)),
+      avgImprovement: average(filteredPlayerData.map((player) => player.improvementScore)),
+    };
+  }, [filteredPlayerData]);
+
+  const updateRangeFilter = (field, value) => {
+    setRangeFilters((current) => ({
+      ...current,
+      [selectedGraph.key]: {
+        xMin: current[selectedGraph.key]?.xMin ?? '',
+        xMax: current[selectedGraph.key]?.xMax ?? '',
+        yMin: current[selectedGraph.key]?.yMin ?? '',
+        yMax: current[selectedGraph.key]?.yMax ?? '',
+        [field]: value,
+      },
+    }));
+  };
+
+  const clearRangeFilters = () => {
+    setRangeFilters((current) => ({
+      ...current,
+      [selectedGraph.key]: { xMin: '', xMax: '', yMin: '', yMax: '' },
+    }));
+  };
 
   if (error) {
     return (
@@ -448,7 +510,7 @@ export default function MetricGraphs({ data, loading, error }) {
   if (!summary) {
     return (
       <div className="section active">
-        <div className="error-box">No football metric data is available yet.</div>
+        <div className="error-box">No football player-seasons match the current graph filters.</div>
       </div>
     );
   }
@@ -473,13 +535,57 @@ export default function MetricGraphs({ data, loading, error }) {
             ))}
           </select>
         </div>
+        <div className="filter-card metric-range-card">
+          <label>{selectedGraph.xLabel} Range</label>
+          <div className="metric-range-inputs">
+            <input
+              type="number"
+              step="any"
+              value={selectedRange.xMin}
+              onChange={(event) => updateRangeFilter('xMin', event.target.value)}
+              placeholder={graphBounds ? `Min ${formatNumber(graphBounds.xMin, selectedGraph.xDecimals)}` : 'Min'}
+            />
+            <input
+              type="number"
+              step="any"
+              value={selectedRange.xMax}
+              onChange={(event) => updateRangeFilter('xMax', event.target.value)}
+              placeholder={graphBounds ? `Max ${formatNumber(graphBounds.xMax, selectedGraph.xDecimals)}` : 'Max'}
+            />
+          </div>
+        </div>
+        <div className="filter-card metric-range-card">
+          <label>{selectedGraph.yLabel} Range</label>
+          <div className="metric-range-inputs">
+            <input
+              type="number"
+              step="any"
+              value={selectedRange.yMin}
+              onChange={(event) => updateRangeFilter('yMin', event.target.value)}
+              placeholder={graphBounds ? `Min ${formatNumber(graphBounds.yMin, selectedGraph.yDecimals)}` : 'Min'}
+            />
+            <input
+              type="number"
+              step="any"
+              value={selectedRange.yMax}
+              onChange={(event) => updateRangeFilter('yMax', event.target.value)}
+              placeholder={graphBounds ? `Max ${formatNumber(graphBounds.yMax, selectedGraph.yDecimals)}` : 'Max'}
+            />
+          </div>
+        </div>
+        <div className="filter-card metric-range-action">
+          <label>Range Filters</label>
+          <button type="button" className="metric-filter-reset" onClick={clearRangeFilters}>
+            Clear Range
+          </button>
+        </div>
       </div>
 
       <div className="stat-grid">
         <div className="stat-card">
-          <div className="stat-card-label">Player-Seasons</div>
+          <div className="stat-card-label">Filtered Player-Seasons</div>
           <div className="stat-card-value">{summary.players.toLocaleString()}</div>
-          <div className="stat-card-sub">Each dot represents one player-season</div>
+          <div className="stat-card-sub">Each dot represents one player-season in the selected range</div>
         </div>
         <div className="stat-card">
           <div className="stat-card-label">Average WAR</div>
@@ -499,7 +605,11 @@ export default function MetricGraphs({ data, loading, error }) {
       </div>
 
       <div className="metric-graph-grid">
-        <ScatterMetricCard key={selectedGraph.key} data={playerData} config={selectedGraph} />
+        <ScatterMetricCard
+          key={`${selectedGraph.key}-${selectedRange.xMin}-${selectedRange.xMax}-${selectedRange.yMin}-${selectedRange.yMax}`}
+          data={filteredPlayerData}
+          config={selectedGraph}
+        />
       </div>
     </div>
   );

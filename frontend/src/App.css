@@ -731,6 +731,39 @@ td {
   gap: 20px;
 }
 
+.metric-range-card {
+  min-width: 250px;
+}
+
+.metric-range-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.metric-range-action {
+  min-width: 140px;
+}
+
+.metric-filter-reset {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-muted);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.metric-filter-reset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .metric-graph-card {
   background: var(--surface);
   border: 1px solid var(--border);
