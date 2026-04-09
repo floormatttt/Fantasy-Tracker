@@ -117,11 +117,14 @@ function RangeSlider({
   draggingRef,
 }) {
   const sliderRef = useRef(null);
-  const minHandleRef = useRef(null);
-  const maxHandleRef = useRef(null);
+  const latestValuesRef = useRef(values);
   const span = bounds.max - bounds.min || 1;
   const minPercent = ((values.min - bounds.min) / span) * 100;
   const maxPercent = ((values.max - bounds.min) / span) * 100;
+
+  useEffect(() => {
+    latestValuesRef.current = values;
+  }, [values]);
 
   useEffect(() => {
     const handlePointerMove = (event) => {
@@ -132,15 +135,12 @@ function RangeSlider({
       const rawRatio = clamp((event.clientX - rect.left) / rect.width, 0, 1);
       const rawValue = bounds.min + (rawRatio * span);
       const steppedValue = Math.round(rawValue / bounds.step) * bounds.step;
+      const currentValues = latestValuesRef.current;
       let nextValue;
       if (dragState.edge === 'min') {
-        nextValue = Math.min(steppedValue, values.max);
-        const percent = ((nextValue - bounds.min) / span) * 100;
-        minHandleRef.current.style.left = `${percent}%`;
+        nextValue = Math.min(steppedValue, currentValues.max);
       } else {
-        nextValue = Math.max(steppedValue, values.min);
-        const percent = ((nextValue - bounds.min) / span) * 100;
-        maxHandleRef.current.style.left = `${percent}%`;
+        nextValue = Math.max(steppedValue, currentValues.min);
       }
       onChange(dragState.edge, nextValue);
     };
@@ -158,7 +158,7 @@ function RangeSlider({
       document.removeEventListener('pointermove', handlePointerMove);
       document.removeEventListener('pointerup', handlePointerUp);
     };
-  }, [bounds.max, bounds.min, bounds.step, onChange, span, values.max, values.min, draggingRef]);
+  }, [bounds.max, bounds.min, bounds.step, onChange, span, draggingRef]);
 
   const beginDrag = (edge, event) => {
     event.preventDefault();
@@ -166,6 +166,28 @@ function RangeSlider({
     if (!sliderRef.current) return;
     sliderRef.current.dragState = { edge };
     draggingRef.current = true;
+  };
+
+  const handleTrackPointerDown = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const rect = sliderRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    const rawRatio = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+    const rawValue = bounds.min + (rawRatio * span);
+    const currentValues = latestValuesRef.current;
+    const distanceToMin = Math.abs(rawValue - currentValues.min);
+    const distanceToMax = Math.abs(rawValue - currentValues.max);
+    const edge = distanceToMin <= distanceToMax ? 'min' : 'max';
+
+    beginDrag(edge, event);
+    const steppedValue = Math.round(rawValue / bounds.step) * bounds.step;
+    if (edge === 'min') {
+      onChange('min', Math.min(steppedValue, currentValues.max));
+    } else {
+      onChange('max', Math.max(steppedValue, currentValues.min));
+    }
   };
 
   return (
@@ -177,7 +199,7 @@ function RangeSlider({
       <div
         className="metric-range-slider"
         ref={sliderRef}
-        onPointerDown={(event) => event.stopPropagation()}
+        onPointerDown={handleTrackPointerDown}
       >
         <div className="metric-range-track" />
         <div
@@ -191,7 +213,6 @@ function RangeSlider({
           type="button"
           className="metric-range-handle metric-range-handle-min"
           style={{ left: `${minPercent}%` }}
-          ref={minHandleRef}
           onPointerDown={(event) => beginDrag('min', event)}
           aria-label={`${label} minimum`}
         />
@@ -199,7 +220,6 @@ function RangeSlider({
           type="button"
           className="metric-range-handle metric-range-handle-max"
           style={{ left: `${maxPercent}%` }}
-          ref={maxHandleRef}
           onPointerDown={(event) => beginDrag('max', event)}
           aria-label={`${label} maximum`}
         />
@@ -843,7 +863,7 @@ export default function MetricGraphs({ data, loading, error }) {
 
       <div className="metric-graph-grid">
         <ScatterMetricCard
-          key={`${selectedGraph.key}-${selectedRange.x.min}-${selectedRange.x.max}-${selectedRange.y.min}-${selectedRange.y.max}`}
+          key={selectedGraph.key}
           data={filteredPlayerData}
           config={selectedGraph}
           range={selectedRange}
