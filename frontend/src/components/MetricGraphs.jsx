@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { formatNumber } from '../utils/dataLoader';
 
 const GRAPH_CONFIGS = [
@@ -52,13 +52,6 @@ const MIN_ZOOM = 1;
 const MAX_ZOOM = 12;
 const ZOOM_STEP = 1.4;
 
-function parseOptionalNumber(value) {
-  const trimmed = String(value ?? '').trim();
-  if (trimmed === '') return null;
-  const parsed = Number(trimmed);
-  return Number.isFinite(parsed) ? parsed : null;
-}
-
 function average(values) {
   if (!values.length) return 0;
   return values.reduce((sum, value) => sum + value, 0) / values.length;
@@ -83,11 +76,174 @@ function buildTicks(min, max, count) {
   });
 }
 
-function ScatterMetricCard({ data, config }) {
+function normalizeBounds(min, max) {
+  if (!Number.isFinite(min) || !Number.isFinite(max)) {
+    return { min: 0, max: 1, step: 0.1 };
+  }
+
+  if (min === max) {
+    const padding = Math.max(Math.abs(min) * 0.1, 1);
+    return {
+      min: min - padding,
+      max: max + padding,
+      step: padding / 100,
+    };
+  }
+
+  return {
+    min,
+    max,
+    step: (max - min) / 200,
+  };
+}
+
+function createDefaultRange(bounds) {
+  return {
+    min: bounds.min,
+    max: bounds.max,
+  };
+}
+
+function formatRangeValue(value, decimals) {
+  return formatNumber(value, decimals);
+}
+
+function RangeSlider({
+  label,
+  bounds,
+  decimals,
+  values,
+  onChange,
+}) {
+  const span = bounds.max - bounds.min || 1;
+  const minPercent = ((values.min - bounds.min) / span) * 100;
+  const maxPercent = ((values.max - bounds.min) / span) * 100;
+  const safeStep = Math.max(bounds.step, span / 500);
+
+  return (
+    <div className="metric-filter-group">
+      <div className="metric-filter-header">
+        <span>{label}</span>
+        <span>{formatRangeValue(values.min, decimals)} to {formatRangeValue(values.max, decimals)}</span>
+      </div>
+      <div className="metric-range-slider">
+        <div className="metric-range-track" />
+        <div
+          className="metric-range-selection"
+          style={{
+            left: `${minPercent}%`,
+            width: `${Math.max(maxPercent - minPercent, 0)}%`,
+          }}
+        />
+        <input
+          type="range"
+          min={bounds.min}
+          max={bounds.max}
+          step={safeStep}
+          value={values.min}
+          onChange={(event) => onChange('min', Math.min(Number(event.target.value), values.max))}
+          className="metric-range-thumb metric-range-thumb-min"
+        />
+        <input
+          type="range"
+          min={bounds.min}
+          max={bounds.max}
+          step={safeStep}
+          value={values.max}
+          onChange={(event) => onChange('max', Math.max(Number(event.target.value), values.min))}
+          className="metric-range-thumb metric-range-thumb-max"
+        />
+      </div>
+      <div className="metric-filter-endpoints">
+        <span>{formatRangeValue(bounds.min, decimals)}</span>
+        <span>{formatRangeValue(bounds.max, decimals)}</span>
+      </div>
+    </div>
+  );
+}
+
+function FilterPopover({
+  config,
+  bounds,
+  range,
+  hasCustomFilter,
+  onChange,
+  onClear,
+  open,
+  onToggle,
+}) {
+  const popoverRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const handlePointerDown = (event) => {
+      if (popoverRef.current?.contains(event.target)) return;
+      onToggle(false);
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    return () => document.removeEventListener('pointerdown', handlePointerDown);
+  }, [onToggle, open]);
+
+  if (!bounds) {
+    return null;
+  }
+
+  return (
+    <div className="metric-filter-popover-wrap" ref={popoverRef}>
+      <button
+        type="button"
+        className={`metric-graph-tool-button ${hasCustomFilter ? 'active' : ''}`}
+        onClick={() => onToggle(!open)}
+      >
+        Filter
+      </button>
+      {open && (
+        <div className="metric-filter-popover">
+          <div className="metric-filter-popover-title">Metric Range Filter</div>
+          <RangeSlider
+            label={config.xLabel}
+            bounds={bounds.x}
+            decimals={config.xDecimals}
+            values={range.x}
+            onChange={(edge, value) => onChange('x', edge, value)}
+          />
+          <RangeSlider
+            label={config.yLabel}
+            bounds={bounds.y}
+            decimals={config.yDecimals}
+            values={range.y}
+            onChange={(edge, value) => onChange('y', edge, value)}
+          />
+          <div className="metric-filter-actions">
+            <button type="button" className="metric-graph-tool-button" onClick={onClear}>
+              Clear Range
+            </button>
+            <button type="button" className="metric-graph-tool-button" onClick={() => onToggle(false)}>
+              Done
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ScatterMetricCard({
+  data,
+  config,
+  range,
+  bounds,
+  hasCustomFilter,
+  onRangeChange,
+  onRangeClear,
+}) {
   const [zoom, setZoom] = useState(1);
   const [center, setCenter] = useState(null);
   const [tooltip, setTooltip] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
   const dragStateRef = useRef(null);
 
   const plotData = useMemo(() => {
@@ -200,7 +356,6 @@ function ScatterMetricCard({ data, config }) {
     event.preventDefault();
     event.stopPropagation();
     dragStateRef.current = {
-      pointerId: event.pointerId,
       startClientX: event.clientX,
       startClientY: event.clientY,
       startCenterX: viewState.xCenter,
@@ -265,9 +420,19 @@ function ScatterMetricCard({ data, config }) {
         </div>
         <div className="metric-graph-tools">
           <span className="metric-graph-zoom-label">Zoom {formatNumber(zoom, 1)}x</span>
-          <button type="button" onClick={() => applyZoom(zoom / ZOOM_STEP)}>-</button>
-          <button type="button" onClick={() => applyZoom(zoom * ZOOM_STEP)}>+</button>
-          <button type="button" onClick={resetZoom}>Reset</button>
+          <button type="button" className="metric-graph-tool-button" onClick={() => applyZoom(zoom / ZOOM_STEP)}>-</button>
+          <button type="button" className="metric-graph-tool-button" onClick={() => applyZoom(zoom * ZOOM_STEP)}>+</button>
+          <button type="button" className="metric-graph-tool-button" onClick={resetZoom}>Reset</button>
+          <FilterPopover
+            config={config}
+            bounds={bounds}
+            range={range}
+            hasCustomFilter={hasCustomFilter}
+            onChange={onRangeChange}
+            onClear={onRangeClear}
+            open={filterOpen}
+            onToggle={setFilterOpen}
+          />
         </div>
       </div>
 
@@ -399,7 +564,7 @@ function ScatterMetricCard({ data, config }) {
 
       <div className="metric-graph-note">
         <span>Dashed lines mark average {config.xLabel} and average {config.yLabel}.</span>
-        <span>Scroll on the chart or use the controls to zoom.</span>
+        <span>Scroll to zoom and drag the plot to pan.</span>
       </div>
     </div>
   );
@@ -408,6 +573,7 @@ function ScatterMetricCard({ data, config }) {
 export default function MetricGraphs({ data, loading, error }) {
   const [selectedGraphKey, setSelectedGraphKey] = useState(GRAPH_CONFIGS[0].key);
   const [rangeFilters, setRangeFilters] = useState({});
+
   const playerData = useMemo(
     () => data.filter((player) => (
       Number.isFinite(player.war) &&
@@ -416,42 +582,48 @@ export default function MetricGraphs({ data, loading, error }) {
     )),
     [data]
   );
-  const selectedGraph = GRAPH_CONFIGS.find((graph) => graph.key === selectedGraphKey) || GRAPH_CONFIGS[0];
-  const selectedRange = rangeFilters[selectedGraph.key] || { xMin: '', xMax: '', yMin: '', yMax: '' };
 
-  const graphBounds = useMemo(() => {
+  const selectedGraph = GRAPH_CONFIGS.find((graph) => graph.key === selectedGraphKey) || GRAPH_CONFIGS[0];
+
+  const bounds = useMemo(() => {
     if (!playerData.length) return null;
 
     const xValues = playerData.map((player) => Number(player[selectedGraph.xKey])).filter(Number.isFinite);
     const yValues = playerData.map((player) => Number(player[selectedGraph.yKey])).filter(Number.isFinite);
-
     if (!xValues.length || !yValues.length) return null;
 
     return {
-      xMin: Math.min(...xValues),
-      xMax: Math.max(...xValues),
-      yMin: Math.min(...yValues),
-      yMax: Math.max(...yValues),
+      x: normalizeBounds(Math.min(...xValues), Math.max(...xValues)),
+      y: normalizeBounds(Math.min(...yValues), Math.max(...yValues)),
     };
   }, [playerData, selectedGraph.xKey, selectedGraph.yKey]);
 
+  const selectedRange = useMemo(() => {
+    if (!bounds) {
+      return null;
+    }
+
+    const stored = rangeFilters[selectedGraph.key];
+    return {
+      x: stored?.x ? stored.x : createDefaultRange(bounds.x),
+      y: stored?.y ? stored.y : createDefaultRange(bounds.y),
+    };
+  }, [bounds, rangeFilters, selectedGraph.key]);
+
   const filteredPlayerData = useMemo(() => {
-    const xMin = parseOptionalNumber(selectedRange.xMin);
-    const xMax = parseOptionalNumber(selectedRange.xMax);
-    const yMin = parseOptionalNumber(selectedRange.yMin);
-    const yMax = parseOptionalNumber(selectedRange.yMax);
+    if (!selectedRange) return [];
 
     return playerData.filter((player) => {
       const xValue = Number(player[selectedGraph.xKey]);
       const yValue = Number(player[selectedGraph.yKey]);
-
-      if (xMin != null && xValue < xMin) return false;
-      if (xMax != null && xValue > xMax) return false;
-      if (yMin != null && yValue < yMin) return false;
-      if (yMax != null && yValue > yMax) return false;
-      return true;
+      return (
+        xValue >= selectedRange.x.min &&
+        xValue <= selectedRange.x.max &&
+        yValue >= selectedRange.y.min &&
+        yValue <= selectedRange.y.max
+      );
     });
-  }, [playerData, selectedGraph.xKey, selectedGraph.yKey, selectedRange.xMax, selectedRange.xMin, selectedRange.yMax, selectedRange.yMin]);
+  }, [playerData, selectedGraph.xKey, selectedGraph.yKey, selectedRange]);
 
   const summary = useMemo(() => {
     if (!filteredPlayerData.length) return null;
@@ -464,25 +636,55 @@ export default function MetricGraphs({ data, loading, error }) {
     };
   }, [filteredPlayerData]);
 
-  const updateRangeFilter = (field, value) => {
+  const updateRange = (axis, edge, value) => {
+    if (!bounds || !selectedRange) return;
+
+    const axisBounds = bounds[axis];
+    const currentAxis = selectedRange[axis];
+    const nextAxis = {
+      ...currentAxis,
+      [edge]: clamp(value, axisBounds.min, axisBounds.max),
+    };
+
+    if (edge === 'min' && nextAxis.min > nextAxis.max) {
+      nextAxis.max = nextAxis.min;
+    }
+
+    if (edge === 'max' && nextAxis.max < nextAxis.min) {
+      nextAxis.min = nextAxis.max;
+    }
+
     setRangeFilters((current) => ({
       ...current,
       [selectedGraph.key]: {
-        xMin: current[selectedGraph.key]?.xMin ?? '',
-        xMax: current[selectedGraph.key]?.xMax ?? '',
-        yMin: current[selectedGraph.key]?.yMin ?? '',
-        yMax: current[selectedGraph.key]?.yMax ?? '',
-        [field]: value,
+        x: axis === 'x' ? nextAxis : (current[selectedGraph.key]?.x || selectedRange.x),
+        y: axis === 'y' ? nextAxis : (current[selectedGraph.key]?.y || selectedRange.y),
       },
     }));
   };
 
-  const clearRangeFilters = () => {
+  const clearRange = () => {
+    if (!bounds) return;
+
     setRangeFilters((current) => ({
       ...current,
-      [selectedGraph.key]: { xMin: '', xMax: '', yMin: '', yMax: '' },
+      [selectedGraph.key]: {
+        x: createDefaultRange(bounds.x),
+        y: createDefaultRange(bounds.y),
+      },
     }));
   };
+
+  const hasCustomFilter = Boolean(
+    bounds &&
+    selectedRange &&
+    (
+      selectedRange.x.min !== bounds.x.min ||
+      selectedRange.x.max !== bounds.x.max ||
+      selectedRange.y.min !== bounds.y.min ||
+      selectedRange.y.max !== bounds.y.max
+    )
+  );
 
   if (error) {
     return (
@@ -507,7 +709,7 @@ export default function MetricGraphs({ data, loading, error }) {
     );
   }
 
-  if (!summary) {
+  if (!summary || !selectedRange || !bounds) {
     return (
       <div className="section active">
         <div className="error-box">No football player-seasons match the current graph filters.</div>
@@ -535,80 +737,41 @@ export default function MetricGraphs({ data, loading, error }) {
             ))}
           </select>
         </div>
-        <div className="filter-card metric-range-card">
-          <label>{selectedGraph.xLabel} Range</label>
-          <div className="metric-range-inputs">
-            <input
-              type="number"
-              step="any"
-              value={selectedRange.xMin}
-              onChange={(event) => updateRangeFilter('xMin', event.target.value)}
-              placeholder={graphBounds ? `Min ${formatNumber(graphBounds.xMin, selectedGraph.xDecimals)}` : 'Min'}
-            />
-            <input
-              type="number"
-              step="any"
-              value={selectedRange.xMax}
-              onChange={(event) => updateRangeFilter('xMax', event.target.value)}
-              placeholder={graphBounds ? `Max ${formatNumber(graphBounds.xMax, selectedGraph.xDecimals)}` : 'Max'}
-            />
-          </div>
-        </div>
-        <div className="filter-card metric-range-card">
-          <label>{selectedGraph.yLabel} Range</label>
-          <div className="metric-range-inputs">
-            <input
-              type="number"
-              step="any"
-              value={selectedRange.yMin}
-              onChange={(event) => updateRangeFilter('yMin', event.target.value)}
-              placeholder={graphBounds ? `Min ${formatNumber(graphBounds.yMin, selectedGraph.yDecimals)}` : 'Min'}
-            />
-            <input
-              type="number"
-              step="any"
-              value={selectedRange.yMax}
-              onChange={(event) => updateRangeFilter('yMax', event.target.value)}
-              placeholder={graphBounds ? `Max ${formatNumber(graphBounds.yMax, selectedGraph.yDecimals)}` : 'Max'}
-            />
-          </div>
-        </div>
-        <div className="filter-card metric-range-action">
-          <label>Range Filters</label>
-          <button type="button" className="metric-filter-reset" onClick={clearRangeFilters}>
-            Clear Range
-          </button>
-        </div>
       </div>
 
       <div className="stat-grid">
         <div className="stat-card">
           <div className="stat-card-label">Filtered Player-Seasons</div>
           <div className="stat-card-value">{summary.players.toLocaleString()}</div>
-          <div className="stat-card-sub">Each dot represents one player-season in the selected range</div>
+          <div className="stat-card-sub">Each dot represents one player-season in the active filter window</div>
         </div>
         <div className="stat-card">
           <div className="stat-card-label">Average WAR</div>
           <div className="stat-card-value">{formatNumber(summary.avgWar, 3)}</div>
-          <div className="stat-card-sub">Used as the vertical average guide on WAR charts</div>
+          <div className="stat-card-sub">Computed from the filtered graph population</div>
         </div>
         <div className="stat-card">
           <div className="stat-card-label">Average Consistency</div>
           <div className="stat-card-value">{formatNumber(summary.avgConsistency, 1)}</div>
-          <div className="stat-card-sub">Used as the average guide on consistency charts</div>
+          <div className="stat-card-sub">Computed from the filtered graph population</div>
         </div>
         <div className="stat-card">
           <div className="stat-card-label">Average Improvement</div>
           <div className="stat-card-value">{formatNumber(summary.avgImprovement, 1)}</div>
-          <div className="stat-card-sub">Used as the average guide on improvement charts</div>
+          <div className="stat-card-sub">Computed from the filtered graph population</div>
         </div>
       </div>
 
       <div className="metric-graph-grid">
         <ScatterMetricCard
-          key={`${selectedGraph.key}-${selectedRange.xMin}-${selectedRange.xMax}-${selectedRange.yMin}-${selectedRange.yMax}`}
+          key={`${selectedGraph.key}-${selectedRange.x.min}-${selectedRange.x.max}-${selectedRange.y.min}-${selectedRange.y.max}`}
           data={filteredPlayerData}
           config={selectedGraph}
+          range={selectedRange}
+          bounds={bounds}
+          hasCustomFilter={hasCustomFilter}
+          onRangeChange={updateRange}
+          onRangeClear={clearRange}
         />
       </div>
     </div>
