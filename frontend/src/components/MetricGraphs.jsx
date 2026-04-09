@@ -78,7 +78,7 @@ function buildTicks(min, max, count) {
 
 function normalizeBounds(min, max) {
   if (!Number.isFinite(min) || !Number.isFinite(max)) {
-    return { min: 0, max: 1, step: 0.1 };
+    return { min: 0, max: 1, step: 0.01 };
   }
 
   if (min === max) {
@@ -86,14 +86,14 @@ function normalizeBounds(min, max) {
     return {
       min: min - padding,
       max: max + padding,
-      step: padding / 100,
+      step: padding / 250,
     };
   }
 
   return {
     min,
     max,
-    step: (max - min) / 200,
+    step: (max - min) / 500,
   };
 }
 
@@ -174,12 +174,33 @@ function FilterPopover({
   open,
   onToggle,
 }) {
+  const popoverRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const handlePointerDown = (event) => {
+      if (popoverRef.current?.contains(event.target)) {
+        return;
+      }
+      onToggle(false);
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown, true);
+    return () => document.removeEventListener('pointerdown', handlePointerDown, true);
+  }, [onToggle, open]);
+
   if (!bounds) {
     return null;
   }
 
   return (
-    <div className="metric-filter-popover-wrap">
+    <div
+      className="metric-filter-popover-wrap"
+      ref={popoverRef}
+      onPointerDown={(event) => event.stopPropagation()}
+      onClick={(event) => event.stopPropagation()}
+    >
       <button
         type="button"
         className={`metric-graph-tool-button ${hasCustomFilter ? 'active' : ''}`}
@@ -348,7 +369,7 @@ function ScatterMetricCard({
       const rect = element.getBoundingClientRect();
       const ratioX = clamp((event.clientX - rect.left) / rect.width, 0, 1);
       const ratioY = clamp((event.clientY - rect.top) / rect.height, 0, 1);
-      const intensity = event.ctrlKey ? 0.015 : 0.006;
+      const intensity = event.ctrlKey ? 0.006 : 0.0025;
       const factor = Math.exp(-event.deltaY * intensity);
       applyZoom(zoom * factor, ratioX, ratioY);
     };
