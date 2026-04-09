@@ -873,54 +873,26 @@ td {
   background: linear-gradient(90deg, var(--amber), var(--accent));
 }
 
-.metric-range-thumb {
+.metric-range-handle {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  margin: 0;
-  background: none;
-  pointer-events: none;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.metric-range-thumb::-webkit-slider-runnable-track {
-  height: 28px;
-  background: transparent;
-}
-
-.metric-range-thumb::-moz-range-track {
-  height: 28px;
-  background: transparent;
-}
-
-.metric-range-thumb::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
   width: 18px;
   height: 18px;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border: 2px solid white;
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 3px 10px rgba(15, 23, 42, 0.22);
-  pointer-events: auto;
   cursor: grab;
-  margin-top: 5px;
+  padding: 0;
+  font: inherit;
 }
 
-.metric-range-thumb::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.22);
-  pointer-events: auto;
-  cursor: grab;
+.metric-range-handle:active {
+  cursor: grabbing;
 }
 
-.metric-range-thumb-max::-webkit-slider-thumb,
-.metric-range-thumb-max::-moz-range-thumb {
+.metric-range-handle-max {
   background: var(--blue);
 }
 

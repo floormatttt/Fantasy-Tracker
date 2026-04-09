@@ -115,10 +115,49 @@ function RangeSlider({
   values,
   onChange,
 }) {
+  const sliderRef = useRef(null);
   const span = bounds.max - bounds.min || 1;
   const minPercent = ((values.min - bounds.min) / span) * 100;
   const maxPercent = ((values.max - bounds.min) / span) * 100;
-  const safeStep = Math.max(bounds.step, span / 500);
+
+  useEffect(() => {
+    const handlePointerMove = (event) => {
+      const dragState = sliderRef.current?.dragState;
+      const rect = sliderRef.current?.getBoundingClientRect();
+      if (!dragState || !rect) return;
+
+      const rawRatio = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+      const rawValue = bounds.min + (rawRatio * span);
+      const steppedValue = Math.round(rawValue / bounds.step) * bounds.step;
+      const nextValue = clamp(steppedValue, bounds.min, bounds.max);
+
+      if (dragState.edge === 'min') {
+        onChange('min', Math.min(nextValue, values.max));
+      } else {
+        onChange('max', Math.max(nextValue, values.min));
+      }
+    };
+
+    const handlePointerUp = () => {
+      if (sliderRef.current) {
+        sliderRef.current.dragState = null;
+      }
+    };
+
+    document.addEventListener('pointermove', handlePointerMove);
+    document.addEventListener('pointerup', handlePointerUp);
+    return () => {
+      document.removeEventListener('pointermove', handlePointerMove);
+      document.removeEventListener('pointerup', handlePointerUp);
+    };
+  }, [bounds.max, bounds.min, bounds.step, onChange, span, values.max, values.min]);
+
+  const beginDrag = (edge, event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (!sliderRef.current) return;
+    sliderRef.current.dragState = { edge };
+  };
 
   return (
     <div className="metric-filter-group">
@@ -126,7 +165,11 @@ function RangeSlider({
         <span>{label}</span>
         <span>{formatRangeValue(values.min, decimals)} to {formatRangeValue(values.max, decimals)}</span>
       </div>
-      <div className="metric-range-slider">
+      <div
+        className="metric-range-slider"
+        ref={sliderRef}
+        onPointerDown={(event) => event.stopPropagation()}
+      >
         <div className="metric-range-track" />
         <div
           className="metric-range-selection"
@@ -135,25 +178,19 @@ function RangeSlider({
             width: `${Math.max(maxPercent - minPercent, 0)}%`,
           }}
         />
-        <input
-          type="range"
-          min={bounds.min}
-          max={bounds.max}
-          step={safeStep}
-          value={values.min}
-          onChange={(event) => onChange('min', Math.min(Number(event.target.value), values.max))}
-          onPointerDown={(event) => event.stopPropagation()}
-          className="metric-range-thumb metric-range-thumb-min"
+        <button
+          type="button"
+          className="metric-range-handle metric-range-handle-min"
+          style={{ left: `${minPercent}%` }}
+          onPointerDown={(event) => beginDrag('min', event)}
+          aria-label={`${label} minimum`}
         />
-        <input
-          type="range"
-          min={bounds.min}
-          max={bounds.max}
-          step={safeStep}
-          value={values.max}
-          onChange={(event) => onChange('max', Math.max(Number(event.target.value), values.min))}
-          onPointerDown={(event) => event.stopPropagation()}
-          className="metric-range-thumb metric-range-thumb-max"
+        <button
+          type="button"
+          className="metric-range-handle metric-range-handle-max"
+          style={{ left: `${maxPercent}%` }}
+          onPointerDown={(event) => beginDrag('max', event)}
+          aria-label={`${label} maximum`}
         />
       </div>
       <div className="metric-filter-endpoints">
