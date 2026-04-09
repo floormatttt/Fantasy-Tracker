@@ -142,6 +142,7 @@ function RangeSlider({
           step={safeStep}
           value={values.min}
           onChange={(event) => onChange('min', Math.min(Number(event.target.value), values.max))}
+          onPointerDown={(event) => event.stopPropagation()}
           className="metric-range-thumb metric-range-thumb-min"
         />
         <input
@@ -151,6 +152,7 @@ function RangeSlider({
           step={safeStep}
           value={values.max}
           onChange={(event) => onChange('max', Math.max(Number(event.target.value), values.min))}
+          onPointerDown={(event) => event.stopPropagation()}
           className="metric-range-thumb metric-range-thumb-max"
         />
       </div>
@@ -172,35 +174,28 @@ function FilterPopover({
   open,
   onToggle,
 }) {
-  const popoverRef = useRef(null);
-
-  useEffect(() => {
-    if (!open) return undefined;
-
-    const handlePointerDown = (event) => {
-      if (popoverRef.current?.contains(event.target)) return;
-      onToggle(false);
-    };
-
-    document.addEventListener('pointerdown', handlePointerDown);
-    return () => document.removeEventListener('pointerdown', handlePointerDown);
-  }, [onToggle, open]);
-
   if (!bounds) {
     return null;
   }
 
   return (
-    <div className="metric-filter-popover-wrap" ref={popoverRef}>
+    <div className="metric-filter-popover-wrap">
       <button
         type="button"
         className={`metric-graph-tool-button ${hasCustomFilter ? 'active' : ''}`}
-        onClick={() => onToggle(!open)}
+        onClick={(event) => {
+          event.stopPropagation();
+          onToggle(!open);
+        }}
       >
         Filter
       </button>
       {open && (
-        <div className="metric-filter-popover">
+        <div
+          className="metric-filter-popover"
+          onPointerDown={(event) => event.stopPropagation()}
+          onClick={(event) => event.stopPropagation()}
+        >
           <div className="metric-filter-popover-title">Metric Range Filter</div>
           <RangeSlider
             label={config.xLabel}
@@ -245,6 +240,7 @@ function ScatterMetricCard({
   const [isDragging, setIsDragging] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const dragStateRef = useRef(null);
+  const plotRef = useRef(null);
 
   const plotData = useMemo(() => {
     const points = data
@@ -341,15 +337,25 @@ function ScatterMetricCard({
     setCenter(nextCenter);
   };
 
-  const handleWheel = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    const rect = event.currentTarget.getBoundingClientRect();
-    const ratioX = clamp((event.clientX - rect.left) / rect.width, 0, 1);
-    const ratioY = clamp((event.clientY - rect.top) / rect.height, 0, 1);
-    const nextZoom = event.deltaY < 0 ? zoom * ZOOM_STEP : zoom / ZOOM_STEP;
-    applyZoom(nextZoom, ratioX, ratioY);
-  };
+  useEffect(() => {
+    const element = plotRef.current;
+    if (!element) return undefined;
+
+    const handleWheel = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const rect = element.getBoundingClientRect();
+      const ratioX = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+      const ratioY = clamp((event.clientY - rect.top) / rect.height, 0, 1);
+      const intensity = event.ctrlKey ? 0.015 : 0.006;
+      const factor = Math.exp(-event.deltaY * intensity);
+      applyZoom(zoom * factor, ratioX, ratioY);
+    };
+
+    element.addEventListener('wheel', handleWheel, { passive: false });
+    return () => element.removeEventListener('wheel', handleWheel);
+  }, [zoom, viewState, plotData]);
 
   const handlePointerDown = (event) => {
     if (!plotData || !viewState) return;
@@ -446,8 +452,8 @@ function ScatterMetricCard({
           </div>
           <div className="metric-graph-plot-wrap">
             <div
+              ref={plotRef}
               className={`metric-graph-plot ${isDragging ? 'is-dragging' : ''}`}
-              onWheel={handleWheel}
               onMouseLeave={() => setTooltip(null)}
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
