@@ -114,8 +114,11 @@ function RangeSlider({
   decimals,
   values,
   onChange,
+  draggingRef,
 }) {
   const sliderRef = useRef(null);
+  const minHandleRef = useRef(null);
+  const maxHandleRef = useRef(null);
   const span = bounds.max - bounds.min || 1;
   const minPercent = ((values.min - bounds.min) / span) * 100;
   const maxPercent = ((values.max - bounds.min) / span) * 100;
@@ -129,19 +132,24 @@ function RangeSlider({
       const rawRatio = clamp((event.clientX - rect.left) / rect.width, 0, 1);
       const rawValue = bounds.min + (rawRatio * span);
       const steppedValue = Math.round(rawValue / bounds.step) * bounds.step;
-      const nextValue = clamp(steppedValue, bounds.min, bounds.max);
-
+      let nextValue;
       if (dragState.edge === 'min') {
-        onChange('min', Math.min(nextValue, values.max));
+        nextValue = Math.min(steppedValue, values.max);
+        const percent = ((nextValue - bounds.min) / span) * 100;
+        minHandleRef.current.style.left = `${percent}%`;
       } else {
-        onChange('max', Math.max(nextValue, values.min));
+        nextValue = Math.max(steppedValue, values.min);
+        const percent = ((nextValue - bounds.min) / span) * 100;
+        maxHandleRef.current.style.left = `${percent}%`;
       }
+      onChange(dragState.edge, nextValue);
     };
 
     const handlePointerUp = () => {
       if (sliderRef.current) {
         sliderRef.current.dragState = null;
       }
+      draggingRef.current = false;
     };
 
     document.addEventListener('pointermove', handlePointerMove);
@@ -150,13 +158,14 @@ function RangeSlider({
       document.removeEventListener('pointermove', handlePointerMove);
       document.removeEventListener('pointerup', handlePointerUp);
     };
-  }, [bounds.max, bounds.min, bounds.step, onChange, span, values.max, values.min]);
+  }, [bounds.max, bounds.min, bounds.step, onChange, span, values.max, values.min, draggingRef]);
 
   const beginDrag = (edge, event) => {
     event.preventDefault();
     event.stopPropagation();
     if (!sliderRef.current) return;
     sliderRef.current.dragState = { edge };
+    draggingRef.current = true;
   };
 
   return (
@@ -182,6 +191,7 @@ function RangeSlider({
           type="button"
           className="metric-range-handle metric-range-handle-min"
           style={{ left: `${minPercent}%` }}
+          ref={minHandleRef}
           onPointerDown={(event) => beginDrag('min', event)}
           aria-label={`${label} minimum`}
         />
@@ -189,6 +199,7 @@ function RangeSlider({
           type="button"
           className="metric-range-handle metric-range-handle-max"
           style={{ left: `${maxPercent}%` }}
+          ref={maxHandleRef}
           onPointerDown={(event) => beginDrag('max', event)}
           aria-label={`${label} maximum`}
         />
@@ -212,11 +223,13 @@ function FilterPopover({
   onToggle,
 }) {
   const popoverRef = useRef(null);
+  const draggingRef = useRef(false);
 
   useEffect(() => {
     if (!open) return undefined;
 
     const handlePointerDown = (event) => {
+      if (draggingRef.current) return;
       if (popoverRef.current?.contains(event.target)) {
         return;
       }
@@ -261,6 +274,7 @@ function FilterPopover({
             decimals={config.xDecimals}
             values={range.x}
             onChange={(edge, value) => onChange('x', edge, value)}
+            draggingRef={draggingRef}
           />
           <RangeSlider
             label={config.yLabel}
@@ -268,6 +282,7 @@ function FilterPopover({
             decimals={config.yDecimals}
             values={range.y}
             onChange={(edge, value) => onChange('y', edge, value)}
+            draggingRef={draggingRef}
           />
           <div className="metric-filter-actions">
             <button type="button" className="metric-graph-tool-button" onClick={onClear}>
