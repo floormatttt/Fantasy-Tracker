@@ -697,16 +697,11 @@ export default function MetricGraphs({ data, loading, error }) {
 
     const xValues = playerData.map((player) => Number(player[selectedGraph.xKey])).filter(Number.isFinite);
     const yValues = playerData.map((player) => Number(player[selectedGraph.yKey])).filter(Number.isFinite);
-    const gpValues = playerData.map((player) => Number(player.gp)).filter(Number.isFinite);
     if (!xValues.length || !yValues.length) return null;
 
     return {
       x: normalizeBounds(Math.min(...xValues), Math.max(...xValues)),
       y: normalizeBounds(Math.min(...yValues), Math.max(...yValues)),
-      gp: normalizeBounds(
-        gpValues.length ? Math.min(...gpValues) : 0,
-        gpValues.length ? Math.max(...gpValues) : 17
-      ),
     };
   }, [playerData, selectedGraph.xKey, selectedGraph.yKey]);
 
@@ -729,7 +724,6 @@ export default function MetricGraphs({ data, loading, error }) {
     return playerData.filter((player) => {
       const xValue = Number(player[selectedGraph.xKey]);
       const yValue = Number(player[selectedGraph.yKey]);
-      const gpValue = Number(player.gp);
       return (
         xValue >= selectedRange.x.min &&
         xValue <= selectedRange.x.max &&
