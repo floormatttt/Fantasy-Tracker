@@ -304,6 +304,14 @@ function FilterPopover({
             onChange={(edge, value) => onChange('y', edge, value)}
             draggingRef={draggingRef}
           />
+          <RangeSlider
+            label="Games Played"
+            bounds={bounds.gp}
+            decimals={0}
+            values={range.gp}
+            onChange={(edge, value) => onChange('gp', edge, value)}
+            draggingRef={draggingRef}
+          />
           <div className="metric-filter-actions">
             <button type="button" className="metric-graph-tool-button" onClick={onClear}>
               Clear Range
@@ -689,11 +697,13 @@ export default function MetricGraphs({ data, loading, error }) {
 
     const xValues = playerData.map((player) => Number(player[selectedGraph.xKey])).filter(Number.isFinite);
     const yValues = playerData.map((player) => Number(player[selectedGraph.yKey])).filter(Number.isFinite);
-    if (!xValues.length || !yValues.length) return null;
+    const gpValues = playerData.map((player) => Number(player.gamesPlayed)).filter(Number.isFinite);
+    if (!xValues.length || !yValues.length || !gpValues.length) return null;
 
     return {
       x: normalizeBounds(Math.min(...xValues), Math.max(...xValues)),
       y: normalizeBounds(Math.min(...yValues), Math.max(...yValues)),
+      gp: normalizeBounds(Math.min(...gpValues), Math.max(...gpValues)),
     };
   }, [playerData, selectedGraph.xKey, selectedGraph.yKey]);
 
@@ -706,6 +716,7 @@ export default function MetricGraphs({ data, loading, error }) {
     return {
       x: stored?.x ? stored.x : createDefaultRange(bounds.x),
       y: stored?.y ? stored.y : createDefaultRange(bounds.y),
+      gp: stored?.gp ? stored.gp : createDefaultRange(bounds.gp),
     };
   }, [bounds, rangeFilters, selectedGraph.key]);
 
@@ -715,11 +726,14 @@ export default function MetricGraphs({ data, loading, error }) {
     return playerData.filter((player) => {
       const xValue = Number(player[selectedGraph.xKey]);
       const yValue = Number(player[selectedGraph.yKey]);
+      const gpValue = Number(player.gamesPlayed);
       return (
         xValue >= selectedRange.x.min &&
         xValue <= selectedRange.x.max &&
         yValue >= selectedRange.y.min &&
-        yValue <= selectedRange.y.max
+        yValue <= selectedRange.y.max &&
+        gpValue >= selectedRange.gp.min &&
+        gpValue <= selectedRange.gp.max
       );
     });
   }, [playerData, selectedGraph.xKey, selectedGraph.yKey, selectedRange]);
@@ -758,6 +772,7 @@ export default function MetricGraphs({ data, loading, error }) {
       [selectedGraph.key]: {
         x: axis === 'x' ? nextAxis : (current[selectedGraph.key]?.x || selectedRange.x),
         y: axis === 'y' ? nextAxis : (current[selectedGraph.key]?.y || selectedRange.y),
+        gp: axis === 'gp' ? nextAxis : (current[selectedGraph.key]?.gp || selectedRange.gp),
       },
     }));
   };
@@ -770,6 +785,7 @@ export default function MetricGraphs({ data, loading, error }) {
       [selectedGraph.key]: {
         x: createDefaultRange(bounds.x),
         y: createDefaultRange(bounds.y),
+        gp: createDefaultRange(bounds.gp),
       },
     }));
   };
@@ -781,7 +797,9 @@ export default function MetricGraphs({ data, loading, error }) {
       selectedRange.x.min !== bounds.x.min ||
       selectedRange.x.max !== bounds.x.max ||
       selectedRange.y.min !== bounds.y.min ||
-      selectedRange.y.max !== bounds.y.max
+      selectedRange.y.max !== bounds.y.max ||
+      selectedRange.gp.min !== bounds.gp.min ||
+      selectedRange.gp.max !== bounds.gp.max
     )
   );
 
