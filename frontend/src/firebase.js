@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics"; // optional
 
-const rimjob_key = process.env.rimjob_key;
+const rimjob_key = import.meta.env.VITE_RIMJOB_KEY;
 
 const firebaseConfig = {
   apiKey: rimjob_key,
