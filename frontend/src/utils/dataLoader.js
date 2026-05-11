@@ -100,6 +100,7 @@ export function parsePlayer(row, season = null) {
   return {
     player: String(row.Player || ''),
     season: season || String(row.Season || ''),
+    team: String(row.Team || ''),
     gp: parseInt(row.GP) || 0,
     pts: parseInt(row.PTS) || 0,
     reb: parseInt(row.REB) || 0,
@@ -169,6 +170,9 @@ export function sortData(data, sortKey, direction = 'desc') {
     }
     if (sortKey === 'season') {
       return a.season.localeCompare(b.season) * multiplier;
+    }
+    if (sortKey === 'team') {
+      return a.team.localeCompare(b.team) * multiplier;
     }
 
     const aValue = a[sortKey] ?? 0;

@@ -2,6 +2,7 @@ import { formatNumber } from '../utils/dataLoader';
 
 const SORTABLE_COLUMNS = [
   { key: 'player', label: 'Player', className: '', minWidth: '160px' },
+  { key: 'team', label: 'Team', className: '' },
   { key: 'season', label: 'Season', className: 'num' },
   { key: 'gp', label: 'GP', className: 'num' },
   { key: 'pts', label: 'PTS', className: 'num' },
@@ -58,6 +59,7 @@ export default function DataTable({
                 {player.player}
                 {includeAllSeasonColumn && <span className="season-tag">{player.season}</span>}
               </td>
+              <td>{player.team || '-'}</td>
               {includeAllSeasonColumn && <td className="num">{player.season}</td>}
               <td className="num">{player.gp}</td>
               <td className="num">{player.pts}</td>

@@ -1,6 +1,7 @@
 [
   {
     "Player": "Russell Westbrook",
+    "Team": "OKC",
     "GP": "81",
     "PTS": "2558",
     "REB": "864",
@@ -18,6 +19,7 @@
   },
   {
     "Player": "James Harden",
+    "Team": "HOU",
     "GP": "81",
     "PTS": "2356",
     "REB": "659",
@@ -35,6 +37,7 @@
   },
   {
     "Player": "Anthony Davis",
+    "Team": "NOP",
     "GP": "75",
     "PTS": "2099",
     "REB": "884",
@@ -52,6 +55,7 @@
   },
   {
     "Player": "DeMarcus Cousins",
+    "Team": "NOP",
     "GP": "72",
     "PTS": "1942",
     "REB": "794",
@@ -69,6 +73,7 @@
   },
   {
     "Player": "LeBron James",
+    "Team": "CLE",
     "GP": "74",
     "PTS": "1954",
     "REB": "639",
@@ -86,6 +91,7 @@
   },
   {
     "Player": "Giannis Antetokounmpo",
+    "Team": "MIL",
     "GP": "80",
     "PTS": "1832",
     "REB": "700",
@@ -103,6 +109,7 @@
   },
   {
     "Player": "Karl-Anthony Towns",
+    "Team": "MIN",
     "GP": "82",
     "PTS": "2061",
     "REB": "1007",
@@ -120,6 +127,7 @@
   },
   {
     "Player": "Kevin Durant",
+    "Team": "GSW",
     "GP": "62",
     "PTS": "1555",
     "REB": "513",
@@ -137,6 +145,7 @@
   },
   {
     "Player": "John Wall",
+    "Team": "WAS",
     "GP": "78",
     "PTS": "1805",
     "REB": "326",
@@ -154,6 +163,7 @@
   },
   {
     "Player": "Hassan Whiteside",
+    "Team": "MIA",
     "GP": "77",
     "PTS": "1309",
     "REB": "1088",
@@ -171,6 +181,7 @@
   },
   {
     "Player": "Jimmy Butler III",
+    "Team": "CHI",
     "GP": "76",
     "PTS": "1816",
     "REB": "470",
@@ -188,6 +199,7 @@
   },
   {
     "Player": "Stephen Curry",
+    "Team": "GSW",
     "GP": "79",
     "PTS": "1999",
     "REB": "353",
@@ -205,6 +217,7 @@
   },
   {
     "Player": "Chris Paul",
+    "Team": "LAC",
     "GP": "61",
     "PTS": "1104",
     "REB": "304",
@@ -222,6 +235,7 @@
   },
   {
     "Player": "Rudy Gobert",
+    "Team": "UTA",
     "GP": "81",
     "PTS": "1137",
     "REB": "1035",
@@ -239,6 +253,7 @@
   },
   {
     "Player": "Kawhi Leonard",
+    "Team": "SAS",
     "GP": "74",
     "PTS": "1888",
     "REB": "430",
@@ -256,6 +271,7 @@
   },
   {
     "Player": "Andre Drummond",
+    "Team": "DET",
     "GP": "81",
     "PTS": "1105",
     "REB": "1115",
@@ -273,6 +289,7 @@
   },
   {
     "Player": "Damian Lillard",
+    "Team": "POR",
     "GP": "75",
     "PTS": "2024",
     "REB": "368",
@@ -290,6 +307,7 @@
   },
   {
     "Player": "Kyle Lowry",
+    "Team": "TOR",
     "GP": "60",
     "PTS": "1344",
     "REB": "286",
@@ -307,6 +325,7 @@
   },
   {
     "Player": "Draymond Green",
+    "Team": "GSW",
     "GP": "76",
     "PTS": "776",
     "REB": "599",
@@ -324,6 +343,7 @@
   },
   {
     "Player": "Nikola Joki\u0107",
+    "Team": "DEN",
     "GP": "73",
     "PTS": "1221",
     "REB": "718",
@@ -341,6 +361,7 @@
   },
   {
     "Player": "DeAndre Jordan",
+    "Team": "LAC",
     "GP": "81",
     "PTS": "1029",
     "REB": "1114",
@@ -358,6 +379,7 @@
   },
   {
     "Player": "Kevin Love",
+    "Team": "CLE",
     "GP": "60",
     "PTS": "1142",
     "REB": "666",
@@ -375,6 +397,7 @@
   },
   {
     "Player": "Blake Griffin",
+    "Team": "LAC",
     "GP": "61",
     "PTS": "1316",
     "REB": "497",
@@ -392,6 +415,7 @@
   },
   {
     "Player": "Isaiah Thomas",
+    "Team": "BOS",
     "GP": "76",
     "PTS": "2199",
     "REB": "204",
@@ -409,6 +433,7 @@
   },
   {
     "Player": "Paul George",
+    "Team": "IND",
     "GP": "75",
     "PTS": "1775",
     "REB": "492",
@@ -426,6 +451,7 @@
   },
   {
     "Player": "Joel Embiid",
+    "Team": "PHI",
     "GP": "31",
     "PTS": "627",
     "REB": "243",
@@ -443,6 +469,7 @@
   },
   {
     "Player": "Marc Gasol",
+    "Team": "MEM",
     "GP": "74",
     "PTS": "1446",
     "REB": "464",
@@ -460,6 +487,7 @@
   },
   {
     "Player": "Nikola Vu\u010devi\u0107",
+    "Team": "ORL",
     "GP": "75",
     "PTS": "1096",
     "REB": "779",
@@ -477,6 +505,7 @@
   },
   {
     "Player": "Dwight Howard",
+    "Team": "ATL",
     "GP": "74",
     "PTS": "1002",
     "REB": "940",
@@ -494,6 +523,7 @@
   },
   {
     "Player": "Kyrie Irving",
+    "Team": "CLE",
     "GP": "72",
     "PTS": "1816",
     "REB": "230",
@@ -511,6 +541,7 @@
   },
   {
     "Player": "Paul Millsap",
+    "Team": "ATL",
     "GP": "69",
     "PTS": "1246",
     "REB": "533",
@@ -528,6 +559,7 @@
   },
   {
     "Player": "DeMar DeRozan",
+    "Team": "TOR",
     "GP": "74",
     "PTS": "2020",
     "REB": "386",
@@ -545,6 +577,7 @@
   },
   {
     "Player": "Kemba Walker",
+    "Team": "CHA",
     "GP": "79",
     "PTS": "1830",
     "REB": "308",
@@ -562,6 +595,7 @@
   },
   {
     "Player": "Eric Bledsoe",
+    "Team": "PHX",
     "GP": "66",
     "PTS": "1390",
     "REB": "320",
@@ -579,6 +613,7 @@
   },
   {
     "Player": "Mike Conley",
+    "Team": "MEM",
     "GP": "69",
     "PTS": "1415",
     "REB": "241",
@@ -596,6 +631,7 @@
   },
   {
     "Player": "Kristaps Porzi\u0146\u0123is",
+    "Team": "NYK",
     "GP": "66",
     "PTS": "1196",
     "REB": "475",
@@ -613,6 +649,7 @@
   },
   {
     "Player": "Al Horford",
+    "Team": "BOS",
     "GP": "68",
     "PTS": "952",
     "REB": "465",
@@ -630,6 +667,7 @@
   },
   {
     "Player": "Carmelo Anthony",
+    "Team": "NYK",
     "GP": "74",
     "PTS": "1659",
     "REB": "438",
@@ -647,6 +685,7 @@
   },
   {
     "Player": "Rudy Gay",
+    "Team": "SAC",
     "GP": "30",
     "PTS": "562",
     "REB": "190",
@@ -664,6 +703,7 @@
   },
   {
     "Player": "Gordon Hayward",
+    "Team": "UTA",
     "GP": "73",
     "PTS": "1601",
     "REB": "394",
@@ -681,6 +721,7 @@
   },
   {
     "Player": "Jrue Holiday",
+    "Team": "NOP",
     "GP": "67",
     "PTS": "1029",
     "REB": "264",
@@ -698,6 +739,7 @@
   },
   {
     "Player": "Nicolas Batum",
+    "Team": "CHA",
     "GP": "77",
     "PTS": "1164",
     "REB": "481",
@@ -715,6 +757,7 @@
   },
   {
     "Player": "Myles Turner",
+    "Team": "IND",
     "GP": "81",
     "PTS": "1173",
     "REB": "589",
@@ -732,6 +775,7 @@
   },
   {
     "Player": "Jeff Teague",
+    "Team": "IND",
     "GP": "82",
     "PTS": "1254",
     "REB": "330",
@@ -749,6 +793,7 @@
   },
   {
     "Player": "Brook Lopez",
+    "Team": "BKN",
     "GP": "75",
     "PTS": "1539",
     "REB": "403",
@@ -766,6 +811,7 @@
   },
   {
     "Player": "Jabari Parker",
+    "Team": "MIL",
     "GP": "51",
     "PTS": "1025",
     "REB": "314",
@@ -783,6 +829,7 @@
   },
   {
     "Player": "LaMarcus Aldridge",
+    "Team": "SAS",
     "GP": "72",
     "PTS": "1243",
     "REB": "523",
@@ -800,6 +847,7 @@
   },
   {
     "Player": "Ricky Rubio",
+    "Team": "MIN",
     "GP": "75",
     "PTS": "836",
     "REB": "305",
@@ -817,6 +865,7 @@
   },
   {
     "Player": "Goran Dragic",
+    "Team": "MIA",
     "GP": "73",
     "PTS": "1483",
     "REB": "279",
@@ -834,6 +883,7 @@
   },
   {
     "Player": "CJ McCollum",
+    "Team": "POR",
     "GP": "80",
     "PTS": "1837",
     "REB": "289",
@@ -851,6 +901,7 @@
   },
   {
     "Player": "Bradley Beal",
+    "Team": "WAS",
     "GP": "77",
     "PTS": "1779",
     "REB": "240",
@@ -868,6 +919,7 @@
   },
   {
     "Player": "Dwyane Wade",
+    "Team": "CHI",
     "GP": "60",
     "PTS": "1096",
     "REB": "270",
@@ -885,6 +937,7 @@
   },
   {
     "Player": "Klay Thompson",
+    "Team": "GSW",
     "GP": "78",
     "PTS": "1742",
     "REB": "285",
@@ -902,6 +955,7 @@
   },
   {
     "Player": "Robert Covington",
+    "Team": "PHI",
     "GP": "67",
     "PTS": "864",
     "REB": "436",
@@ -919,6 +973,7 @@
   },
   {
     "Player": "Andrew Wiggins",
+    "Team": "MIN",
     "GP": "82",
     "PTS": "1933",
     "REB": "328",
@@ -936,6 +991,7 @@
   },
   {
     "Player": "Julius Randle",
+    "Team": "LAL",
     "GP": "74",
     "PTS": "975",
     "REB": "636",
@@ -953,6 +1009,7 @@
   },
   {
     "Player": "Otto Porter Jr.",
+    "Team": "WAS",
     "GP": "80",
     "PTS": "1075",
     "REB": "514",
@@ -970,6 +1027,7 @@
   },
   {
     "Player": "Elfrid Payton",
+    "Team": "ORL",
     "GP": "82",
     "PTS": "1046",
     "REB": "387",
@@ -987,6 +1045,7 @@
   },
   {
     "Player": "Serge Ibaka",
+    "Team": "TOR",
     "GP": "79",
     "PTS": "1173",
     "REB": "538",
@@ -1004,6 +1063,7 @@
   },
   {
     "Player": "Avery Bradley",
+    "Team": "BOS",
     "GP": "55",
     "PTS": "894",
     "REB": "334",
@@ -1021,6 +1081,7 @@
   },
   {
     "Player": "Mason Plumlee",
+    "Team": "DEN",
     "GP": "81",
     "PTS": "842",
     "REB": "605",
@@ -1038,6 +1099,7 @@
   },
   {
     "Player": "Marcin Gortat",
+    "Team": "WAS",
     "GP": "82",
     "PTS": "883",
     "REB": "849",
@@ -1055,6 +1117,7 @@
   },
   {
     "Player": "Pau Gasol",
+    "Team": "SAS",
     "GP": "64",
     "PTS": "792",
     "REB": "501",
@@ -1072,6 +1135,7 @@
   },
   {
     "Player": "Trevor Ariza",
+    "Team": "HOU",
     "GP": "80",
     "PTS": "936",
     "REB": "458",
@@ -1089,6 +1153,7 @@
   },
   {
     "Player": "Gorgui Dieng",
+    "Team": "MIN",
     "GP": "82",
     "PTS": "816",
     "REB": "647",
@@ -1106,6 +1171,7 @@
   },
   {
     "Player": "Dennis Schr\u00f6der",
+    "Team": "ATL",
     "GP": "79",
     "PTS": "1414",
     "REB": "248",
@@ -1123,6 +1189,7 @@
   },
   {
     "Player": "Devin Booker",
+    "Team": "PHX",
     "GP": "78",
     "PTS": "1726",
     "REB": "249",
@@ -1140,6 +1207,7 @@
   },
   {
     "Player": "Patrick Beverley",
+    "Team": "HOU",
     "GP": "67",
     "PTS": "639",
     "REB": "393",
@@ -1157,6 +1225,7 @@
   },
   {
     "Player": "Wilson Chandler",
+    "Team": "DEN",
     "GP": "71",
     "PTS": "1117",
     "REB": "460",
@@ -1174,6 +1243,7 @@
   },
   {
     "Player": "Danilo Gallinari",
+    "Team": "DEN",
     "GP": "63",
     "PTS": "1145",
     "REB": "325",
@@ -1191,6 +1261,7 @@
   },
   {
     "Player": "Jonas Valan\u010di\u016bnas",
+    "Team": "TOR",
     "GP": "80",
     "PTS": "959",
     "REB": "759",
@@ -1208,6 +1279,7 @@
   },
   {
     "Player": "Jeremy Lin",
+    "Team": "BKN",
     "GP": "36",
     "PTS": "523",
     "REB": "135",
@@ -1225,6 +1297,7 @@
   },
   {
     "Player": "George Hill",
+    "Team": "UTA",
     "GP": "49",
     "PTS": "829",
     "REB": "167",
@@ -1242,6 +1315,7 @@
   },
   {
     "Player": "Clint Capela",
+    "Team": "HOU",
     "GP": "65",
     "PTS": "818",
     "REB": "526",
@@ -1259,6 +1333,7 @@
   },
   {
     "Player": "D'Angelo Russell",
+    "Team": "LAL",
     "GP": "63",
     "PTS": "984",
     "REB": "221",
@@ -1276,6 +1351,7 @@
   },
   {
     "Player": "James Johnson",
+    "Team": "MIA",
     "GP": "76",
     "PTS": "975",
     "REB": "376",
@@ -1293,6 +1369,7 @@
   },
   {
     "Player": "Dirk Nowitzki",
+    "Team": "DAL",
     "GP": "54",
     "PTS": "769",
     "REB": "353",
@@ -1310,6 +1387,7 @@
   },
   {
     "Player": "Tyson Chandler",
+    "Team": "PHX",
     "GP": "47",
     "PTS": "397",
     "REB": "539",
@@ -1327,6 +1405,7 @@
   },
   {
     "Player": "Jae Crowder",
+    "Team": "BOS",
     "GP": "72",
     "PTS": "999",
     "REB": "415",
@@ -1344,6 +1423,7 @@
   },
   {
     "Player": "Zach LaVine",
+    "Team": "MIN",
     "GP": "47",
     "PTS": "889",
     "REB": "160",
@@ -1361,6 +1441,7 @@
   },
   {
     "Player": "Harrison Barnes",
+    "Team": "DAL",
     "GP": "79",
     "PTS": "1518",
     "REB": "394",
@@ -1378,6 +1459,7 @@
   },
   {
     "Player": "Markieff Morris",
+    "Team": "WAS",
     "GP": "76",
     "PTS": "1063",
     "REB": "493",
@@ -1395,6 +1477,7 @@
   },
   {
     "Player": "Zach Randolph",
+    "Team": "MEM",
     "GP": "73",
     "PTS": "1028",
     "REB": "598",
@@ -1412,6 +1495,7 @@
   },
   {
     "Player": "Victor Oladipo",
+    "Team": "OKC",
     "GP": "67",
     "PTS": "1067",
     "REB": "291",
@@ -1429,6 +1513,7 @@
   },
   {
     "Player": "Derrick Rose",
+    "Team": "NYK",
     "GP": "64",
     "PTS": "1154",
     "REB": "246",
@@ -1446,6 +1531,7 @@
   },
   {
     "Player": "Dion Waiters",
+    "Team": "MIA",
     "GP": "46",
     "PTS": "729",
     "REB": "153",
@@ -1463,6 +1549,7 @@
   },
   {
     "Player": "Tyler Johnson",
+    "Team": "MIA",
     "GP": "73",
     "PTS": "1002",
     "REB": "293",
@@ -1480,6 +1567,7 @@
   },
   {
     "Player": "Steven Adams",
+    "Team": "OKC",
     "GP": "80",
     "PTS": "905",
     "REB": "613",
@@ -1497,6 +1585,7 @@
   },
   {
     "Player": "Rajon Rondo",
+    "Team": "CHI",
     "GP": "69",
     "PTS": "538",
     "REB": "355",
@@ -1514,6 +1603,7 @@
   },
   {
     "Player": "Khris Middleton",
+    "Team": "MIL",
     "GP": "29",
     "PTS": "426",
     "REB": "123",
@@ -1531,6 +1621,7 @@
   },
   {
     "Player": "Tobias Harris",
+    "Team": "DET",
     "GP": "82",
     "PTS": "1321",
     "REB": "416",
@@ -1548,6 +1639,7 @@
   },
   {
     "Player": "Tristan Thompson",
+    "Team": "CLE",
     "GP": "78",
     "PTS": "630",
     "REB": "715",
@@ -1565,6 +1657,7 @@
   },
   {
     "Player": "Marvin Williams",
+    "Team": "CHA",
     "GP": "76",
     "PTS": "849",
     "REB": "500",
@@ -1582,6 +1675,7 @@
   },
   {
     "Player": "Trevor Booker",
+    "Team": "BKN",
     "GP": "71",
     "PTS": "709",
     "REB": "571",
@@ -1599,6 +1693,7 @@
   },
   {
     "Player": "Greg Monroe",
+    "Team": "MIL",
     "GP": "81",
     "PTS": "951",
     "REB": "532",
@@ -1616,6 +1711,7 @@
   },
   {
     "Player": "Marcus Smart",
+    "Team": "BOS",
     "GP": "79",
     "PTS": "835",
     "REB": "305",
@@ -1633,6 +1729,7 @@
   },
   {
     "Player": "T.J. Warren",
+    "Team": "PHX",
     "GP": "66",
     "PTS": "951",
     "REB": "339",
@@ -1650,6 +1747,7 @@
   },
   {
     "Player": "Michael Kidd-Gilchrist",
+    "Team": "CHA",
     "GP": "81",
     "PTS": "743",
     "REB": "565",
@@ -1667,6 +1765,7 @@
   },
   {
     "Player": "Justise Winslow",
+    "Team": "MIA",
     "GP": "18",
     "PTS": "196",
     "REB": "94",
@@ -1684,6 +1783,7 @@
   },
   {
     "Player": "Will Barton",
+    "Team": "DEN",
     "GP": "60",
     "PTS": "820",
     "REB": "259",
@@ -1701,6 +1801,7 @@
   },
   {
     "Player": "Cody Zeller",
+    "Team": "CHA",
     "GP": "62",
     "PTS": "639",
     "REB": "405",
@@ -1718,6 +1819,7 @@
   },
   {
     "Player": "Thaddeus Young",
+    "Team": "IND",
     "GP": "74",
     "PTS": "814",
     "REB": "448",
@@ -1735,6 +1837,7 @@
   },
   {
     "Player": "Jusuf Nurki\u0107",
+    "Team": "POR",
     "GP": "65",
     "PTS": "662",
     "REB": "467",
@@ -1752,6 +1855,7 @@
   },
   {
     "Player": "Al-Farouq Aminu",
+    "Team": "POR",
     "GP": "61",
     "PTS": "532",
     "REB": "451",
@@ -1769,6 +1873,7 @@
   },
   {
     "Player": "Gary Harris",
+    "Team": "DEN",
     "GP": "57",
     "PTS": "851",
     "REB": "178",
@@ -1786,6 +1891,7 @@
   },
   {
     "Player": "Lou Williams",
+    "Team": "HOU",
     "GP": "81",
     "PTS": "1421",
     "REB": "202",
@@ -1803,6 +1909,7 @@
   },
   {
     "Player": "Eric Gordon",
+    "Team": "HOU",
     "GP": "75",
     "PTS": "1217",
     "REB": "201",
@@ -1820,6 +1927,7 @@
   },
   {
     "Player": "Dario Saric",
+    "Team": "PHI",
     "GP": "81",
     "PTS": "1040",
     "REB": "513",
@@ -1837,6 +1945,7 @@
   },
   {
     "Player": "Ersan Ilyasova",
+    "Team": "ATL",
     "GP": "82",
     "PTS": "1071",
     "REB": "481",
@@ -1854,6 +1963,7 @@
   },
   {
     "Player": "Evan Fournier",
+    "Team": "ORL",
     "GP": "68",
     "PTS": "1167",
     "REB": "209",
@@ -1871,6 +1981,7 @@
   },
   {
     "Player": "Wesley Matthews",
+    "Team": "DAL",
     "GP": "73",
     "PTS": "986",
     "REB": "259",
@@ -1888,6 +1999,7 @@
   },
   {
     "Player": "Aaron Gordon",
+    "Team": "ORL",
     "GP": "80",
     "PTS": "1019",
     "REB": "405",
@@ -1905,6 +2017,7 @@
   },
   {
     "Player": "Enes Freedom",
+    "Team": "OKC",
     "GP": "72",
     "PTS": "1033",
     "REB": "482",
@@ -1922,6 +2035,7 @@
   },
   {
     "Player": "Marcus Morris Sr.",
+    "Team": "DET",
     "GP": "79",
     "PTS": "1105",
     "REB": "366",
@@ -1939,6 +2053,7 @@
   },
   {
     "Player": "Joakim Noah",
+    "Team": "NYK",
     "GP": "46",
     "PTS": "232",
     "REB": "403",
@@ -1956,6 +2071,7 @@
   },
   {
     "Player": "Kentavious Caldwell-Pope",
+    "Team": "DET",
     "GP": "76",
     "PTS": "1047",
     "REB": "248",
@@ -1973,6 +2089,7 @@
   },
   {
     "Player": "Kenneth Faried",
+    "Team": "DEN",
     "GP": "61",
     "PTS": "587",
     "REB": "462",
@@ -1990,6 +2107,7 @@
   },
   {
     "Player": "Terrence Jones",
+    "Team": "MIL",
     "GP": "54",
     "PTS": "584",
     "REB": "306",
@@ -2007,6 +2125,7 @@
   },
   {
     "Player": "Robin Lopez",
+    "Team": "CHI",
     "GP": "81",
     "PTS": "839",
     "REB": "520",
@@ -2024,6 +2143,7 @@
   },
   {
     "Player": "T.J. McConnell",
+    "Team": "PHI",
     "GP": "81",
     "PTS": "556",
     "REB": "251",
@@ -2041,6 +2161,7 @@
   },
   {
     "Player": "Nikola Mirotic",
+    "Team": "CHI",
     "GP": "70",
     "PTS": "744",
     "REB": "384",
@@ -2058,6 +2179,7 @@
   },
   {
     "Player": "Nerlens Noel",
+    "Team": "DAL",
     "GP": "51",
     "PTS": "445",
     "REB": "294",
@@ -2075,6 +2197,7 @@
   },
   {
     "Player": "Reggie Jackson",
+    "Team": "DET",
     "GP": "52",
     "PTS": "752",
     "REB": "114",
@@ -2092,6 +2215,7 @@
   },
   {
     "Player": "Darren Collison",
+    "Team": "SAC",
     "GP": "68",
     "PTS": "900",
     "REB": "152",
@@ -2109,6 +2233,7 @@
   },
   {
     "Player": "Frank Kaminsky",
+    "Team": "CHA",
     "GP": "75",
     "PTS": "874",
     "REB": "336",
@@ -2126,6 +2251,7 @@
   },
   {
     "Player": "Derrick Favors",
+    "Team": "UTA",
     "GP": "50",
     "PTS": "476",
     "REB": "305",
@@ -2143,6 +2269,7 @@
   },
   {
     "Player": "Ryan Anderson",
+    "Team": "HOU",
     "GP": "72",
     "PTS": "979",
     "REB": "330",
@@ -2160,6 +2287,7 @@
   },
   {
     "Player": "Tony Allen",
+    "Team": "MEM",
     "GP": "71",
     "PTS": "643",
     "REB": "391",
@@ -2177,6 +2305,7 @@
   },
   {
     "Player": "Richaun Holmes",
+    "Team": "PHI",
     "GP": "57",
     "PTS": "559",
     "REB": "311",
@@ -2194,6 +2323,7 @@
   },
   {
     "Player": "Taj Gibson",
+    "Team": "OKC",
     "GP": "78",
     "PTS": "846",
     "REB": "485",
@@ -2211,6 +2341,7 @@
   },
   {
     "Player": "Josh Richardson",
+    "Team": "MIA",
     "GP": "53",
     "PTS": "539",
     "REB": "168",
@@ -2228,6 +2359,7 @@
   },
   {
     "Player": "Larry Nance Jr.",
+    "Team": "LAL",
     "GP": "63",
     "PTS": "449",
     "REB": "369",
@@ -2245,6 +2377,7 @@
   },
   {
     "Player": "Rondae Hollis-Jefferson",
+    "Team": "BKN",
     "GP": "78",
     "PTS": "675",
     "REB": "452",
@@ -2262,6 +2395,7 @@
   },
   {
     "Player": "Jordan Clarkson",
+    "Team": "LAL",
     "GP": "82",
     "PTS": "1205",
     "REB": "246",
@@ -2279,6 +2413,7 @@
   },
   {
     "Player": "JaMychal Green",
+    "Team": "MEM",
     "GP": "77",
     "PTS": "689",
     "REB": "544",
@@ -2296,6 +2431,7 @@
   },
   {
     "Player": "Maurice Harkless",
+    "Team": "POR",
     "GP": "77",
     "PTS": "773",
     "REB": "341",
@@ -2313,6 +2449,7 @@
   },
   {
     "Player": "Kent Bazemore",
+    "Team": "ATL",
     "GP": "73",
     "PTS": "801",
     "REB": "231",
@@ -2330,6 +2467,7 @@
   },
   {
     "Player": "Ish Smith",
+    "Team": "DET",
     "GP": "81",
     "PTS": "758",
     "REB": "235",
@@ -2347,6 +2485,7 @@
   },
   {
     "Player": "Andre Iguodala",
+    "Team": "GSW",
     "GP": "76",
     "PTS": "574",
     "REB": "304",
@@ -2364,6 +2503,7 @@
   },
   {
     "Player": "Seth Curry",
+    "Team": "DAL",
     "GP": "70",
     "PTS": "898",
     "REB": "179",
@@ -2381,6 +2521,7 @@
   },
   {
     "Player": "Malcolm Brogdon",
+    "Team": "MIL",
     "GP": "75",
     "PTS": "767",
     "REB": "213",
@@ -2398,6 +2539,7 @@
   },
   {
     "Player": "Tim Hardaway Jr.",
+    "Team": "ATL",
     "GP": "79",
     "PTS": "1143",
     "REB": "224",
@@ -2415,6 +2557,7 @@
   },
   {
     "Player": "Courtney Lee",
+    "Team": "NYK",
     "GP": "77",
     "PTS": "835",
     "REB": "259",
@@ -2432,6 +2575,7 @@
   },
   {
     "Player": "Alex Len",
+    "Team": "PHX",
     "GP": "77",
     "PTS": "613",
     "REB": "510",
@@ -2449,6 +2593,7 @@
   },
   {
     "Player": "Andre Roberson",
+    "Team": "OKC",
     "GP": "79",
     "PTS": "522",
     "REB": "403",
@@ -2466,6 +2611,7 @@
   },
   {
     "Player": "P.J. Tucker",
+    "Team": "TOR",
     "GP": "81",
     "PTS": "540",
     "REB": "471",
@@ -2483,6 +2629,7 @@
   },
   {
     "Player": "Willy Hernangomez",
+    "Team": "NYK",
     "GP": "72",
     "PTS": "587",
     "REB": "502",
@@ -2500,6 +2647,7 @@
   },
   {
     "Player": "Deron Williams",
+    "Team": "CLE",
     "GP": "64",
     "PTS": "701",
     "REB": "147",
@@ -2517,6 +2665,7 @@
   },
   {
     "Player": "J.J. Barea",
+    "Team": "DAL",
     "GP": "35",
     "PTS": "381",
     "REB": "84",
@@ -2534,6 +2683,7 @@
   },
   {
     "Player": "Thabo Sefolosha",
+    "Team": "ATL",
     "GP": "62",
     "PTS": "444",
     "REB": "270",
@@ -2551,6 +2701,7 @@
   },
   {
     "Player": "Ty Lawson",
+    "Team": "SAC",
     "GP": "69",
     "PTS": "681",
     "REB": "179",
@@ -2568,6 +2719,7 @@
   },
   {
     "Player": "Sean Kilpatrick",
+    "Team": "BKN",
     "GP": "70",
     "PTS": "919",
     "REB": "280",
@@ -2585,6 +2737,7 @@
   },
   {
     "Player": "Edy Tavares",
+    "Team": "CLE",
     "GP": "2",
     "PTS": "8",
     "REB": "11",
@@ -2602,6 +2755,7 @@
   },
   {
     "Player": "Josh Huestis",
+    "Team": "OKC",
     "GP": "2",
     "PTS": "14",
     "REB": "9",
@@ -2619,6 +2773,7 @@
   },
   {
     "Player": "Jameer Nelson",
+    "Team": "DEN",
     "GP": "75",
     "PTS": "687",
     "REB": "192",
@@ -2636,6 +2791,7 @@
   },
   {
     "Player": "Jon Leuer",
+    "Team": "DET",
     "GP": "75",
     "PTS": "767",
     "REB": "402",
@@ -2653,6 +2809,7 @@
   },
   {
     "Player": "Emmanuel Mudiay",
+    "Team": "DEN",
     "GP": "55",
     "PTS": "603",
     "REB": "178",
@@ -2670,6 +2827,7 @@
   },
   {
     "Player": "Rodney Hood",
+    "Team": "UTA",
     "GP": "59",
     "PTS": "748",
     "REB": "202",
@@ -2687,6 +2845,7 @@
   },
   {
     "Player": "JJ Redick",
+    "Team": "LAC",
     "GP": "78",
     "PTS": "1173",
     "REB": "171",
@@ -2704,6 +2863,7 @@
   },
   {
     "Player": "Tyreke Evans",
+    "Team": "SAC",
     "GP": "40",
     "PTS": "411",
     "REB": "137",
@@ -2721,6 +2881,7 @@
   },
   {
     "Player": "Kyle O'Quinn",
+    "Team": "NYK",
     "GP": "79",
     "PTS": "496",
     "REB": "439",
@@ -2738,6 +2899,7 @@
   },
   {
     "Player": "Jordan Crawford",
+    "Team": "NOP",
     "GP": "19",
     "PTS": "267",
     "REB": "34",
@@ -2755,6 +2917,7 @@
   },
   {
     "Player": "Jahlil Okafor",
+    "Team": "PHI",
     "GP": "50",
     "PTS": "590",
     "REB": "240",
@@ -2772,6 +2935,7 @@
   },
   {
     "Player": "Bismack Biyombo",
+    "Team": "ORL",
     "GP": "81",
     "PTS": "483",
     "REB": "567",
@@ -2789,6 +2953,7 @@
   },
   {
     "Player": "Alex Poythress",
+    "Team": "PHI",
     "GP": "6",
     "PTS": "64",
     "REB": "29",
@@ -2806,6 +2971,7 @@
   },
   {
     "Player": "Yogi Ferrell",
+    "Team": "DAL",
     "GP": "46",
     "PTS": "462",
     "REB": "111",
@@ -2823,6 +2989,7 @@
   },
   {
     "Player": "Luol Deng",
+    "Team": "LAL",
     "GP": "56",
     "PTS": "425",
     "REB": "295",
@@ -2840,6 +3007,7 @@
   },
   {
     "Player": "Matt Barnes",
+    "Team": "GSW",
     "GP": "74",
     "PTS": "527",
     "REB": "384",
@@ -2857,6 +3025,7 @@
   },
   {
     "Player": "Andrew Bogut",
+    "Team": "CLE",
     "GP": "27",
     "PTS": "79",
     "REB": "218",
@@ -2874,6 +3043,7 @@
   },
   {
     "Player": "Evan Turner",
+    "Team": "POR",
     "GP": "65",
     "PTS": "586",
     "REB": "247",
@@ -2891,6 +3061,7 @@
   },
   {
     "Player": "Kelly Olynyk",
+    "Team": "BOS",
     "GP": "75",
     "PTS": "678",
     "REB": "361",
@@ -2908,6 +3079,7 @@
   },
   {
     "Player": "Alan Williams",
+    "Team": "PHX",
     "GP": "47",
     "PTS": "346",
     "REB": "292",
@@ -2925,6 +3097,7 @@
   },
   {
     "Player": "Nick Young",
+    "Team": "LAL",
     "GP": "60",
     "PTS": "791",
     "REB": "138",
@@ -2942,6 +3115,7 @@
   },
   {
     "Player": "Terrence Ross",
+    "Team": "ORL",
     "GP": "78",
     "PTS": "858",
     "REB": "206",
@@ -2959,6 +3133,7 @@
   },
   {
     "Player": "DeMarre Carroll",
+    "Team": "TOR",
     "GP": "72",
     "PTS": "638",
     "REB": "275",
@@ -2976,6 +3151,7 @@
   },
   {
     "Player": "Danny Green",
+    "Team": "SAS",
     "GP": "68",
     "PTS": "497",
     "REB": "224",
@@ -2993,6 +3169,7 @@
   },
   {
     "Player": "John Henson",
+    "Team": "MIL",
     "GP": "58",
     "PTS": "392",
     "REB": "295",
@@ -3010,6 +3187,7 @@
   },
   {
     "Player": "Zaza Pachulia",
+    "Team": "GSW",
     "GP": "70",
     "PTS": "426",
     "REB": "410",
@@ -3027,6 +3205,7 @@
   },
   {
     "Player": "Tim Frazier",
+    "Team": "NOP",
     "GP": "65",
     "PTS": "464",
     "REB": "173",
@@ -3044,6 +3223,7 @@
   },
   {
     "Player": "Garrett Temple",
+    "Team": "SAC",
     "GP": "65",
     "PTS": "506",
     "REB": "184",
@@ -3061,6 +3241,7 @@
   },
   {
     "Player": "Marquese Chriss",
+    "Team": "PHX",
     "GP": "82",
     "PTS": "753",
     "REB": "348",
@@ -3078,6 +3259,7 @@
   },
   {
     "Player": "Bojan Bogdanovic",
+    "Team": "WAS",
     "GP": "81",
     "PTS": "1113",
     "REB": "277",
@@ -3095,6 +3277,7 @@
   },
   {
     "Player": "Brandon Ingram",
+    "Team": "LAL",
     "GP": "79",
     "PTS": "740",
     "REB": "316",
@@ -3112,6 +3295,7 @@
   },
   {
     "Player": "Cory Joseph",
+    "Team": "TOR",
     "GP": "80",
     "PTS": "740",
     "REB": "235",
@@ -3129,6 +3313,7 @@
   },
   {
     "Player": "Austin Rivers",
+    "Team": "LAC",
     "GP": "74",
     "PTS": "889",
     "REB": "161",
@@ -3146,6 +3331,7 @@
   },
   {
     "Player": "Vince Carter",
+    "Team": "MEM",
     "GP": "73",
     "PTS": "586",
     "REB": "227",
@@ -3163,6 +3349,7 @@
   },
   {
     "Player": "David Lee",
+    "Team": "SAS",
     "GP": "79",
     "PTS": "576",
     "REB": "441",
@@ -3180,6 +3367,7 @@
   },
   {
     "Player": "Jeremy Lamb",
+    "Team": "CHA",
     "GP": "62",
     "PTS": "603",
     "REB": "264",
@@ -3197,6 +3385,7 @@
   },
   {
     "Player": "Sergio Rodriguez",
+    "Team": "PHI",
     "GP": "68",
     "PTS": "530",
     "REB": "157",
@@ -3214,6 +3403,7 @@
   },
   {
     "Player": "Brandon Jennings",
+    "Team": "WAS",
     "GP": "81",
     "PTS": "577",
     "REB": "196",
@@ -3231,6 +3421,7 @@
   },
   {
     "Player": "Amir Johnson",
+    "Team": "BOS",
     "GP": "80",
     "PTS": "520",
     "REB": "366",
@@ -3248,6 +3439,7 @@
   },
   {
     "Player": "JR Smith",
+    "Team": "CLE",
     "GP": "41",
     "PTS": "351",
     "REB": "113",
@@ -3265,6 +3457,7 @@
   },
   {
     "Player": "Monta Ellis",
+    "Team": "IND",
     "GP": "74",
     "PTS": "630",
     "REB": "204",
@@ -3282,6 +3475,7 @@
   },
   {
     "Player": "Dewayne Dedmon",
+    "Team": "SAS",
     "GP": "76",
     "PTS": "387",
     "REB": "496",
@@ -3299,6 +3493,7 @@
   },
   {
     "Player": "Nene",
+    "Team": "HOU",
     "GP": "67",
     "PTS": "609",
     "REB": "282",
@@ -3316,6 +3511,7 @@
   },
   {
     "Player": "CJ Miles",
+    "Team": "IND",
     "GP": "76",
     "PTS": "815",
     "REB": "229",
@@ -3333,6 +3529,7 @@
   },
   {
     "Player": "Joe Ingles",
+    "Team": "UTA",
     "GP": "82",
     "PTS": "581",
     "REB": "261",
@@ -3350,6 +3547,7 @@
   },
   {
     "Player": "Willie Cauley-Stein",
+    "Team": "SAC",
     "GP": "75",
     "PTS": "611",
     "REB": "339",
@@ -3367,6 +3565,7 @@
   },
   {
     "Player": "Lucas Nogueira",
+    "Team": "TOR",
     "GP": "57",
     "PTS": "253",
     "REB": "244",
@@ -3384,6 +3583,7 @@
   },
   {
     "Player": "Patty Mills",
+    "Team": "SAS",
     "GP": "80",
     "PTS": "759",
     "REB": "141",
@@ -3401,6 +3601,7 @@
   },
   {
     "Player": "Allen Crabbe",
+    "Team": "POR",
     "GP": "79",
     "PTS": "845",
     "REB": "226",
@@ -3418,6 +3619,7 @@
   },
   {
     "Player": "Kyle Korver",
+    "Team": "CLE",
     "GP": "67",
     "PTS": "678",
     "REB": "186",
@@ -3435,6 +3637,7 @@
   },
   {
     "Player": "Tony Parker",
+    "Team": "SAS",
     "GP": "63",
     "PTS": "638",
     "REB": "113",
@@ -3452,6 +3655,7 @@
   },
   {
     "Player": "Solomon Hill",
+    "Team": "NOP",
     "GP": "80",
     "PTS": "563",
     "REB": "307",
@@ -3469,6 +3673,7 @@
   },
   {
     "Player": "Jamal Crawford",
+    "Team": "LAC",
     "GP": "82",
     "PTS": "1008",
     "REB": "129",
@@ -3486,6 +3691,7 @@
   },
   {
     "Player": "Channing Frye",
+    "Team": "CLE",
     "GP": "74",
     "PTS": "676",
     "REB": "290",
@@ -3503,6 +3709,7 @@
   },
   {
     "Player": "Kosta Koufos",
+    "Team": "SAC",
     "GP": "71",
     "PTS": "470",
     "REB": "403",
@@ -3520,6 +3727,7 @@
   },
   {
     "Player": "Patrick Patterson",
+    "Team": "TOR",
     "GP": "65",
     "PTS": "445",
     "REB": "293",
@@ -3537,6 +3745,7 @@
   },
   {
     "Player": "Jerryd Bayless",
+    "Team": "PHI",
     "GP": "3",
     "PTS": "33",
     "REB": "12",
@@ -3554,6 +3763,7 @@
   },
   {
     "Player": "Shawn Long",
+    "Team": "PHI",
     "GP": "18",
     "PTS": "148",
     "REB": "85",
@@ -3571,6 +3781,7 @@
   },
   {
     "Player": "Marreese Speights",
+    "Team": "LAC",
     "GP": "82",
     "PTS": "711",
     "REB": "373",
@@ -3588,6 +3799,7 @@
   },
   {
     "Player": "E'Twaun Moore",
+    "Team": "NOP",
     "GP": "73",
     "PTS": "700",
     "REB": "152",
@@ -3605,6 +3817,7 @@
   },
   {
     "Player": "Spencer Dinwiddie",
+    "Team": "BKN",
     "GP": "59",
     "PTS": "432",
     "REB": "164",
@@ -3622,6 +3835,7 @@
   },
   {
     "Player": "Nik Stauskas",
+    "Team": "PHI",
     "GP": "80",
     "PTS": "756",
     "REB": "226",
@@ -3639,6 +3853,7 @@
   },
   {
     "Player": "Montrezl Harrell",
+    "Team": "HOU",
     "GP": "58",
     "PTS": "527",
     "REB": "219",
@@ -3656,6 +3871,7 @@
   },
   {
     "Player": "Marco Belinelli",
+    "Team": "CHA",
     "GP": "74",
     "PTS": "780",
     "REB": "178",
@@ -3673,6 +3889,7 @@
   },
   {
     "Player": "Skal Labissiere",
+    "Team": "SAC",
     "GP": "33",
     "PTS": "289",
     "REB": "162",
@@ -3690,6 +3907,7 @@
   },
   {
     "Player": "Buddy Hield",
+    "Team": "SAC",
     "GP": "82",
     "PTS": "866",
     "REB": "269",
@@ -3707,6 +3925,7 @@
   },
   {
     "Player": "Caris LeVert",
+    "Team": "BKN",
     "GP": "57",
     "PTS": "468",
     "REB": "188",
@@ -3724,6 +3943,7 @@
   },
   {
     "Player": "Ian Mahinmi",
+    "Team": "WAS",
     "GP": "31",
     "PTS": "173",
     "REB": "150",
@@ -3741,6 +3961,7 @@
   },
   {
     "Player": "Jamal Murray",
+    "Team": "DEN",
     "GP": "82",
     "PTS": "811",
     "REB": "214",
@@ -3758,6 +3979,7 @@
   },
   {
     "Player": "Manu Ginobili",
+    "Team": "SAS",
     "GP": "69",
     "PTS": "517",
     "REB": "157",
@@ -3775,6 +3997,7 @@
   },
   {
     "Player": "Joe Johnson",
+    "Team": "UTA",
     "GP": "78",
     "PTS": "715",
     "REB": "243",
@@ -3792,6 +4015,7 @@
   },
   {
     "Player": "Michael Carter-Williams",
+    "Team": "CHI",
     "GP": "45",
     "PTS": "297",
     "REB": "153",
@@ -3809,6 +4033,7 @@
   },
   {
     "Player": "Matthew Dellavedova",
+    "Team": "MIL",
     "GP": "76",
     "PTS": "577",
     "REB": "147",
@@ -3826,6 +4051,7 @@
   },
   {
     "Player": "Tony Snell",
+    "Team": "MIL",
     "GP": "80",
     "PTS": "683",
     "REB": "248",
@@ -3843,6 +4069,7 @@
   },
   {
     "Player": "Jordan Farmar",
+    "Team": "SAC",
     "GP": "2",
     "PTS": "12",
     "REB": "3",
@@ -3860,6 +4087,7 @@
   },
   {
     "Player": "Ivica Zubac",
+    "Team": "LAL",
     "GP": "38",
     "PTS": "284",
     "REB": "159",
@@ -3877,6 +4105,7 @@
   },
   {
     "Player": "Wayne Ellington",
+    "Team": "MIA",
     "GP": "62",
     "PTS": "648",
     "REB": "132",
@@ -3894,6 +4123,7 @@
   },
   {
     "Player": "Justin Hamilton",
+    "Team": "BKN",
     "GP": "64",
     "PTS": "442",
     "REB": "262",
@@ -3911,6 +4141,7 @@
   },
   {
     "Player": "Dwight Powell",
+    "Team": "DAL",
     "GP": "77",
     "PTS": "516",
     "REB": "306",
@@ -3928,6 +4159,7 @@
   },
   {
     "Player": "Dante Cunningham",
+    "Team": "NOP",
     "GP": "66",
     "PTS": "435",
     "REB": "277",
@@ -3945,6 +4177,7 @@
   },
   {
     "Player": "Jared Dudley",
+    "Team": "PHX",
     "GP": "64",
     "PTS": "434",
     "REB": "225",
@@ -3962,6 +4195,7 @@
   },
   {
     "Player": "Brandon Knight",
+    "Team": "PHX",
     "GP": "54",
     "PTS": "595",
     "REB": "118",
@@ -3979,6 +4213,7 @@
   },
   {
     "Player": "Michael Beasley",
+    "Team": "MIL",
     "GP": "56",
     "PTS": "528",
     "REB": "193",
@@ -3996,6 +4231,7 @@
   },
   {
     "Player": "Iman Shumpert",
+    "Team": "CLE",
     "GP": "76",
     "PTS": "567",
     "REB": "218",
@@ -4013,6 +4249,7 @@
   },
   {
     "Player": "Justin Holiday",
+    "Team": "NYK",
     "GP": "82",
     "PTS": "629",
     "REB": "225",
@@ -4030,6 +4267,7 @@
   },
   {
     "Player": "Raymond Felton",
+    "Team": "LAC",
     "GP": "80",
     "PTS": "538",
     "REB": "218",
@@ -4047,6 +4285,7 @@
   },
   {
     "Player": "James Ennis III",
+    "Team": "MEM",
     "GP": "64",
     "PTS": "429",
     "REB": "259",
@@ -4064,6 +4303,7 @@
   },
   {
     "Player": "Tarik Black",
+    "Team": "LAL",
     "GP": "67",
     "PTS": "383",
     "REB": "343",
@@ -4081,6 +4321,7 @@
   },
   {
     "Player": "Anthony Tolliver",
+    "Team": "SAC",
     "GP": "65",
     "PTS": "461",
     "REB": "237",
@@ -4098,6 +4339,7 @@
   },
   {
     "Player": "Jodie Meeks",
+    "Team": "ORL",
     "GP": "36",
     "PTS": "327",
     "REB": "77",
@@ -4115,6 +4357,7 @@
   },
   {
     "Player": "Timofey Mozgov",
+    "Team": "LAL",
     "GP": "54",
     "PTS": "401",
     "REB": "264",
@@ -4132,6 +4375,7 @@
   },
   {
     "Player": "Gerald Henderson",
+    "Team": "PHI",
     "GP": "72",
     "PTS": "662",
     "REB": "185",
@@ -4149,6 +4393,7 @@
   },
   {
     "Player": "Al Jefferson",
+    "Team": "IND",
     "GP": "66",
     "PTS": "535",
     "REB": "278",
@@ -4166,6 +4411,7 @@
   },
   {
     "Player": "Jeff Green",
+    "Team": "ORL",
     "GP": "69",
     "PTS": "638",
     "REB": "214",
@@ -4183,6 +4429,7 @@
   },
   {
     "Player": "Tyler Ulis",
+    "Team": "PHX",
     "GP": "61",
     "PTS": "444",
     "REB": "95",
@@ -4200,6 +4447,7 @@
   },
   {
     "Player": "Nemanja Bjelica",
+    "Team": "MIN",
     "GP": "65",
     "PTS": "403",
     "REB": "244",
@@ -4217,6 +4465,7 @@
   },
   {
     "Player": "Mike Muscala",
+    "Team": "ATL",
     "GP": "70",
     "PTS": "435",
     "REB": "240",
@@ -4234,6 +4483,7 @@
   },
   {
     "Player": "Rodney McGruder",
+    "Team": "MIA",
     "GP": "78",
     "PTS": "497",
     "REB": "256",
@@ -4251,6 +4501,7 @@
   },
   {
     "Player": "Isaiah Whitehead",
+    "Team": "BKN",
     "GP": "73",
     "PTS": "543",
     "REB": "184",
@@ -4268,6 +4519,7 @@
   },
   {
     "Player": "Sam Dekker",
+    "Team": "HOU",
     "GP": "77",
     "PTS": "504",
     "REB": "284",
@@ -4285,6 +4537,7 @@
   },
   {
     "Player": "Shelvin Mack",
+    "Team": "UTA",
     "GP": "55",
     "PTS": "430",
     "REB": "125",
@@ -4302,6 +4555,7 @@
   },
   {
     "Player": "Joe Harris",
+    "Team": "BKN",
     "GP": "52",
     "PTS": "428",
     "REB": "147",
@@ -4319,6 +4573,7 @@
   },
   {
     "Player": "Spencer Hawes",
+    "Team": "MIL",
     "GP": "54",
     "PTS": "337",
     "REB": "191",
@@ -4336,6 +4591,7 @@
   },
   {
     "Player": "Bobby Portis",
+    "Team": "CHI",
     "GP": "64",
     "PTS": "437",
     "REB": "296",
@@ -4353,6 +4609,7 @@
   },
   {
     "Player": "Lance Stephenson",
+    "Team": "IND",
     "GP": "18",
     "PTS": "122",
     "REB": "52",
@@ -4370,6 +4627,7 @@
   },
   {
     "Player": "Willie Reed",
+    "Team": "MIA",
     "GP": "71",
     "PTS": "374",
     "REB": "332",
@@ -4387,6 +4645,7 @@
   },
   {
     "Player": "David West",
+    "Team": "GSW",
     "GP": "68",
     "PTS": "316",
     "REB": "203",
@@ -4404,6 +4663,7 @@
   },
   {
     "Player": "Ed Davis",
+    "Team": "POR",
     "GP": "46",
     "PTS": "200",
     "REB": "244",
@@ -4421,6 +4681,7 @@
   },
   {
     "Player": "Justin Anderson",
+    "Team": "PHI",
     "GP": "75",
     "PTS": "532",
     "REB": "245",
@@ -4438,6 +4699,7 @@
   },
   {
     "Player": "Langston Galloway",
+    "Team": "SAC",
     "GP": "74",
     "PTS": "585",
     "REB": "156",
@@ -4455,6 +4717,7 @@
   },
   {
     "Player": "Glenn Robinson III",
+    "Team": "IND",
     "GP": "69",
     "PTS": "419",
     "REB": "246",
@@ -4472,6 +4735,7 @@
   },
   {
     "Player": "Terry Rozier",
+    "Team": "BOS",
     "GP": "74",
     "PTS": "410",
     "REB": "227",
@@ -4489,6 +4753,7 @@
   },
   {
     "Player": "Alexis Ajinca",
+    "Team": "NOP",
     "GP": "39",
     "PTS": "207",
     "REB": "177",
@@ -4506,6 +4771,7 @@
   },
   {
     "Player": "Andrew Harrison",
+    "Team": "MEM",
     "GP": "72",
     "PTS": "425",
     "REB": "136",
@@ -4523,6 +4789,7 @@
   },
   {
     "Player": "Delon Wright",
+    "Team": "TOR",
     "GP": "27",
     "PTS": "150",
     "REB": "48",
@@ -4540,6 +4807,7 @@
   },
   {
     "Player": "Kelly Oubre Jr.",
+    "Team": "WAS",
     "GP": "79",
     "PTS": "501",
     "REB": "261",
@@ -4557,6 +4825,7 @@
   },
   {
     "Player": "Norman Powell",
+    "Team": "TOR",
     "GP": "76",
     "PTS": "636",
     "REB": "169",
@@ -4574,6 +4843,7 @@
   },
   {
     "Player": "Darrell Arthur",
+    "Team": "DEN",
     "GP": "41",
     "PTS": "262",
     "REB": "112",
@@ -4591,6 +4861,7 @@
   },
   {
     "Player": "Doug McDermott",
+    "Team": "OKC",
     "GP": "66",
     "PTS": "592",
     "REB": "179",
@@ -4608,6 +4879,7 @@
   },
   {
     "Player": "Noah Vonleh",
+    "Team": "POR",
     "GP": "74",
     "PTS": "327",
     "REB": "387",
@@ -4625,6 +4897,7 @@
   },
   {
     "Player": "Josh McRoberts",
+    "Team": "MIA",
     "GP": "22",
     "PTS": "107",
     "REB": "74",
@@ -4642,6 +4915,7 @@
   },
   {
     "Player": "Domantas Sabonis",
+    "Team": "OKC",
     "GP": "81",
     "PTS": "479",
     "REB": "288",
@@ -4659,6 +4933,7 @@
   },
   {
     "Player": "Brandan Wright",
+    "Team": "MEM",
     "GP": "28",
     "PTS": "189",
     "REB": "78",
@@ -4676,6 +4951,7 @@
   },
   {
     "Player": "Shabazz Muhammad",
+    "Team": "MIN",
     "GP": "78",
     "PTS": "772",
     "REB": "220",
@@ -4693,6 +4969,7 @@
   },
   {
     "Player": "Cristiano Felicio",
+    "Team": "CHI",
     "GP": "66",
     "PTS": "316",
     "REB": "311",
@@ -4710,6 +4987,7 @@
   },
   {
     "Player": "Devin Harris",
+    "Team": "DAL",
     "GP": "65",
     "PTS": "437",
     "REB": "127",
@@ -4727,6 +5005,7 @@
   },
   {
     "Player": "Toney Douglas",
+    "Team": "MEM",
     "GP": "24",
     "PTS": "117",
     "REB": "61",
@@ -4744,6 +5023,7 @@
   },
   {
     "Player": "Georgios Papagiannis",
+    "Team": "SAC",
     "GP": "22",
     "PTS": "124",
     "REB": "86",
@@ -4761,6 +5041,7 @@
   },
   {
     "Player": "D.J. Augustin",
+    "Team": "ORL",
     "GP": "78",
     "PTS": "616",
     "REB": "117",
@@ -4778,6 +5059,7 @@
   },
   {
     "Player": "Jerami Grant",
+    "Team": "OKC",
     "GP": "80",
     "PTS": "437",
     "REB": "205",
@@ -4795,6 +5077,7 @@
   },
   {
     "Player": "Kris Dunn",
+    "Team": "MIN",
     "GP": "78",
     "PTS": "293",
     "REB": "166",
@@ -4812,6 +5095,7 @@
   },
   {
     "Player": "Jason Smith",
+    "Team": "WAS",
     "GP": "74",
     "PTS": "420",
     "REB": "258",
@@ -4829,6 +5113,7 @@
   },
   {
     "Player": "Thomas Robinson",
+    "Team": "LAL",
     "GP": "48",
     "PTS": "241",
     "REB": "223",
@@ -4846,6 +5131,7 @@
   },
   {
     "Player": "David Nwaba",
+    "Team": "LAL",
     "GP": "20",
     "PTS": "120",
     "REB": "63",
@@ -4863,6 +5149,7 @@
   },
   {
     "Player": "Chandler Parsons",
+    "Team": "MEM",
     "GP": "34",
     "PTS": "210",
     "REB": "84",
@@ -4880,6 +5167,7 @@
   },
   {
     "Player": "Arron Afflalo",
+    "Team": "SAC",
     "GP": "61",
     "PTS": "515",
     "REB": "125",
@@ -4897,6 +5185,7 @@
   },
   {
     "Player": "Trey Lyles",
+    "Team": "UTA",
     "GP": "71",
     "PTS": "440",
     "REB": "235",
@@ -4914,6 +5203,7 @@
   },
   {
     "Player": "Luc Mbah a Moute",
+    "Team": "LAC",
     "GP": "80",
     "PTS": "484",
     "REB": "170",
@@ -4931,6 +5221,7 @@
   },
   {
     "Player": "JaVale McGee",
+    "Team": "GSW",
     "GP": "77",
     "PTS": "472",
     "REB": "244",
@@ -4948,6 +5239,7 @@
   },
   {
     "Player": "Cheick Diallo",
+    "Team": "NOP",
     "GP": "17",
     "PTS": "87",
     "REB": "73",
@@ -4965,6 +5257,7 @@
   },
   {
     "Player": "Aron Baynes",
+    "Team": "DET",
     "GP": "75",
     "PTS": "365",
     "REB": "333",
@@ -4982,6 +5275,7 @@
   },
   {
     "Player": "Jerian Grant",
+    "Team": "CHI",
     "GP": "63",
     "PTS": "370",
     "REB": "111",
@@ -4999,6 +5293,7 @@
   },
   {
     "Player": "Taurean Prince",
+    "Team": "ATL",
     "GP": "59",
     "PTS": "335",
     "REB": "157",
@@ -5016,6 +5311,7 @@
   },
   {
     "Player": "Meyers Leonard",
+    "Team": "POR",
     "GP": "74",
     "PTS": "401",
     "REB": "237",
@@ -5033,6 +5329,7 @@
   },
   {
     "Player": "Troy Williams",
+    "Team": "HOU",
     "GP": "30",
     "PTS": "185",
     "REB": "69",
@@ -5050,6 +5347,7 @@
   },
   {
     "Player": "Salah Mejri",
+    "Team": "DAL",
     "GP": "73",
     "PTS": "213",
     "REB": "308",
@@ -5067,6 +5365,7 @@
   },
   {
     "Player": "Quincy Acy",
+    "Team": "BKN",
     "GP": "38",
     "PTS": "222",
     "REB": "115",
@@ -5084,6 +5383,7 @@
   },
   {
     "Player": "Lance Thomas",
+    "Team": "NYK",
     "GP": "46",
     "PTS": "275",
     "REB": "142",
@@ -5101,6 +5401,7 @@
   },
   {
     "Player": "Marcus Thornton",
+    "Team": "WAS",
     "GP": "33",
     "PTS": "219",
     "REB": "76",
@@ -5118,6 +5419,7 @@
   },
   {
     "Player": "Jonathon Simmons",
+    "Team": "SAS",
     "GP": "78",
     "PTS": "483",
     "REB": "160",
@@ -5135,6 +5437,7 @@
   },
   {
     "Player": "Luis Scola",
+    "Team": "BKN",
     "GP": "36",
     "PTS": "184",
     "REB": "139",
@@ -5152,6 +5455,7 @@
   },
   {
     "Player": "Pascal Siakam",
+    "Team": "TOR",
     "GP": "55",
     "PTS": "229",
     "REB": "185",
@@ -5169,6 +5473,7 @@
   },
   {
     "Player": "Jaylen Brown",
+    "Team": "BOS",
     "GP": "78",
     "PTS": "515",
     "REB": "220",
@@ -5186,6 +5491,7 @@
   },
   {
     "Player": "Ben McLemore",
+    "Team": "SAC",
     "GP": "61",
     "PTS": "495",
     "REB": "129",
@@ -5203,6 +5509,7 @@
   },
   {
     "Player": "Hollis Thompson",
+    "Team": "NOP",
     "GP": "40",
     "PTS": "205",
     "REB": "112",
@@ -5220,6 +5527,7 @@
   },
   {
     "Player": "Omer Asik",
+    "Team": "NOP",
     "GP": "31",
     "PTS": "85",
     "REB": "163",
@@ -5237,6 +5545,7 @@
   },
   {
     "Player": "Ramon Sessions",
+    "Team": "CHA",
     "GP": "50",
     "PTS": "312",
     "REB": "73",
@@ -5254,6 +5563,7 @@
   },
   {
     "Player": "Rodney Stuckey",
+    "Team": "IND",
     "GP": "39",
     "PTS": "281",
     "REB": "84",
@@ -5271,6 +5581,7 @@
   },
   {
     "Player": "Beno Udrih",
+    "Team": "DET",
     "GP": "39",
     "PTS": "227",
     "REB": "57",
@@ -5288,6 +5599,7 @@
   },
   {
     "Player": "Boban Marjanovic",
+    "Team": "DET",
     "GP": "35",
     "PTS": "191",
     "REB": "130",
@@ -5305,6 +5617,7 @@
   },
   {
     "Player": "Joffrey Lauvergne",
+    "Team": "CHI",
     "GP": "70",
     "PTS": "375",
     "REB": "251",
@@ -5322,6 +5635,7 @@
   },
   {
     "Player": "Archie Goodwin",
+    "Team": "BKN",
     "GP": "15",
     "PTS": "110",
     "REB": "28",
@@ -5339,6 +5653,7 @@
   },
   {
     "Player": "Omri Casspi",
+    "Team": "MIN",
     "GP": "36",
     "PTS": "186",
     "REB": "112",
@@ -5356,6 +5671,7 @@
   },
   {
     "Player": "Kyle Anderson",
+    "Team": "SAS",
     "GP": "72",
     "PTS": "246",
     "REB": "208",
@@ -5373,6 +5689,7 @@
   },
   {
     "Player": "Roy Hibbert",
+    "Team": "DEN",
     "GP": "48",
     "PTS": "221",
     "REB": "152",
@@ -5390,6 +5707,7 @@
   },
   {
     "Player": "Alec Burks",
+    "Team": "UTA",
     "GP": "42",
     "PTS": "283",
     "REB": "120",
@@ -5407,6 +5725,7 @@
   },
   {
     "Player": "Stanley Johnson",
+    "Team": "DET",
     "GP": "77",
     "PTS": "339",
     "REB": "189",
@@ -5424,6 +5743,7 @@
   },
   {
     "Player": "Kris Humphries",
+    "Team": "ATL",
     "GP": "56",
     "PTS": "257",
     "REB": "206",
@@ -5441,6 +5761,7 @@
   },
   {
     "Player": "Dorian Finney-Smith",
+    "Team": "DAL",
     "GP": "81",
     "PTS": "350",
     "REB": "222",
@@ -5458,6 +5779,7 @@
   },
   {
     "Player": "Denzel Valentine",
+    "Team": "CHI",
     "GP": "57",
     "PTS": "291",
     "REB": "151",
@@ -5475,6 +5797,7 @@
   },
   {
     "Player": "Randy Foye",
+    "Team": "BKN",
     "GP": "69",
     "PTS": "357",
     "REB": "155",
@@ -5492,6 +5815,7 @@
   },
   {
     "Player": "Troy Daniels",
+    "Team": "MEM",
     "GP": "67",
     "PTS": "551",
     "REB": "100",
@@ -5509,6 +5833,7 @@
   },
   {
     "Player": "Paul Zipser",
+    "Team": "CHI",
     "GP": "44",
     "PTS": "240",
     "REB": "125",
@@ -5526,6 +5851,7 @@
   },
   {
     "Player": "Juancho Hernangomez",
+    "Team": "DEN",
     "GP": "62",
     "PTS": "305",
     "REB": "187",
@@ -5543,6 +5869,7 @@
   },
   {
     "Player": "Jonas Jerebko",
+    "Team": "BOS",
     "GP": "78",
     "PTS": "299",
     "REB": "272",
@@ -5560,6 +5887,7 @@
   },
   {
     "Player": "Mirza Teletovic",
+    "Team": "MIL",
     "GP": "70",
     "PTS": "451",
     "REB": "162",
@@ -5577,6 +5905,7 @@
   },
   {
     "Player": "Shaun Livingston",
+    "Team": "GSW",
     "GP": "76",
     "PTS": "389",
     "REB": "151",
@@ -5594,6 +5923,7 @@
   },
   {
     "Player": "Donatas Motiejunas",
+    "Team": "NOP",
     "GP": "34",
     "PTS": "150",
     "REB": "101",
@@ -5611,6 +5941,7 @@
   },
   {
     "Player": "Ian Clark",
+    "Team": "GSW",
     "GP": "77",
     "PTS": "527",
     "REB": "121",
@@ -5628,6 +5959,7 @@
   },
   {
     "Player": "Richard Jefferson",
+    "Team": "CLE",
     "GP": "79",
     "PTS": "448",
     "REB": "203",
@@ -5645,6 +5977,7 @@
   },
   {
     "Player": "Timothe Luwawu-Cabarrot",
+    "Team": "PHI",
     "GP": "69",
     "PTS": "445",
     "REB": "149",
@@ -5662,6 +5995,7 @@
   },
   {
     "Player": "Malcolm Delaney",
+    "Team": "ATL",
     "GP": "73",
     "PTS": "391",
     "REB": "123",
@@ -5679,6 +6013,7 @@
   },
   {
     "Player": "Brandon Rush",
+    "Team": "MIN",
     "GP": "47",
     "PTS": "197",
     "REB": "99",
@@ -5696,6 +6031,7 @@
   },
   {
     "Player": "Corey Brewer",
+    "Team": "LAL",
     "GP": "82",
     "PTS": "371",
     "REB": "166",
@@ -5713,6 +6049,7 @@
   },
   {
     "Player": "Dante Exum",
+    "Team": "UTA",
     "GP": "66",
     "PTS": "412",
     "REB": "132",
@@ -5730,6 +6067,7 @@
   },
   {
     "Player": "Lavoy Allen",
+    "Team": "IND",
     "GP": "61",
     "PTS": "177",
     "REB": "219",
@@ -5747,6 +6085,7 @@
   },
   {
     "Player": "Anthony Bennett",
+    "Team": "BKN",
     "GP": "23",
     "PTS": "115",
     "REB": "78",
@@ -5764,6 +6103,7 @@
   },
   {
     "Player": "Jarrod Uthoff",
+    "Team": "DAL",
     "GP": "9",
     "PTS": "40",
     "REB": "22",
@@ -5781,6 +6121,7 @@
   },
   {
     "Player": "Mindaugas Kuzminskas",
+    "Team": "NYK",
     "GP": "68",
     "PTS": "425",
     "REB": "126",
@@ -5798,6 +6139,7 @@
   },
   {
     "Player": "Tyus Jones",
+    "Team": "MIN",
     "GP": "60",
     "PTS": "209",
     "REB": "67",
@@ -5815,6 +6157,7 @@
   },
   {
     "Player": "Derrick Jones Jr.",
+    "Team": "PHX",
     "GP": "32",
     "PTS": "168",
     "REB": "79",
@@ -5832,6 +6175,7 @@
   },
   {
     "Player": "Derrick Williams",
+    "Team": "CLE",
     "GP": "50",
     "PTS": "304",
     "REB": "130",
@@ -5849,6 +6193,7 @@
   },
   {
     "Player": "Ron Baker",
+    "Team": "NYK",
     "GP": "52",
     "PTS": "215",
     "REB": "98",
@@ -5866,6 +6211,7 @@
   },
   {
     "Player": "Reggie Bullock Jr.",
+    "Team": "DET",
     "GP": "31",
     "PTS": "141",
     "REB": "64",
@@ -5883,6 +6229,7 @@
   },
   {
     "Player": "Jarell Martin",
+    "Team": "MEM",
     "GP": "42",
     "PTS": "165",
     "REB": "162",
@@ -5900,6 +6247,7 @@
   },
   {
     "Player": "Jason Terry",
+    "Team": "MIL",
     "GP": "74",
     "PTS": "307",
     "REB": "106",
@@ -5917,6 +6265,7 @@
   },
   {
     "Player": "Leandro Barbosa",
+    "Team": "PHX",
     "GP": "67",
     "PTS": "419",
     "REB": "104",
@@ -5934,6 +6283,7 @@
   },
   {
     "Player": "Gary Payton II",
+    "Team": "MIL",
     "GP": "6",
     "PTS": "20",
     "REB": "12",
@@ -5951,6 +6301,7 @@
   },
   {
     "Player": "Cameron Payne",
+    "Team": "CHI",
     "GP": "31",
     "PTS": "160",
     "REB": "48",
@@ -5968,6 +6319,7 @@
   },
   {
     "Player": "Anthony Brown",
+    "Team": "ORL",
     "GP": "11",
     "PTS": "43",
     "REB": "33",
@@ -5985,6 +6337,7 @@
   },
   {
     "Player": "Mike Dunleavy",
+    "Team": "ATL",
     "GP": "53",
     "PTS": "275",
     "REB": "115",
@@ -6002,6 +6355,7 @@
   },
   {
     "Player": "Dahntay Jones",
+    "Team": "CLE",
     "GP": "1",
     "PTS": "9",
     "REB": "2",
@@ -6019,6 +6373,7 @@
   },
   {
     "Player": "C.J. Watson",
+    "Team": "ORL",
     "GP": "62",
     "PTS": "281",
     "REB": "89",
@@ -6036,6 +6391,7 @@
   },
   {
     "Player": "Boris Diaw",
+    "Team": "UTA",
     "GP": "73",
     "PTS": "338",
     "REB": "158",
@@ -6053,6 +6409,7 @@
   },
   {
     "Player": "Mario Hezonja",
+    "Team": "ORL",
     "GP": "65",
     "PTS": "317",
     "REB": "146",
@@ -6070,6 +6427,7 @@
   },
   {
     "Player": "Alex Abrines",
+    "Team": "OKC",
     "GP": "68",
     "PTS": "406",
     "REB": "86",
@@ -6087,6 +6445,7 @@
   },
   {
     "Player": "Kevin Seraphin",
+    "Team": "IND",
     "GP": "49",
     "PTS": "232",
     "REB": "142",
@@ -6104,6 +6463,7 @@
   },
   {
     "Player": "Luke Babbitt",
+    "Team": "MIA",
     "GP": "68",
     "PTS": "324",
     "REB": "141",
@@ -6121,6 +6481,7 @@
   },
   {
     "Player": "Brandon Bass",
+    "Team": "LAC",
     "GP": "52",
     "PTS": "292",
     "REB": "129",
@@ -6138,6 +6499,7 @@
   },
   {
     "Player": "Jonathan Gibson",
+    "Team": "DAL",
     "GP": "17",
     "PTS": "106",
     "REB": "22",
@@ -6155,6 +6517,7 @@
   },
   {
     "Player": "Wesley Johnson",
+    "Team": "LAC",
     "GP": "68",
     "PTS": "186",
     "REB": "181",
@@ -6172,6 +6535,7 @@
   },
   {
     "Player": "Davis Bertans",
+    "Team": "SAS",
     "GP": "67",
     "PTS": "303",
     "REB": "98",
@@ -6189,6 +6553,7 @@
   },
   {
     "Player": "Aaron Brooks",
+    "Team": "IND",
     "GP": "65",
     "PTS": "322",
     "REB": "69",
@@ -6206,6 +6571,7 @@
   },
   {
     "Player": "Gerald Green",
+    "Team": "BOS",
     "GP": "47",
     "PTS": "262",
     "REB": "84",
@@ -6223,6 +6589,7 @@
   },
   {
     "Player": "Chris Andersen",
+    "Team": "CLE",
     "GP": "12",
     "PTS": "28",
     "REB": "31",
@@ -6240,6 +6607,7 @@
   },
   {
     "Player": "Tyler Zeller",
+    "Team": "BOS",
     "GP": "51",
     "PTS": "178",
     "REB": "124",
@@ -6257,6 +6625,7 @@
   },
   {
     "Player": "Dragan Bender",
+    "Team": "PHX",
     "GP": "43",
     "PTS": "146",
     "REB": "103",
@@ -6274,6 +6643,7 @@
   },
   {
     "Player": "Jakob Poeltl",
+    "Team": "TOR",
     "GP": "54",
     "PTS": "165",
     "REB": "165",
@@ -6291,6 +6661,7 @@
   },
   {
     "Player": "Thon Maker",
+    "Team": "MIL",
     "GP": "57",
     "PTS": "226",
     "REB": "114",
@@ -6308,6 +6679,7 @@
   },
   {
     "Player": "Chasson Randle",
+    "Team": "NYK",
     "GP": "26",
     "PTS": "137",
     "REB": "32",
@@ -6325,6 +6697,7 @@
   },
   {
     "Player": "Patrick McCaw",
+    "Team": "GSW",
     "GP": "71",
     "PTS": "282",
     "REB": "100",
@@ -6342,6 +6715,7 @@
   },
   {
     "Player": "Tiago Splitter",
+    "Team": "PHI",
     "GP": "8",
     "PTS": "39",
     "REB": "22",
@@ -6359,6 +6733,7 @@
   },
   {
     "Player": "Jeff Withey",
+    "Team": "UTA",
     "GP": "51",
     "PTS": "146",
     "REB": "121",
@@ -6376,6 +6751,7 @@
   },
   {
     "Player": "Isaiah Canaan",
+    "Team": "CHI",
     "GP": "39",
     "PTS": "181",
     "REB": "50",
@@ -6393,6 +6769,7 @@
   },
   {
     "Player": "Jose Calderon",
+    "Team": "ATL",
     "GP": "41",
     "PTS": "141",
     "REB": "74",
@@ -6410,6 +6787,7 @@
   },
   {
     "Player": "Semaj Christon",
+    "Team": "OKC",
     "GP": "64",
     "PTS": "183",
     "REB": "87",
@@ -6427,6 +6805,7 @@
   },
   {
     "Player": "Pierre Jackson",
+    "Team": "DAL",
     "GP": "9",
     "PTS": "35",
     "REB": "9",
@@ -6444,6 +6823,7 @@
   },
   {
     "Player": "Reggie Williams",
+    "Team": "NOP",
     "GP": "6",
     "PTS": "27",
     "REB": "6",
@@ -6461,6 +6841,7 @@
   },
   {
     "Player": "Shabazz Napier",
+    "Team": "POR",
     "GP": "53",
     "PTS": "218",
     "REB": "61",
@@ -6478,6 +6859,7 @@
   },
   {
     "Player": "Adreian Payne",
+    "Team": "MIN",
     "GP": "18",
     "PTS": "63",
     "REB": "33",
@@ -6495,6 +6877,7 @@
   },
   {
     "Player": "Anthony Morrow",
+    "Team": "CHI",
     "GP": "49",
     "PTS": "271",
     "REB": "31",
@@ -6512,6 +6895,7 @@
   },
   {
     "Player": "DeAndre Liggins",
+    "Team": "DAL",
     "GP": "62",
     "PTS": "152",
     "REB": "108",
@@ -6529,6 +6913,7 @@
   },
   {
     "Player": "Wade Baldwin IV",
+    "Team": "MEM",
     "GP": "33",
     "PTS": "106",
     "REB": "46",
@@ -6546,6 +6931,7 @@
   },
   {
     "Player": "Quinn Cook",
+    "Team": "NOP",
     "GP": "14",
     "PTS": "79",
     "REB": "7",
@@ -6563,6 +6949,7 @@
   },
   {
     "Player": "KJ McDaniels",
+    "Team": "BKN",
     "GP": "49",
     "PTS": "206",
     "REB": "82",
@@ -6580,6 +6967,7 @@
   },
   {
     "Player": "Okaro White",
+    "Team": "MIA",
     "GP": "35",
     "PTS": "98",
     "REB": "82",
@@ -6597,6 +6985,7 @@
   },
   {
     "Player": "Jared Sullinger",
+    "Team": "TOR",
     "GP": "11",
     "PTS": "37",
     "REB": "27",
@@ -6614,6 +7003,7 @@
   },
   {
     "Player": "Cole Aldrich",
+    "Team": "MIN",
     "GP": "62",
     "PTS": "105",
     "REB": "158",
@@ -6631,6 +7021,7 @@
   },
   {
     "Player": "Kevon Looney",
+    "Team": "GSW",
     "GP": "53",
     "PTS": "135",
     "REB": "124",
@@ -6648,6 +7039,7 @@
   },
   {
     "Player": "Trey Burke",
+    "Team": "WAS",
     "GP": "57",
     "PTS": "285",
     "REB": "47",
@@ -6665,6 +7057,7 @@
   },
   {
     "Player": "Tyler Ennis",
+    "Team": "LAL",
     "GP": "53",
     "PTS": "228",
     "REB": "45",
@@ -6682,6 +7075,7 @@
   },
   {
     "Player": "Wayne Selden",
+    "Team": "MEM",
     "GP": "14",
     "PTS": "71",
     "REB": "16",
@@ -6699,6 +7093,7 @@
   },
   {
     "Player": "Marcelo Huertas",
+    "Team": "LAL",
     "GP": "23",
     "PTS": "63",
     "REB": "24",
@@ -6716,6 +7111,7 @@
   },
   {
     "Player": "Tomas Satoransky",
+    "Team": "WAS",
     "GP": "57",
     "PTS": "154",
     "REB": "83",
@@ -6733,6 +7129,7 @@
   },
   {
     "Player": "James Michael McAdoo",
+    "Team": "GSW",
     "GP": "52",
     "PTS": "147",
     "REB": "91",
@@ -6750,6 +7147,7 @@
   },
   {
     "Player": "Kay Felder",
+    "Team": "CLE",
     "GP": "42",
     "PTS": "166",
     "REB": "41",
@@ -6767,6 +7165,7 @@
   },
   {
     "Player": "Maurice Ndour",
+    "Team": "NYK",
     "GP": "32",
     "PTS": "98",
     "REB": "64",
@@ -6784,6 +7183,7 @@
   },
   {
     "Player": "Rashad Vaughn",
+    "Team": "MIL",
     "GP": "41",
     "PTS": "142",
     "REB": "49",
@@ -6801,6 +7201,7 @@
   },
   {
     "Player": "Briante Weber",
+    "Team": "CHA",
     "GP": "20",
     "PTS": "62",
     "REB": "26",
@@ -6818,6 +7219,7 @@
   },
   {
     "Player": "Chinanu Onuaku",
+    "Team": "HOU",
     "GP": "5",
     "PTS": "14",
     "REB": "10",
@@ -6835,6 +7237,7 @@
   },
   {
     "Player": "Sasha Vujacic",
+    "Team": "NYK",
     "GP": "42",
     "PTS": "124",
     "REB": "59",
@@ -6852,6 +7255,7 @@
   },
   {
     "Player": "Nicolas Brussino",
+    "Team": "DAL",
     "GP": "54",
     "PTS": "150",
     "REB": "95",
@@ -6869,6 +7273,7 @@
   },
   {
     "Player": "Mike Scott",
+    "Team": "ATL",
     "GP": "18",
     "PTS": "45",
     "REB": "37",
@@ -6886,6 +7291,7 @@
   },
   {
     "Player": "Greivis Vasquez",
+    "Team": "BKN",
     "GP": "3",
     "PTS": "7",
     "REB": "2",
@@ -6903,6 +7309,7 @@
   },
   {
     "Player": "Christian Wood",
+    "Team": "CHA",
     "GP": "13",
     "PTS": "35",
     "REB": "29",
@@ -6920,6 +7327,7 @@
   },
   {
     "Player": "Miles Plumlee",
+    "Team": "CHA",
     "GP": "45",
     "PTS": "113",
     "REB": "95",
@@ -6937,6 +7345,7 @@
   },
   {
     "Player": "Jarrett Jack",
+    "Team": "NOP",
     "GP": "2",
     "PTS": "6",
     "REB": "0",
@@ -6954,6 +7363,7 @@
   },
   {
     "Player": "Jordan McRae",
+    "Team": "CLE",
     "GP": "37",
     "PTS": "161",
     "REB": "41",
@@ -6971,6 +7381,7 @@
   },
   {
     "Player": "Jarell Eddie",
+    "Team": "PHX",
     "GP": "5",
     "PTS": "24",
     "REB": "7",
@@ -6988,6 +7399,7 @@
   },
   {
     "Player": "Norris Cole",
+    "Team": "OKC",
     "GP": "13",
     "PTS": "43",
     "REB": "11",
@@ -7005,6 +7417,7 @@
   },
   {
     "Player": "Paul Pierce",
+    "Team": "LAC",
     "GP": "25",
     "PTS": "81",
     "REB": "48",
@@ -7022,6 +7435,7 @@
   },
   {
     "Player": "Fred VanVleet",
+    "Team": "TOR",
     "GP": "37",
     "PTS": "107",
     "REB": "42",
@@ -7039,6 +7453,7 @@
   },
   {
     "Player": "Ronnie Price",
+    "Team": "PHX",
     "GP": "14",
     "PTS": "14",
     "REB": "11",
@@ -7056,6 +7471,7 @@
   },
   {
     "Player": "Marshall Plumlee",
+    "Team": "NYK",
     "GP": "21",
     "PTS": "40",
     "REB": "51",
@@ -7073,6 +7489,7 @@
   },
   {
     "Player": "Brian Roberts",
+    "Team": "CHA",
     "GP": "41",
     "PTS": "142",
     "REB": "39",
@@ -7090,6 +7507,7 @@
   },
   {
     "Player": "Udonis Haslem",
+    "Team": "MIA",
     "GP": "16",
     "PTS": "31",
     "REB": "36",
@@ -7107,6 +7525,7 @@
   },
   {
     "Player": "Andrew Nicholson",
+    "Team": "BKN",
     "GP": "38",
     "PTS": "100",
     "REB": "61",
@@ -7124,6 +7543,7 @@
   },
   {
     "Player": "Dejounte Murray",
+    "Team": "SAS",
     "GP": "38",
     "PTS": "130",
     "REB": "42",
@@ -7141,6 +7561,7 @@
   },
   {
     "Player": "Marcus Georges-Hunt",
+    "Team": "ORL",
     "GP": "5",
     "PTS": "14",
     "REB": "9",
@@ -7158,6 +7579,7 @@
   },
   {
     "Player": "Raul Neto",
+    "Team": "UTA",
     "GP": "40",
     "PTS": "100",
     "REB": "30",
@@ -7175,6 +7597,7 @@
   },
   {
     "Player": "DeAndre' Bembry",
+    "Team": "ATL",
     "GP": "38",
     "PTS": "101",
     "REB": "59",
@@ -7192,6 +7615,7 @@
   },
   {
     "Player": "Henry Ellenson",
+    "Team": "DET",
     "GP": "19",
     "PTS": "60",
     "REB": "41",
@@ -7209,6 +7633,7 @@
   },
   {
     "Player": "AJ Hammons",
+    "Team": "DAL",
     "GP": "22",
     "PTS": "48",
     "REB": "36",
@@ -7226,6 +7651,7 @@
   },
   {
     "Player": "Johnny O'Bryant III",
+    "Team": "CHA",
     "GP": "11",
     "PTS": "38",
     "REB": "19",
@@ -7243,6 +7669,7 @@
   },
   {
     "Player": "Sheldon Mac",
+    "Team": "WAS",
     "GP": "30",
     "PTS": "90",
     "REB": "34",
@@ -7260,6 +7687,7 @@
   },
   {
     "Player": "Jarnell Stokes",
+    "Team": "DEN",
     "GP": "2",
     "PTS": "3",
     "REB": "2",
@@ -7277,6 +7705,7 @@
   },
   {
     "Player": "Malachi Richardson",
+    "Team": "SAC",
     "GP": "22",
     "PTS": "79",
     "REB": "23",
@@ -7294,6 +7723,7 @@
   },
   {
     "Player": "Brice Johnson",
+    "Team": "LAC",
     "GP": "3",
     "PTS": "4",
     "REB": "3",
@@ -7311,6 +7741,7 @@
   },
   {
     "Player": "Kyle Singler",
+    "Team": "OKC",
     "GP": "32",
     "PTS": "88",
     "REB": "48",
@@ -7328,6 +7759,7 @@
   },
   {
     "Player": "Damian Jones",
+    "Team": "GSW",
     "GP": "10",
     "PTS": "19",
     "REB": "23",
@@ -7345,6 +7777,7 @@
   },
   {
     "Player": "Malik Beasley",
+    "Team": "DEN",
     "GP": "22",
     "PTS": "83",
     "REB": "17",
@@ -7362,6 +7795,7 @@
   },
   {
     "Player": "Anderson Varejao",
+    "Team": "GSW",
     "GP": "14",
     "PTS": "18",
     "REB": "27",
@@ -7379,6 +7813,7 @@
   },
   {
     "Player": "Nicolas Laprovittola",
+    "Team": "SAS",
     "GP": "18",
     "PTS": "59",
     "REB": "10",
@@ -7396,6 +7831,7 @@
   },
   {
     "Player": "Pat Connaughton",
+    "Team": "POR",
     "GP": "39",
     "PTS": "98",
     "REB": "52",
@@ -7413,6 +7849,7 @@
   },
   {
     "Player": "Mike Miller",
+    "Team": "DEN",
     "GP": "20",
     "PTS": "28",
     "REB": "38",
@@ -7430,6 +7867,7 @@
   },
   {
     "Player": "Rakeem Christmas",
+    "Team": "IND",
     "GP": "29",
     "PTS": "59",
     "REB": "56",
@@ -7447,6 +7885,7 @@
   },
   {
     "Player": "Deyonta Davis",
+    "Team": "MEM",
     "GP": "36",
     "PTS": "58",
     "REB": "60",
@@ -7464,6 +7903,7 @@
   },
   {
     "Player": "Darrun Hilliard",
+    "Team": "DET",
     "GP": "39",
     "PTS": "127",
     "REB": "33",
@@ -7481,6 +7921,7 @@
   },
   {
     "Player": "Ryan Kelly",
+    "Team": "ATL",
     "GP": "16",
     "PTS": "25",
     "REB": "18",
@@ -7498,6 +7939,7 @@
   },
   {
     "Player": "Justin Harper",
+    "Team": "PHI",
     "GP": "3",
     "PTS": "12",
     "REB": "5",
@@ -7515,6 +7957,7 @@
   },
   {
     "Player": "Elijah Millsap",
+    "Team": "PHX",
     "GP": "2",
     "PTS": "3",
     "REB": "6",
@@ -7532,6 +7975,7 @@
   },
   {
     "Player": "Manny Harris",
+    "Team": "DAL",
     "GP": "4",
     "PTS": "8",
     "REB": "9",
@@ -7549,6 +7993,7 @@
   },
   {
     "Player": "Metta World Peace",
+    "Team": "LAL",
     "GP": "25",
     "PTS": "57",
     "REB": "20",
@@ -7566,6 +8011,7 @@
   },
   {
     "Player": "Stephen Zimmerman",
+    "Team": "ORL",
     "GP": "19",
     "PTS": "23",
     "REB": "35",
@@ -7583,6 +8029,7 @@
   },
   {
     "Player": "James Jones",
+    "Team": "CLE",
     "GP": "48",
     "PTS": "132",
     "REB": "37",
@@ -7600,6 +8047,7 @@
   },
   {
     "Player": "Lamar Patterson",
+    "Team": "ATL",
     "GP": "5",
     "PTS": "9",
     "REB": "7",
@@ -7617,6 +8065,7 @@
   },
   {
     "Player": "Nick Collison",
+    "Team": "OKC",
     "GP": "20",
     "PTS": "33",
     "REB": "31",
@@ -7634,6 +8083,7 @@
   },
   {
     "Player": "James Young",
+    "Team": "BOS",
     "GP": "29",
     "PTS": "68",
     "REB": "26",
@@ -7651,6 +8101,7 @@
   },
   {
     "Player": "Joel Anthony",
+    "Team": "SAS",
     "GP": "19",
     "PTS": "25",
     "REB": "31",
@@ -7668,6 +8119,7 @@
   },
   {
     "Player": "Bruno Caboclo",
+    "Team": "TOR",
     "GP": "9",
     "PTS": "14",
     "REB": "10",
@@ -7685,6 +8137,7 @@
   },
   {
     "Player": "Isaiah Taylor",
+    "Team": "HOU",
     "GP": "4",
     "PTS": "3",
     "REB": "3",
@@ -7702,6 +8155,7 @@
   },
   {
     "Player": "Joel Bolomboy",
+    "Team": "UTA",
     "GP": "12",
     "PTS": "22",
     "REB": "17",
@@ -7719,6 +8173,7 @@
   },
   {
     "Player": "Alan Anderson",
+    "Team": "LAC",
     "GP": "30",
     "PTS": "86",
     "REB": "24",
@@ -7736,6 +8191,7 @@
   },
   {
     "Player": "Chris McCullough",
+    "Team": "WAS",
     "GP": "16",
     "PTS": "36",
     "REB": "19",
@@ -7753,6 +8209,7 @@
   },
   {
     "Player": "Jordan Mickey",
+    "Team": "BOS",
     "GP": "25",
     "PTS": "38",
     "REB": "34",
@@ -7770,6 +8227,7 @@
   },
   {
     "Player": "Axel Toupane",
+    "Team": "NOP",
     "GP": "4",
     "PTS": "11",
     "REB": "1",
@@ -7787,6 +8245,7 @@
   },
   {
     "Player": "Treveon Graham",
+    "Team": "CHA",
     "GP": "27",
     "PTS": "57",
     "REB": "22",
@@ -7804,6 +8263,7 @@
   },
   {
     "Player": "Jake Layman",
+    "Team": "POR",
     "GP": "35",
     "PTS": "78",
     "REB": "24",
@@ -7821,6 +8281,7 @@
   },
   {
     "Player": "Alonzo Gee",
+    "Team": "DEN",
     "GP": "13",
     "PTS": "11",
     "REB": "15",
@@ -7838,6 +8299,7 @@
   },
   {
     "Player": "Tim Quarterman",
+    "Team": "POR",
     "GP": "16",
     "PTS": "31",
     "REB": "14",
@@ -7855,6 +8317,7 @@
   },
   {
     "Player": "Bryn Forbes",
+    "Team": "SAS",
     "GP": "36",
     "PTS": "94",
     "REB": "23",
@@ -7872,6 +8335,7 @@
   },
   {
     "Player": "Jordan Hill",
+    "Team": "MIN",
     "GP": "7",
     "PTS": "12",
     "REB": "14",
@@ -7889,6 +8353,7 @@
   },
   {
     "Player": "Damjan Rudez",
+    "Team": "ORL",
     "GP": "45",
     "PTS": "82",
     "REB": "25",
@@ -7906,6 +8371,7 @@
   },
   {
     "Player": "Demetrius Jackson",
+    "Team": "BOS",
     "GP": "5",
     "PTS": "10",
     "REB": "4",
@@ -7923,6 +8389,7 @@
   },
   {
     "Player": "Bobby Brown",
+    "Team": "HOU",
     "GP": "25",
     "PTS": "62",
     "REB": "6",
@@ -7940,6 +8407,7 @@
   },
   {
     "Player": "Joe Young",
+    "Team": "IND",
     "GP": "33",
     "PTS": "68",
     "REB": "17",
@@ -7957,6 +8425,7 @@
   },
   {
     "Player": "Daniel Ochefu",
+    "Team": "WAS",
     "GP": "19",
     "PTS": "24",
     "REB": "22",
@@ -7974,6 +8443,7 @@
   },
   {
     "Player": "Gary Neal",
+    "Team": "ATL",
     "GP": "2",
     "PTS": "4",
     "REB": "1",
@@ -7991,6 +8461,7 @@
   },
   {
     "Player": "Mike Tobey",
+    "Team": "CHA",
     "GP": "2",
     "PTS": "2",
     "REB": "3",
@@ -8008,6 +8479,7 @@
   },
   {
     "Player": "Kyle Wiltjer",
+    "Team": "HOU",
     "GP": "14",
     "PTS": "13",
     "REB": "10",
@@ -8025,6 +8497,7 @@
   },
   {
     "Player": "C.J. Wilcox",
+    "Team": "ORL",
     "GP": "22",
     "PTS": "21",
     "REB": "12",
@@ -8042,6 +8515,7 @@
   },
   {
     "Player": "Larry Sanders",
+    "Team": "CLE",
     "GP": "5",
     "PTS": "4",
     "REB": "4",
@@ -8059,6 +8533,7 @@
   },
   {
     "Player": "Diamond Stone",
+    "Team": "LAC",
     "GP": "7",
     "PTS": "10",
     "REB": "6",
@@ -8076,6 +8551,7 @@
   },
   {
     "Player": "John Jenkins",
+    "Team": "PHX",
     "GP": "4",
     "PTS": "7",
     "REB": "1",
@@ -8093,6 +8569,7 @@
   },
   {
     "Player": "Georges Niang",
+    "Team": "IND",
     "GP": "23",
     "PTS": "21",
     "REB": "17",
@@ -8110,6 +8587,7 @@
   },
   {
     "Player": "Aaron Harrison",
+    "Team": "CHA",
     "GP": "5",
     "PTS": "1",
     "REB": "3",
@@ -8127,6 +8605,7 @@
   },
   {
     "Player": "Arinze Onuaku",
+    "Team": "ORL",
     "GP": "8",
     "PTS": "4",
     "REB": "6",
@@ -8144,6 +8623,7 @@
   },
   {
     "Player": "John Lucas III",
+    "Team": "MIN",
     "GP": "5",
     "PTS": "2",
     "REB": "0",
@@ -8161,6 +8641,7 @@
   },
   {
     "Player": "Danuel House Jr.",
+    "Team": "WAS",
     "GP": "1",
     "PTS": "0",
     "REB": "1",
@@ -8178,6 +8659,7 @@
   },
   {
     "Player": "Patricio Garino",
+    "Team": "ORL",
     "GP": "5",
     "PTS": "0",
     "REB": "7",
@@ -8195,6 +8677,7 @@
   },
   {
     "Player": "Michael Gbinije",
+    "Team": "DET",
     "GP": "9",
     "PTS": "4",
     "REB": "3",
@@ -8212,6 +8695,7 @@
   },
   {
     "Player": "Steve Novak",
+    "Team": "MIL",
     "GP": "8",
     "PTS": "5",
     "REB": "3",
@@ -8229,6 +8713,7 @@
   },
   {
     "Player": "RJ Hunter",
+    "Team": "CHI",
     "GP": "3",
     "PTS": "0",
     "REB": "1",
@@ -8246,6 +8731,7 @@
   },
   {
     "Player": "Ben Bentil",
+    "Team": "DAL",
     "GP": "3",
     "PTS": "0",
     "REB": "2",
