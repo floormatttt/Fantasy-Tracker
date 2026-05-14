@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import AllTimeLeaders from './components/AllTimeLeaders';
 import BySeason from './components/BySeason';
+import PlayerView from './components/PlayerView';
 import AllTimeFootball from './components/AllTimeFootball';
 import FootballBySeason from './components/FootballBySeason';
 import MetricGraphs from './components/MetricGraphs';
@@ -107,12 +108,21 @@ function App() {
               >
                 By Season
               </button>
+              <button
+                className={`subnav-tab ${nbaView === 'playerview' ? 'active' : ''}`}
+                onClick={() => setNbaView('playerview')}
+              >
+                Player View
+              </button>
             </div>
             {nbaView === 'alltime' && (
               <AllTimeLeaders key="alltime" data={allTimeData} loading={loading} error={error} />
             )}
             {nbaView === 'byseason' && (
               <BySeason key="byseason" seasons={availableSeasons} seasonData={seasonData} loading={loading} error={error} />
+            )}
+            {nbaView === 'playerview' && (
+              <PlayerView key="playerview" allTimeData={allTimeData} loading={loading} error={error} />
             )}
           </>
         )}

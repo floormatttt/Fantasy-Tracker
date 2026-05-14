@@ -99,6 +99,7 @@ export async function loadSeasonData(season) {
 export function parsePlayer(row, season = null) {
   return {
     player: String(row.Player || ''),
+    playerId: String(row.PLAYER_ID || ''),
     season: season || String(row.Season || ''),
     team: String(row.Team || ''),
     gp: parseInt(row.GP) || 0,

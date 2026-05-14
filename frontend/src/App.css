@@ -1203,3 +1203,546 @@ td {
     min-width: 0;
   }
 }
+
+/* ==============================
+   Player View
+   ============================== */
+
+.pv-root {
+  padding-bottom: 48px;
+}
+
+.pv-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Search section */
+.pv-search-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 0 28px;
+  transition: padding 0.25s ease;
+}
+
+.pv-search-section.pv-search-compact {
+  padding: 0 0 20px;
+  align-items: stretch;
+}
+
+/* Hero */
+.pv-hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.pv-hero-title {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+  margin-bottom: 8px;
+}
+
+.pv-hero-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Search input */
+.pv-search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+
+.pv-search-section.pv-search-compact .pv-search-wrap {
+  max-width: 100%;
+}
+
+.pv-search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pv-search-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.pv-search-input {
+  width: 100%;
+  padding: 12px 40px 12px 42px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-shadow: var(--shadow-soft);
+}
+
+.pv-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.pv-search-clear {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  line-height: 1;
+  border-radius: 4px;
+  transition: color 0.1s;
+}
+
+.pv-search-clear:hover {
+  color: var(--text-primary);
+}
+
+.pv-search-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Dropdown */
+.pv-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.16);
+  z-index: 200;
+  overflow: hidden;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.pv-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.1s;
+  border-bottom: 1px solid var(--border);
+}
+
+.pv-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.pv-dropdown-item:hover,
+.pv-dropdown-item.selected {
+  background: var(--row-hover);
+}
+
+.pv-dropdown-item.already-added {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.pv-dropdown-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.pv-dropdown-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.pv-dropdown-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.pv-dropdown-years {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.pv-dropdown-added {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Comparison grid */
+.pv-comparison {
+  display: grid;
+  gap: 20px;
+  align-items: start;
+}
+
+.pv-comparison.pv-count-1 {
+  grid-template-columns: 1fr;
+}
+
+.pv-comparison.pv-count-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.pv-comparison.pv-count-3 {
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+}
+
+/* Player card */
+.pv-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.pv-card-header {
+  background: var(--surface-muted);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pv-card-header-info {
+  min-width: 0;
+}
+
+.pv-card-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pv-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.pv-card-team-pill {
+  font-size: 10px;
+  padding: 1px 5px;
+}
+
+.pv-meta-sep {
+  color: var(--border);
+}
+
+.pv-card-remove {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  transition: all 0.15s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.pv-card-remove:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pv-card-body {
+  padding: 16px;
+}
+
+.pv-section {
+  margin-bottom: 22px;
+}
+
+.pv-section:last-child {
+  margin-bottom: 0;
+}
+
+.pv-section-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-secondary);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pv-empty-msg {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Season totals table */
+.pv-season-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.pv-season-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+  font-size: 12px;
+}
+
+.pv-season-table thead th {
+  background: var(--surface-muted);
+  padding: 7px 10px;
+  text-align: right;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.pv-season-table thead th:not(.pv-num) {
+  text-align: left;
+}
+
+.pv-season-table tbody td {
+  padding: 6px 10px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.pv-season-table tbody td:not(.pv-num) {
+  text-align: left;
+  font-weight: 600;
+}
+
+.pv-season-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pv-season-table tbody tr:hover {
+  background: var(--row-hover);
+}
+
+.pv-num {
+  text-align: right !important;
+}
+
+/* Game logs */
+.pv-gamelogs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pv-gamelog {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pv-gamelog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: var(--surface-muted);
+  transition: background 0.1s;
+  user-select: none;
+  outline: none;
+}
+
+.pv-gamelog-header:hover {
+  background: var(--row-hover);
+}
+
+.pv-gamelog-season-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.pv-gamelog-team-pill {
+  font-size: 10px;
+  padding: 1px 5px;
+}
+
+.pv-gamelog-arrow {
+  font-size: 9px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+  display: inline-block;
+  width: 12px;
+}
+
+.pv-gamelog-arrow.open {
+  transform: rotate(90deg);
+}
+
+.pv-gamelog-summary {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.pv-gamelog-body {
+  border-top: 1px solid var(--border);
+}
+
+.pv-gamelog-status {
+  padding: 14px 16px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pv-spinner-sm {
+  width: 16px !important;
+  height: 16px !important;
+  border-width: 2px !important;
+  margin: 0 !important;
+}
+
+.pv-gamelog-table-wrap {
+  overflow-x: auto;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.pv-gamelog-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+  font-size: 12px;
+}
+
+.pv-gamelog-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.pv-gamelog-table thead th {
+  background: var(--surface-muted);
+  padding: 6px 8px;
+  text-align: right;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.pv-gamelog-table thead th:not(.pv-num) {
+  text-align: left;
+}
+
+.pv-gamelog-table tbody td {
+  padding: 5px 8px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.pv-gamelog-table tbody td:not(.pv-num) {
+  text-align: left;
+}
+
+.pv-gamelog-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pv-gamelog-table tbody tr:hover {
+  background: var(--row-hover);
+}
+
+.pv-wl-w {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.pv-wl-l {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pv-comparison.pv-count-2,
+  .pv-comparison.pv-count-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .pv-hero-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pv-search-section {
+    padding: 28px 0 20px;
+  }
+
+  .pv-gamelog-summary {
+    display: none;
+  }
+}
